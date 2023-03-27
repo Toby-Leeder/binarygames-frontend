@@ -1,4 +1,5 @@
-# The JCK Escape Room
+# BinaryGames by JCK
+> A fun and educational escape room mission where the player must complete several computer science-related games to compile a code in order to escape the room.
 
 ## Runtime
 [https://toby-leeder.github.io/binarygames-frontend](https://toby-leeder.github.io/binarygames-frontend)

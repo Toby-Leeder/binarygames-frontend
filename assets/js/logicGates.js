@@ -231,7 +231,9 @@ function dragStart(event){
   // var targetDiv = document.getElementById(`${type}div`)
   // targetDivBound = targetDiv.getBoundingClientRect()
 }
+
 var goodDiv = []
+
 function dragEnd(event){
   document.removeEventListener("mousemove", moveTarget)
   if(event.clientX < getBarRect.right){

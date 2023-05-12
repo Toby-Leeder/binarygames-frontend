@@ -98,12 +98,13 @@ function drawXOR(ctx){
 drawXOR(document.getElementById("XORgate").getContext("2d"))
 
 var tempDivRect = document.getElementsByClassName("tempDiv")[0].getBoundingClientRect()
-var mod = 0
-function makeDoubleLine(ctx, down, margin, width, start){
+var logicValues = [[["false", "true"], ["false", "false"], ["true", "true"], ["true", "false"], ["true", "true"]], [[" ", " "], [" ", " "]], [["", ""]], [["", ""]]]
+
+function makeDoubleLine(ctx, down, margin, width, start, text){
   setCtx(ctx)
-  ctx.fillText("Text", start, down * margin - 24)
+  ctx.fillText(text[0], start, down * margin - 24)
   ctx.fillRect(start, down*margin + 14, width, 2)
-  ctx.fillText("Text", start, down * margin + 4)
+  ctx.fillText(text[1], start, down * margin + 4)
   ctx.fillRect(start, down*margin - 16, width, 2)
   // var start = width + 80
   // var mult = mod % 2 == 1 ? -1 : 1
@@ -113,15 +114,15 @@ function makeDoubleLine(ctx, down, margin, width, start){
   // mod++
 }
 
-function drawLines(canvas, doubleLines, mar, row){
+function drawLines(canvas, doubleLines, mar, row, texts){
   ctx = canvas.getContext("2d")
   var height = canvas.height
   var width = canvas.width * 0.2 * 0.25
   var margin = height/mar
   var start = (width * 2 + 80) * row
 
-  doubleLines.forEach((line) => {
-    makeDoubleLine(ctx, line, margin, width, start)
+  doubleLines.forEach((line, i) => {
+    makeDoubleLine(ctx, line, margin, width, start, texts[i])
     genDiv(width, margin * line, start)
   })
 }
@@ -145,8 +146,9 @@ function makeLines(){
   // var canvases = [firstCanvas, secondCanvas, thirdCanvas]
   firstCanvas.height = canvasHeights
   firstCanvas.width = canvasWidths
+  
   doubleLines.forEach((el, i) => {
-    drawLines(firstCanvas, doubleLines[i], lineMargin[i], rowStarts[i])
+    drawLines(firstCanvas, doubleLines[i], lineMargin[i], rowStarts[i], logicValues[i])
   })
   // drawLines(firstCanvas, doubleLines[0], lineMargin[0], rowStarts[1])
   // canvases.forEach((canvas, i) => {

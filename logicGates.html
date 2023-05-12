@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            img {
+                user-select: none;
+            }
+            .box {
+                height:80px;
+                width:80px;
+            }
+            canvas {
+                grid-column: 1;
+                grid-row: 1;    
+            }
+
+            .tempDiv {
+                /* border-color:white; */
+                /* border-style: solid; */
+                /* display:flex; */
+                height:100%;
+                width:80%;
+            }
+
+            .targetDiv {
+                /* display:grid; */
+                position: absolute;
+                height:80px;
+                width:80px;
+                border-style: solid;
+                border-color: white;
+                user-select: text;                
+            }
+
+            .placedGate {
+                position: static;
+                grid-column: 1;
+                grid-row: 1;
+            }
+
+            /* .el {
+                grid-column: 1;
+                grid-row: 1;
+            } */
+        </style>
+    </head>
+    <body>
+        <div style="height: 50px; border:2px; border-radius: 2px; border-color:black;">
+            This Is A Navbar
+        </div>
+        <div style="display:flex; justify-content: center; align-items: center; user-select: none;">
+            <div style="height: 80vh; width: 80vw; border:2px; border-color: black; border-style: solid; user-select: none;">
+                <div id="playspace" style="background-color: black; height:100%; width:100%; display:flex; align-items: center; user-select: none;" id="target">
+                    <div id="getBar" style="background-color: grey; height: 100%;width: 20%;display:flex;flex-direction: column;justify-content: space-around;align-items: center; user-select: none;">
+                        <div class="and" id="anddiv" style="width:80px; display:grid;">
+                            <canvas class="and" id="ANDgate" height="80px" width="80px"></canvas>
+                            <canvas class="and" id="ANDgate1" height="80px" width="80px"></canvas>
+                            <canvas class="and" id="ANDgate2" height="80px" width="80px"></canvas>
+                        </div>
+                        <div class="or" id="ordiv">
+                            <canvas class="or" id="ORgate" height="80px" width="80px"></canvas>
+                        </div>
+                        <div class="nand" id="nanddiv">
+                            <canvas class="nand" id="NANDgate" height="80px" width="80px"></canvas>
+                        </div>
+                        <div class="nor" id="nordiv">
+                            <canvas class="nor" id="NORgate" height="80px" width="80px"></canvas>
+                        </div>
+                        <div class="xor" id="xordiv">
+                            <canvas class="xor" id="XORgate" height="80px" width="80px"></canvas>
+                        </div>
+                    </div>
+                    <div id="canvasDiv" class="tempDiv">
+                        <canvas id="firstCanvas"></canvas>
+                    </div>
+                    <!-- <div class="tempDiv">
+                        <canvas id="secondCanvas"></canvas>
+                    </div>
+                    <div class="tempDiv">
+                        <canvas id="thirdCanvas"></canvas>
+                    </div>
+                    <div class="tempDiv">
+
+                    </div> -->
+                </div>
+            </div>
+        </div>
+        <!-- <img src="blog/images/tea-logo.png" style="height: 20px; position:absolute" id="imaage"> -->
+    </body>
+    <script src="assets/js/logicGates.js"></script>
+</html>

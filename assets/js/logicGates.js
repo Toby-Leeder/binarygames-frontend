@@ -101,7 +101,9 @@ var tempDivRect = document.getElementsByClassName("tempDiv")[0].getBoundingClien
 var mod = 0
 function makeDoubleLine(ctx, down, margin, width, start){
   setCtx(ctx)
+  ctx.fillText("Text", start, down * margin - 24)
   ctx.fillRect(start, down*margin + 14, width, 2)
+  ctx.fillText("Text", start, down * margin + 4)
   ctx.fillRect(start, down*margin - 16, width, 2)
   // var start = width + 80
   // var mult = mod % 2 == 1 ? -1 : 1
@@ -120,7 +122,7 @@ function drawLines(canvas, doubleLines, mar, row){
 
   doubleLines.forEach((line) => {
     makeDoubleLine(ctx, line, margin, width, start)
-    genDiv(canvas, margin * line, width)
+    genDiv(width, margin * line, start)
   })
 }
 
@@ -156,8 +158,8 @@ function makeLines(){
 
 var targetDivs = []
 
-function genDiv(canvas, topPlace, width, start){
-  var canvasDiv = canvas.parentElement;
+function genDiv(width, topPlace, start){
+  var canvasDiv = document.getElementById("canvasDiv");
   var div = document.createElement("div");
 
   // var width = canvas.width * 0.2 * 0.25
@@ -169,8 +171,8 @@ function genDiv(canvas, topPlace, width, start){
   div.classList.add("targetDiv")
   div.draggable = false;
   div.style.top = topPlace + 20 + "px";
-  div.style.left = width + rect.left + "px";
-  // div.style.display = "none"
+  div.style.left = start + width + rect.left + "px";
+  div.style.display = "none"
   // div.style.height = "72px";
   // div.style.width = "72px";
 

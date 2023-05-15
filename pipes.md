@@ -1,18 +1,8 @@
-<!DOCTYPE html>
 <html>
   <style>
 body {
-  background-image: url('pipebackground.jpg');
+  background-image: url('images/pipebackground.jpg');
   background-size: cover;
-}
-.line {
-  position: absolute;
-  top: 33.33%;
-  left: 0;
-  right: 0;
-  height: 2px;
-  background-color: red;
-  z-index: 1;
 }
 .container {
   position: relative;
@@ -50,11 +40,13 @@ img {
 .middle .line-right,
 .right .line-right {
   position: absolute;
-  top: 50%;
+  top: 33.33%;
+  left: 0;
+  right: 0;
   height: 2px;
-  background-color: red;
-  opacity: 1;
-  width: 33.33%;
+  background-image: url('images/pipe1.jpg');
+  background-repeat: repeat-x;
+  z-index: 3;
 }
 .left:hover .line-left,
 .middle:hover .line-left,
@@ -64,12 +56,13 @@ img {
 .middle .line-right,
 .right .line-right {
   position: absolute;
-  right: -33.33%;
-  top: 50%;
-  width: 33.33%;
+  top: 33.33%;
+  left: 0;
+  right: 0;
   height: 2px;
-  background-color: red;
-  opacity: 1;
+  background-image: url('images/pipe1.jpg');
+  background-repeat: repeat-x;
+  z-index: 3;
 }
 .middle:hover .line-right,
 .right:hover .line-right {
@@ -96,16 +89,16 @@ img {
   <div class="container">
     <div class="left">
       <div class="line-left"></div>
-      <img id="img1" src="trash1.png" />
+      <img id="img1" src="images/trash1.png" />
     </div>
     <div class="middle">
       <div class="line-left"></div>
       <div class="line-right"></div>
-      <img id="img2" src="trash2.png" />
+      <img id="img2" src="images/trash2.png" />
     </div>
     <div class="right">
       <div class="line-right"></div>
-      <img id="img3" src="trash3.png" />
+      <img id="img3" src="images/trash3.png" />
     </div>
   </div>
 
@@ -173,4 +166,4 @@ imgs.forEach(img => {
 
   </script>
 </body>
-</html>
+</html>`

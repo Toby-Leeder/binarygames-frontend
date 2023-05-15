@@ -98,13 +98,13 @@ function drawXOR(ctx){
 drawXOR(document.getElementById("XORgate").getContext("2d"))
 
 var tempDivRect = document.getElementsByClassName("tempDiv")[0].getBoundingClientRect()
-var logicValues = [[["false", "true"], ["false", "false"], ["true", "true"], ["true", "false"], ["true", "true"]], [[" ", " "], [" ", " "]], [["", ""]], [["", ""]]]
+var logicValues = [[["false", "true"], ["false", "false"], ["true", "true"], ["true", "false"], ["true", "true"]], [["true", "true"], [" ", " "]], [["true", ""]], [["", ""]]]
 
 function makeDoubleLine(ctx, down, margin, width, start, text){
   setCtx(ctx)
-  ctx.fillText(text[0], start, down * margin - 24)
+  ctx.fillText(text[0], start + 4, down * margin - 24)
   ctx.fillRect(start, down*margin + 14, width, 2)
-  ctx.fillText(text[1], start, down * margin + 4)
+  ctx.fillText(text[1], start + 4, down * margin + 4)
   ctx.fillRect(start, down*margin - 16, width, 2)
   // var start = width + 80
   // var mult = mod % 2 == 1 ? -1 : 1
@@ -113,7 +113,7 @@ function makeDoubleLine(ctx, down, margin, width, start, text){
   // ctx.fillRect(start + 20, down*margin + mult * 22 - 1, 200, 2)
   // mod++
 }
-
+var connectIterator
 function drawLines(canvas, doubleLines, mar, row, texts){
   ctx = canvas.getContext("2d")
   var height = canvas.height
@@ -121,9 +121,11 @@ function drawLines(canvas, doubleLines, mar, row, texts){
   var margin = height/mar
   var start = (width * 2 + 80) * row
 
-  doubleLines.forEach((line, i) => {
-    makeDoubleLine(ctx, line, margin, width, start, texts[i])
+  doubleLines.forEach((line, j) => {
+    makeDoubleLine(ctx, line, margin, width, start, texts[j])
     genDiv(width, margin * line, start)
+    makeConnectingLines(ctx, width, margin * line, start, connectIterator, row)
+    connectIterator++
   })
 }
 
@@ -146,7 +148,7 @@ function makeLines(){
   // var canvases = [firstCanvas, secondCanvas, thirdCanvas]
   firstCanvas.height = canvasHeights
   firstCanvas.width = canvasWidths
-  
+  connectIterator = 0
   doubleLines.forEach((el, i) => {
     drawLines(firstCanvas, doubleLines[i], lineMargin[i], rowStarts[i], logicValues[i])
   })
@@ -182,6 +184,48 @@ function genDiv(width, topPlace, start){
   document.getElementById("playspace").appendChild(div);
   // canvasDiv.appendChild(div);
   // document.getElementsByTagName("body")[0].appendChild(div);
+}
+
+function makeTargetDivsVisible(){
+  var targetDivs = document.getElementsByClassName("targetDiv")
+  for(var i = 0; i < targetDivs.length; i++){
+    targetDivs[i].display = "grid"
+  }
+}
+
+function makeTargetDivsInvisible(){
+  var targetDivs = document.getElementsByClassName("targetDiv")
+  for(var i = 0; i < targetDivs.length; i++){
+    targetDivs[i].display = "none"
+  }
+}
+
+function makeConnectingLines(ctx, width, topPlace, start, i, row){
+  var targetDivs = document.getElementsByClassName("targetDiv")
+  if(targetDivs[i].childNodes.length == 0) return
+  makeTargetDivsVisible()
+  var firstHeight = targetDivs[0].getBoundingClientRect().top - targetDivs[1].getBoundingClientRect().top
+  firstHeight = Math.abs(firstHeight)
+  console.log(firstHeight)
+  makeTargetDivsInvisible()
+  console.log(row)
+  var mult = 1
+  ctx.fillRect(start + 80 + width, topPlace - 1, width, 2)
+  if(row == 0){
+    mult = i % 2 == 0 ? 1 : -1
+    ctx.fillRect(start + 80 + width * 2, topPlace - 1 * mult, 2, (firstHeight/4) * mult)
+  }
+  if(row == 1){
+    mult = i % 2 == 0 ? 1 : -1
+    ctx.fillRect(start + 80 + width * 2, topPlace - 1 * mult, 2, (firstHeight/2 + 2) * mult)
+  }
+  if(row == 2){
+    ctx.fillRect(start + 80 + width * 2, topPlace - 1 * mult, 2, 62)
+  }
+  // switch (i) {
+  //   case 0:
+  //     break;
+  // }
 }
 
 let dragger

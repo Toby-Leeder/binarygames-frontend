@@ -6,7 +6,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
     <style>
       html {
-        background-color: rgb(65, 63, 65);
+        background: linear-gradient(to bottom, rgb(65, 63, 65), rgb(48, 45, 48));
       }
 
       .wrapper {
@@ -267,7 +267,7 @@
       .car1 {
         width: 200px;
         height: auto;
-        top: 65px;
+        top: 50px;
         position: absolute;
         animation: moveRight 5s linear infinite;
         animation-play-state: paused;
@@ -285,7 +285,7 @@
         animation: road_animate 3s infinite;
         animation-timing-function: linear; 
         position: absolute;
-        margin-top: -470px;
+        margin-top: -485px;
         height: 200px;
         width: 1420px;
       }
@@ -375,8 +375,6 @@
           }, 500); 
           keyframeIndex++;
         }
-        clearInterval(Interval);
-        Interval = setInterval(startTimer, 10);
         addQuestion();
         if (questions === 10) {
           button1.onclick = function() {
@@ -392,6 +390,8 @@
         setTimeout(function() {
           car1.style.animationPlayState = "paused";
         }, 500);
+        clearInterval(Interval);
+        Interval = setInterval(startTimer, 10);
       }
 
       function startTimer () {

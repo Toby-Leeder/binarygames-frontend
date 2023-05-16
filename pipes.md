@@ -2,7 +2,7 @@
 <head>
   <style>
     body {
-      background-image: url('pipebackground.jpg');
+      background-image: url('images/pipebackground.jpg');
       background-size: cover;
     }
     .container {
@@ -45,7 +45,7 @@
       left: 0;
       right: 0;
       height: 2px;
-      background-color: red; /* Set the background color to red */
+      background-color: red;
       z-index: 3;
     }
     .left:hover .line-left,
@@ -60,7 +60,7 @@
       left: 0;
       right: 0;
       height: 2px;
-      background-color: red; /* Set the background color to red */
+      background-color: red; 
       z-index: 3;
     }
     .middle:hover .line-right,
@@ -82,22 +82,39 @@
     .right .line-right {
       right: 0;
     }
+  .button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    text-align: center;
+    text-decoration: none;
+    background-color: #4CBB17;
+    color: #BF40BF;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    position: fixed;
+    left: 33.33vw;
+    top: 25vh;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+  }
   </style>
 </head>
 <body>
   <div class="container">
     <div class="left">
       <div class="line-left"></div>
-      <img id="img1" src="trash1.png" />
+      <img id="img1" src="images/trash1.png" />
     </div>
     <div class="middle">
       <div class="line-left"></div>
       <div class="line-right"></div>
-      <img id="img2" src="trash2.png" />
+      <img id="img2" src="images/trash2.png" />
     </div>
     <div class="right">
       <div class="line-right"></div>
-      <img id="img3" src="trash3.png" />
+      <img id="img3" src="images/trash3.png" />
     </div>
   </div>
 
@@ -111,6 +128,14 @@ function dragStart(e) {
   activeImg = this;
   initialY = e.clientY - activeImg.offsetTop;
 }
+
+function rotate() {
+      var image = document.getElementById("img1");
+      var currentRotation = parseInt(image.dataset.rotation || "0");
+      var newRotation = (currentRotation + 90) % 360;
+      image.style.transform = "rotate(" + newRotation + "deg)";
+      image.dataset.rotation = newRotation;
+    }
 
 function dragEnd() {
   if (activeImg) {

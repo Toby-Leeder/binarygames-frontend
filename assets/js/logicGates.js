@@ -3,6 +3,11 @@ function setCtx(ctx){
   ctx.strokeStyle = `rgb(255, 255, 255)`
   ctx.lineWidth = 2  
 }
+function setBlackCtx(ctx){
+  ctx.fillStyle = `rgb(0, 0, 0)`
+  ctx.strokeStyle = `rgb(0, 0, 0)`
+  ctx.lineWidth = 2
+}
 
 //AND gate
 function drawAND(ctx){
@@ -113,9 +118,9 @@ function makeDoubleLine(ctx, down, margin, width, start, text){
   // ctx.fillRect(start + 20, down*margin + mult * 22 - 1, 200, 2)
   // mod++
 }
-var connectIterator
+var connectIterator = 0
 function drawLines(canvas, doubleLines, mar, row, texts){
-  ctx = canvas.getContext("2d")
+  var ctx = canvas.getContext("2d")
   var height = canvas.height
   var width = canvas.width * 0.2 * 0.25
   var margin = height/mar
@@ -124,7 +129,6 @@ function drawLines(canvas, doubleLines, mar, row, texts){
   doubleLines.forEach((line, j) => {
     makeDoubleLine(ctx, line, margin, width, start, texts[j])
     genDiv(width, margin * line, start)
-    makeConnectingLines(ctx, width, margin * line, start, connectIterator, row)
     connectIterator++
   })
 }
@@ -148,42 +152,27 @@ function makeLines(){
   // var canvases = [firstCanvas, secondCanvas, thirdCanvas]
   firstCanvas.height = canvasHeights
   firstCanvas.width = canvasWidths
-  connectIterator = 0
   doubleLines.forEach((el, i) => {
     drawLines(firstCanvas, doubleLines[i], lineMargin[i], rowStarts[i], logicValues[i])
   })
-  // drawLines(firstCanvas, doubleLines[0], lineMargin[0], rowStarts[1])
-  // canvases.forEach((canvas, i) => {
-  //   canvas.height = canvasHeights
-  //   canvas.width = canvasWidths
-  //   drawLines(canvas, doubleLines[i], lineMargin[i])
-  // })
 }
 
-var targetDivs = []
+var globalTargetDivs = []
 
 function genDiv(width, topPlace, start){
   var canvasDiv = document.getElementById("canvasDiv");
   var div = document.createElement("div");
 
-  // var width = canvas.width * 0.2 * 0.25
   var rect = canvasDiv.getBoundingClientRect();
 
-  // div.style.position = "absolute";
-  // div.style.borderStyle = "solid";
-  // div.style.borderColor = "white";
   div.classList.add("targetDiv")
   div.draggable = false;
   div.style.top = topPlace + 20 + "px";
   div.style.left = start + width + rect.left + "px";
   div.style.display = "none"
-  // div.style.height = "72px";
-  // div.style.width = "72px";
 
-  targetDivs.push(div)
+  globalTargetDivs.push(div)
   document.getElementById("playspace").appendChild(div);
-  // canvasDiv.appendChild(div);
-  // document.getElementsByTagName("body")[0].appendChild(div);
 }
 
 function makeTargetDivsVisible(){
@@ -200,32 +189,96 @@ function makeTargetDivsInvisible(){
   }
 }
 
-function makeConnectingLines(ctx, width, topPlace, start, i, row){
+function connectLines(isWhite){
+  var connectI = 0
   var targetDivs = document.getElementsByClassName("targetDiv")
-  if(targetDivs[i].childNodes.length == 0) return
   makeTargetDivsVisible()
+  targetDivs[0].style.display = "grid"
+  targetDivs[1].style.display = "grid"
   var firstHeight = targetDivs[0].getBoundingClientRect().top - targetDivs[1].getBoundingClientRect().top
   firstHeight = Math.abs(firstHeight)
-  console.log(firstHeight)
+  for(var i = 0; i < 2; i++){
+    if(targetDivs[i].childNodes.length > 0){
+      targetDivs[i].style.display = "grid"
+    } else {
+      targetDivs[i].style.display = "none"
+    }
+  }
   makeTargetDivsInvisible()
-  console.log(row)
+  var canvas = firstCanvas
+  var ctx = canvas.getContext("2d")
+  if(isWhite){
+    setCtx(ctx)
+  } else {
+    setBlackCtx(ctx)
+  }
+  doubleLines.forEach((el, i) => {
+    var lines = doubleLines[i]
+    var mar = lineMargin[i]
+    var row = rowStarts[i]
+    var height = canvas.height
+    var width = canvas.width * 0.2 * 0.25
+    var margin = height/mar
+    var start = (width * 2 + 80) * row
+    lines.forEach((line) => {
+      makeConnectingLines(ctx, width, margin * line, start, connectI, row, isWhite, firstHeight)
+      connectI++
+    })
+  })
+}
+
+function makeConnectingLines(ctx, width, topPlace, start, i, row, isWhite, firstHeight){
+  var strokeWidth = isWhite ? 2 : 4
+  var targetDivs = document.getElementsByClassName("targetDiv")
+  // makeTargetDivsVisible()
+  // targetDivs[0].style.display = "grid"
+  // targetDivs[1].style.display = "grid"
+  // var firstHeight = targetDivs[0].getBoundingClientRect().top - targetDivs[1].getBoundingClientRect().top
+  // targetDivs[0].style.display = "none"
+  // targetDivs[1].style.display = "none"
+  // firstHeight = Math.abs(firstHeight)
+  // makeTargetDivsInvisible()
+  if(!isWhite){
+    if(targetDivs[i].childNodes.length > 0 ) return
+    if(i == 4) {
+      ctx.clearRect(start + 79 + width, topPlace - 2, (width * 2 + 80) * 2 + width, strokeWidth + 1)
+      ctx.clearRect(start + 79 + width + (width * 2 + 80) * 2 + width, topPlace + 2, strokeWidth, -(firstHeight * 2.8) - 1)
+      return
+    }
+    var mult = 1
+    ctx.clearRect(start + 80 + width - 1, topPlace - 2, width + 1, strokeWidth)
+    if(row == 0){
+      mult = i % 2 == 0 ? 1 : -1
+      ctx.clearRect(start + 79 + width * 2, topPlace - 2 * mult, strokeWidth, (firstHeight/3.3) * mult)
+    }
+    if(row == 1){
+      mult = i % 2 == 0 ? -1 : 1
+      ctx.clearRect(start + 80 + width * 2, topPlace - 1 * mult, strokeWidth, (firstHeight * 1.3) * mult)
+    }
+    if(row == 2){
+      ctx.clearRect(start + 80 + width * 2, topPlace - 2 * mult, strokeWidth, (firstHeight/1.22) * mult)
+    }
+    return
+  }
+  if(targetDivs[i].childNodes.length == 0 ) return
+  if(i == 4) {
+    ctx.fillRect(start + 80 + width, topPlace - 1, (width * 2 + 80) * 2 + width, strokeWidth)
+    ctx.fillRect(start + 80 + width + (width * 2 + 80) * 2 + width, topPlace + 1, strokeWidth, -(firstHeight * 2.8))
+    return
+  }
   var mult = 1
-  ctx.fillRect(start + 80 + width, topPlace - 1, width, 2)
+  ctx.fillRect(start + 80 + width, topPlace - 1, width, strokeWidth)
   if(row == 0){
     mult = i % 2 == 0 ? 1 : -1
-    ctx.fillRect(start + 80 + width * 2, topPlace - 1 * mult, 2, (firstHeight/4) * mult)
+    ctx.fillRect(start + 80 + width * 2, topPlace - 1 * mult, strokeWidth, (firstHeight/3.3) * mult)
   }
   if(row == 1){
-    mult = i % 2 == 0 ? 1 : -1
-    ctx.fillRect(start + 80 + width * 2, topPlace - 1 * mult, 2, (firstHeight/2 + 2) * mult)
+    mult = i % 2 == 0 ? -1 : 1
+    ctx.fillRect(start + 80 + width * 2, topPlace - 1 * mult, strokeWidth, (firstHeight * 1.3) * mult)
   }
   if(row == 2){
-    ctx.fillRect(start + 80 + width * 2, topPlace - 1 * mult, 2, 62)
+    ctx.fillRect(start + 80 + width * 2, topPlace - 1 * mult, strokeWidth, (firstHeight/1.22) * mult)
   }
-  // switch (i) {
-  //   case 0:
-  //     break;
-  // }
 }
 
 let dragger
@@ -271,6 +324,7 @@ function dragStart(event){
     type = each
   })
   document.getElementById(`${type}div`).appendChild(dragger)
+  connectLines(false)
 
   // var targetDiv = document.getElementById(`${type}div`)
   // targetDivBound = targetDiv.getBoundingClientRect()
@@ -285,7 +339,7 @@ function dragEnd(event){
     dragger = ""
     return
   }
-  targetDivs.forEach(div => {
+  globalTargetDivs.forEach(div => {
     div.style.display = "grid"
     var rect = div.getBoundingClientRect()
     var x = event.clientX
@@ -304,6 +358,7 @@ function dragEnd(event){
     })
 
   })
+  connectLines(true)
   dragger = ''
 }
 
@@ -330,10 +385,10 @@ function mouseUp(el, x, y) {
 }
 
 function deleteTargetDivs(){
-  for (var i = 0; i < targetDivs.length; i++){
-    targetDivs[i].remove()
+  for (var i = 0; i < globalTargetDivs.length; i++){
+    globalTargetDivs[i].remove()
   }
-  targetDivs = []
+  globalTargetDivs = []
 }
 
 makeLines()

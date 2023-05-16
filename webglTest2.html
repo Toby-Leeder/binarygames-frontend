@@ -1,0 +1,92 @@
+<html>
+    <head>
+
+    </head>
+    <body>
+        <h1>Test code for webgl</h1>
+        <canvas id="gl" width="600" height="600"></canvas>
+    </body>
+    <script id="vshadercode" type="notjs">
+        attribute vec4 position;
+        //attribute vec3 aColor;
+        //out vec3 fragColor;
+        void main(){
+            gl_Position = position;
+            //fragColor = aColor;
+        }
+    </script>
+    <script id="fshadercode" type="notjs">
+        //in vec3 fragColor
+        //out vec4 outColor
+        void main(){
+            gl_FragColor = vec4(1.0, 0.0, 0.0, 1.0);
+        }
+    </script>
+    <script>
+        var canvas = document.getElementById("gl")
+        var gl = canvas.getContext("webgl")
+        function createShader(gl, type, source) {
+            var shader = gl.createShader(type);
+            gl.shaderSource(shader, source);
+            gl.compileShader(shader);
+            var success = gl.getShaderParameter(shader, gl.COMPILE_STATUS);
+            if (success) {
+                return shader;
+            }
+            
+            console.log(gl.getShaderInfoLog(shader));
+            gl.deleteShader(shader);
+        }
+        var vertexShaderSource = document.getElementById("vshadercode").text;
+        var fragmentShaderSource = document.getElementById("fshadercode").text;
+
+        var vertexShader = createShader(gl, gl.VERTEX_SHADER, vertexShaderSource);
+        var fragmentShader = createShader(gl, gl.FRAGMENT_SHADER, fragmentShaderSource);
+
+        function createProgram(gl, vShader, fShader) {
+            var program = gl.createProgram();
+            gl.attachShader(program, vShader);
+            gl.attachShader(program, fShader);
+            gl.linkProgram(program);
+            var success = gl.getProgramParameter(program, gl.LINK_STATUS);
+            if (success) {
+                return program;
+            }
+            
+            console.log(gl.getProgramInfoLog(program));
+            gl.deleteProgram(program);
+        }
+
+        var program = createProgram(gl, vertexShader, fragmentShader);
+
+        var positionAttributeLocation = gl.getAttribLocation(program, "position");
+        var positionBuffer = gl.createBuffer();
+        gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
+        var positions = [
+        0, -0.5,
+        0, 0.5,
+        0.5, 0,
+        ];
+        gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(positions), gl.STATIC_DRAW);
+
+        gl.viewport(0, 0, gl.canvas.width, gl.canvas.height);
+
+        gl.clearColor(0, 0, 0, 0);
+        gl.clear(gl.COLOR_BUFFER_BIT);
+
+        gl.useProgram(program);
+
+        gl.enableVertexAttribArray(positionAttributeLocation);
+
+        gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
+ 
+        var size = 2;          // 2 components per iteration
+        var type = gl.FLOAT;   // the data is 32bit floats
+        var normalize = false; // don't normalize the data
+        var stride = 0;        // 0 = move forward size * sizeof(type) each iteration to get the next position
+        var offset = 0;        // start at the beginning of the buffer
+        gl.vertexAttribPointer(positionAttributeLocation, size, type, normalize, stride, offset)
+
+        gl.drawArrays(gl.TRIANGLES, 0, 6);
+    </script>
+</html>

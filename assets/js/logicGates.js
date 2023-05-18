@@ -424,6 +424,7 @@ function logic(div){
     gate = reverseString((reverseString(div.firstChild.id).slice(4)))
   }
   inputs = checkInput(div.id)
+  console.log(inputs)
   if (gate == "AND"){
       if (inputs[0] == "true" && inputs[1] == "true"){
         return true
@@ -463,21 +464,22 @@ function checkInput(div){
     return logicValues[0][parseInt(div[0])];
   }
   else if (gateNum <= 6 ){
-    return logicValues[1][parseInt(div[0]) - 5];
+    return logicValues[1][parseInt(div[0]) - 4];
   }
   else{
-    return logicValues[2][parseInt(div[0]) - 7];
+    return logicValues[2][parseInt(div[0]) - 6];
   }
 }
 
 function setOutput(bool, div){
-  if(div.id[0] == 0){
-    console.log(logicValues[1][1][0])
+  divNum = parseInt(div.id[0])
+  if(divNum < 4){
+    console.log(logicValues[1][1][divNum])
     if (bool){
-      logicValues[1][1][0] = "true";
+      logicValues[1][1][divNum] = "true";
     }
     else{
-      logicValues[1][1][0] = "false";
+      logicValues[1][1][divNum] = "false";
     }
     ctx = document.getElementById("firstCanvas").getContext("2d")
     setCtx(ctx)

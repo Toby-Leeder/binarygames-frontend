@@ -430,8 +430,22 @@ function logic(div){
       }
   }
   if (gate == "OR"){
-    console.log(inputs)
     if (inputs[0] == "true" || inputs[1] == "true"){
+      return true
+    }
+  }
+  if (gate == "NAND"){
+    if (!(inputs[0] == "true" && inputs[1] == "true")){
+      return true
+    }
+  }
+  if (gate == "NOR"){
+    if (!(inputs[0] == "true" || inputs[1] == "true")){
+      return true
+    }
+  }
+  if (gate == "XOR"){
+    if ((inputs[0] == "true" || inputs[1] == "true") && !(inputs[0] == "true" && inputs[1] == "true")){
       return true
     }
   }

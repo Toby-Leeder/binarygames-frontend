@@ -100,10 +100,11 @@ function drawXOR(ctx){
   ctx.fillRect(60, 39, 20, 2);
 }
 
+
 drawXOR(document.getElementById("XORgate").getContext("2d"))
 
 var tempDivRect = document.getElementsByClassName("tempDiv")[0].getBoundingClientRect()
-var logicValues = [[["false", "true"], ["false", "false"], ["true", "true"], ["true", "false"], ["true", "true"]], [["true", "true"], [" ", " "]], [["true", ""]], [["", ""]]]
+var logicValues = [[["false", "true"], ["false", "false"], ["true", "true"], ["true", "false"], ["true", "true"]], [["", ""], [" ", " "]], [["", ""]], [["", ""]]]
 
 function makeDoubleLine(ctx, down, margin, width, start, text){
   setCtx(ctx)
@@ -119,16 +120,17 @@ function makeDoubleLine(ctx, down, margin, width, start, text){
   // mod++
 }
 var connectIterator = 0
+var idnum = 0
 function drawLines(canvas, doubleLines, mar, row, texts){
   var ctx = canvas.getContext("2d")
   var height = canvas.height
   var width = canvas.width * 0.2 * 0.25
   var margin = height/mar
   var start = (width * 2 + 80) * row
-
   doubleLines.forEach((line, j) => {
     makeDoubleLine(ctx, line, margin, width, start, texts[j])
-    genDiv(width, margin * line, start)
+    genDiv(width, margin * line, start, idnum)
+    idnum++
     connectIterator++
   })
 }
@@ -159,12 +161,13 @@ function makeLines(){
 
 var globalTargetDivs = []
 
-function genDiv(width, topPlace, start){
+function genDiv(width, topPlace, start, idnum){
   var canvasDiv = document.getElementById("canvasDiv");
   var div = document.createElement("div");
 
   var rect = canvasDiv.getBoundingClientRect();
 
+  div.id = `${idnum}targetDiv`
   div.classList.add("targetDiv")
   div.draggable = false;
   div.style.top = topPlace + 20 + "px";
@@ -344,11 +347,13 @@ function dragEnd(event){
     var rect = div.getBoundingClientRect()
     var x = event.clientX
     var y = event.clientY
+    var logicCheck = false
     if(x > rect.left && x < rect.right && y < rect.bottom && y > rect.top){
       div.appendChild(dragger)
       dragger.style.position = "static"
       dragger.classList.add("placedGate")
       goodDiv.push(div)
+      setOutput(logic(div), div)
     }
     div.style.display = "none"
     gates.forEach(gate => {
@@ -358,7 +363,7 @@ function dragEnd(event){
     })
 
   })
-  connectLines(true)
+    connectLines(true)
   dragger = ''
 }
 
@@ -409,3 +414,60 @@ function resize(){
 }
 
 window.onresize = resize
+
+function logic(div){
+  var gate
+  if (!isNaN(parseInt(reverseString(div.firstChild.id)[0]))){
+    gate = reverseString(reverseString(div.firstChild.id).slice(5))
+  }
+  else{
+    gate = reverseString((reverseString(div.firstChild.id).slice(4)))
+  }
+  inputs = checkInput(div.id)
+  if (gate == "AND"){
+      if (inputs[0] == "true" && inputs[1] == "true"){
+        return true
+      }
+  }
+  if (gate == "OR"){
+    console.log(inputs)
+    if (inputs[0] == "true" || inputs[1] == "true"){
+      return true
+    }
+  }
+  return false
+}
+
+function reverseString(str) {
+  return str.split("").reverse().join(""); 
+}
+
+function checkInput(div){
+  gateNum = parseInt(div[0])
+  console.log(gateNum)
+  if (gateNum <= 4){
+    return logicValues[0][parseInt(div[0])];
+  }
+  else if (gateNum <= 6 ){
+    return logicValues[1][parseInt(div[0]) - 5];
+  }
+  else{
+    return logicValues[2][parseInt(div[0]) - 7];
+  }
+}
+
+function setOutput(bool, div){
+  if(div.id[0] == 0){
+    console.log(logicValues[1][1][0])
+    if (bool){
+      logicValues[1][1][0] = "true";
+    }
+    else{
+      logicValues[1][1][0] = "false";
+    }
+    ctx = document.getElementById("firstCanvas").getContext("2d")
+    setCtx(ctx)
+    ctx.fillText(logicValues[1][1][0], 173, 123)
+  }
+  
+}

@@ -1,11 +1,21 @@
-    // const url = "https://tngc.nighthawkcodescrums.gq/api/names/";
-    const url = "http://172.27.229.177:8086/api/login/"
 
-document.getElementById("form").addEventListener("submit", (event) => {
+// Makes enter key trigger the login button when password field is in focus
+const inputpwd = document.getElementById("inpPswd");
+inputpwd.addEventListener("keyup", function(event) {
+    if (event.keyCode === 13) {
+        event.preventDefault();
+        document.getElementById("loginBtn").click();
+    }
+});
+
+
+const url = "http://backend.binarygames.tech/api/gamers/"
+
+document.getElementById("loginBtn").addEventListener("click", (event) => {
     event.preventDefault();
     const body = {
-        name: document.getElementById("loginName").value,
-        password: document.getElementById("loginPassword").value,
+        "name": document.getElementById("inpUsrnm").value,
+        "password": document.getElementById("inpPswd").value,
     };
     const requestOptions = {
         method: 'POST',
@@ -17,7 +27,7 @@ document.getElementById("form").addEventListener("submit", (event) => {
             "Content-Type": "application/json",
         },
     };
-    fetch(url, requestOptions)
+    fetch(url + "authenticate", requestOptions)
         .then(response => {
             console.log(response)
             if (response.status === 200){
@@ -41,7 +51,7 @@ document.getElementById("form").addEventListener("submit", (event) => {
             }
         })
         .then(data => {
-            if (data.message == "name is missing") {
+            if (document.getElementById("inpUsrnm").value.length < 3) {
                 document.getElementById("message").innerHTML = "Username must be more than 2 characters";
                 return
             }
@@ -54,14 +64,16 @@ document.getElementById("form").addEventListener("submit", (event) => {
                 return
             }
             const message = 'Login success: ' + data.name;
+            document.getElementById("message").style.color = "#09ff00";
             document.getElementById("message").innerHTML = message;
-            if (data.message != undefined)
-            return document.getElementById("message").innerHTML = "Error: " +  data.message;
+            if (data.message != undefined) {
+                return document.getElementById("message").innerHTML = "Error: " +  data.message;
+            }
             localStorage.setItem("name", data.name);
+            window.location.replace("http://binarygames.tech/escaperoom.html");
         })
         .catch(response => {
             const message = response.message;
-            
             document.getElementById("message").innerHTML = "Error: " + message;
             localStorage.removeItem("name");
         });

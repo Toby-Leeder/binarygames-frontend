@@ -7,7 +7,7 @@ inputpwd.addEventListener("keyup", function(event) {
     }
 });
 
-const url = 'http://backend.binarygames.tech/api/gamers/'
+const url = "https://backend.binarygames.tech/api/gamers/"
 const options = {
     method: 'POST',
     cache: 'default',

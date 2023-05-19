@@ -1,0 +1,176 @@
+<html>
+<head>
+    <title>Quiz Game</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: flex-end; 
+            align-items: flex-start; 
+            height: 100vh;
+            font-family: Arial, sans-serif;
+            background-color: #7c72b3;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+        }
+        .quiz-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Center align the quiz container */
+            margin-top: 50px;
+            margin-right: 5%; 
+        }
+        .question-container {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .question {
+            font-size: 24px;
+            color: #ffffff; 
+        }
+        .options {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-gap: 10px;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            justify-content: flex-end;
+        }
+        .option {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 50px;
+            background-color: #c3ecc3; 
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            color: #333333; 
+        }
+        .option:hover {
+            background-color: #a4d8a4; 
+        }
+        .correct {
+            background-color: #a4d8a4; 
+        }
+    </style>
+</head>
+<body>
+    <div class="quiz-container">
+        <div class="question-container">
+            <p class="question"></p>
+        </div>
+        <ul class="options">
+            <li class="option" id="button1">+</li>
+            <li class="option" id="button2">-</li>
+            <li class="option" id="button3">*</li>
+            <li class="option" id="button4">/</li>
+            <li class="option" id="button5">%</li>
+            <li class="option" id="button6">++</li>
+            <li class="option" id="button7">--</li>
+            <li class="option" id="button8">=</li>
+            <li class="option" id="button9">+=</li>
+            <li class="option" id="button10">-=</li>
+            <li class="option" id="button11">*=</li>
+            <li class="option" id="button12">/=</li>
+            <li class="option" id="button13">%=</li>
+            <li class="option" id="button14">==</li>
+            <li class="option" id="button15">!=</li>
+            <li class="option" id="button16">></li>
+            <li class="option" id="button17"><</li>
+            <li class="option" id="button18">>=</li>
+            <li class="option" id="button19"><=</li>
+            <li class="option" id="button20">&&</li>
+            <li class="option" id="button21">||</li>
+            <li class="option" id="button22">!</li>
+            <li class="option" id="button23">&</li>
+            <li class="option" id="button24">|</li>
+            <li class="option" id="button25">^</li>
+            <li class="option" id="button26">~</li>
+            <li class="option" id="button27"><<</li>
+            <li class="option" id="button28">ㅤㅤ>>ㅤㅤ</li>
+        </ul>
+    </div>
+    <script>
+        const questions = [
+            { question: "Question 1", answer: 1 },
+            { question: "Question 2", answer: 2 },
+            { question: "Question 3", answer: 3 },
+            { question: "Question 4", answer: 4 },
+            { question: "Question 5", answer: 5 },
+            { question: "Question 6", answer: 6 },
+            { question: "Question 7", answer: 7 },
+            { question: "Question 8", answer: 8 },
+            { question: "Question 9", answer: 9 },
+            { question: "Question 10", answer: 10 },
+            { question: "Question 11", answer: 11 },
+            { question: "Question 12", answer: 12 },
+            { question: "Question 13", answer: 13 },
+            { question: "Question 14", answer: 14 },
+            { question: "Question 15", answer: 15 },
+            { question: "Question 16", answer: 16 },
+            { question: "Question 17", answer: 17 },
+            { question: "Question 18", answer: 18 },
+            { question: "Question 19", answer: 19 },
+            { question: "Question 20", answer: 20 },
+            { question: "Question 21", answer: 21 },
+            { question: "Question 22", answer: 22 },
+            { question: "Question 23", answer: 23 },
+            { question: "Question 24", answer: 24 },
+            { question: "Question 25", answer: 25 },
+            { question: "Question 26", answer: 26 },
+            { question: "Question 27", answer: 27 },
+            { question: "Question 28", answer: 28 }
+        ];
+        let currentQuestion = 0;
+        let score = 0;
+        let backgroundIndex = 1;
+        
+        function updateQuestion() {
+            const questionElement = document.querySelector('.question');
+            const buttons = document.querySelectorAll('.option');
+
+            questionElement.textContent = questions[currentQuestion].question;
+            
+            const answer = questions[currentQuestion].answer;
+            buttons[answer - 1].classList.add('correct');
+        }
+        
+        function handleAnswer(selectedAnswer) {
+            const answer = questions[currentQuestion].answer;
+            
+            if (selectedAnswer === answer) {
+                const buttons = document.querySelectorAll('.option');
+                buttons[answer - 1].classList.add('hidden');
+                score++;
+                
+                const body = document.querySelector('body');
+                body.style.backgroundImage = `url('images/background${backgroundIndex}.jpg')`;
+                backgroundIndex++;
+                
+                if (currentQuestion === questions.length - 1) {
+                    alert("Congratulations! You completed the quiz!");
+                } else {
+                    currentQuestion++;
+                    updateQuestion();
+                }
+            } else {
+                alert("Wrong answer! You lose.");
+            }
+        }
+        
+        function initializeQuiz() {
+            updateQuestion();
+        }
+        
+        initializeQuiz();
+        
+        const buttons = document.querySelectorAll('.option');
+
+        buttons.forEach((button, index) => {
+            button.addEventListener('click', () => handleAnswer(index + 1));
+        });
+    </script>
+</body>
+</html>

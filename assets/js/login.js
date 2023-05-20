@@ -33,22 +33,6 @@ document.getElementById("loginBtn").addEventListener("click", (event) => {
             if (response.status === 200){
                 return response.json()
             }
-            else if (response.status === 210) {
-                document.getElementById("message").innerHTML = "Username must be more than 2 characters";
-                return
-            }
-            else if (response.status === 211) {
-                document.getElementById("message").innerHTML = "Username not found";
-                return
-            }
-            else if (response.status === 212) {
-                document.getElementById("message").innerHTML = "Password incorrect";
-                return
-            }
-            else {
-                document.getElementById("message").innerHTML = "Error " + response.status;
-                return
-            }
         })
         .then(data => {
             if (data.message == "invalid username") {
@@ -70,8 +54,7 @@ document.getElementById("loginBtn").addEventListener("click", (event) => {
             window.location.replace("http://binarygames.tech/escaperoom.html");
         })
         .catch(response => {
-            const message = response.message;
-            document.getElementById("message").innerHTML = "Error: " + message;
+            document.getElementById("message").innerHTML = "Something went wrong :( <br> Please use the correct name and password";
             localStorage.removeItem("name");
         });
 });

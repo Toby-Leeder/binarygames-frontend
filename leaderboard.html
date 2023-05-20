@@ -7,7 +7,7 @@
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 	</head>
-	<body class="is-preload">
+	<body class="is-preload" onload="leaderboard()">
 		<div id="wrapper">
 			<a href="http://binarygames.tech/" class="button" style="margin: 2rem 0rem 0rem 0rem; font-size: 1rem;" onclick="localStorage.clear()">&#60; <span style="font-size: 0.85rem;">Log Out</span></a>
 
@@ -30,11 +30,23 @@
 				<div id="main">
 
 					<!-- First Section -->
-						<section id="first" class="main special">
-							<header class="major">
-								<h2>Leaderboard</h2>
-							</header>
-						</section>
+					<section id="first" class="main special">
+						<header class="major">
+							<h2>Leaderboard</h2>
+						</header>
+						<h4>Search by Name</h4>
+						<input type="username" id="searchInput" style="width: 60%; margin-bottom: 1rem;" oninput="filterTable()">
+						<table class="board">
+							<thead>
+								<td style="width: 30%;">Rank</td>
+								<td style="width: 40%;">Name</td>
+								<td style="width: 30%;">Time (hh:mm:ss)</td>
+							</thead>
+							<tbody id='tbody'></tbody>
+						</table>
+					</section>
+
+					
 
 				</div>
 
@@ -56,6 +68,7 @@
 		</div>
 
 		<!-- Scripts -->
+			<script src="assets/js/leaderboard.js"></script>
 			<script src="assets/js/jquery.min.js"></script>
 			<script src="assets/js/jquery.scrollex.min.js"></script>
 			<script src="assets/js/jquery.scrolly.min.js"></script>

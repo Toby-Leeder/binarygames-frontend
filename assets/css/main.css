@@ -42,6 +42,9 @@
 	background: var(--green); 
 }
 
+
+  
+
 html, body, div, span, applet, object,
 iframe, h1, h2, h3, h4, h5, h6, p, blockquote,
 pre, a, abbr, acronym, address, big, cite,
@@ -3753,11 +3756,11 @@ input, select, textarea {
 		}
 
 		#main table tbody tr {
-			border-color: #dddddd;
+			border: none;
 		}
 
 			#main table tbody tr:nth-child(2n + 1) {
-				background-color: rgba(222, 222, 222, 0.25);
+				background-color: rgba(80, 80, 80, 0.25);
 			}
 
 		#main table th {
@@ -3765,7 +3768,7 @@ input, select, textarea {
 		}
 
 		#main table thead {
-			border-bottom-color: #dddddd;
+			border-bottom-color: var(--green);
 		}
 
 		#main table tfoot {
@@ -3993,3 +3996,14 @@ input, select, textarea {
 			}
 
 		}
+
+
+.current-user {
+	outline: 2px solid var(--green);
+	font-weight: 900;
+}
+
+
+.hidden {
+    display: none;
+}

@@ -72,7 +72,7 @@ document.getElementById("createBtn").onclick = function(){
             localStorage.setItem("name", data.name);
             document.getElementById("message").style.color = "#09ff00";
             document.getElementById("message").innerHTML = "Signed up!"
-            window.location.replace("http://binarygames.tech/escaperoom");
+            window.location.replace("http://binarygames.tech/escaperoom.html");
         })
         )
         .then(response => console.log(response))

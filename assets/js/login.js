@@ -51,18 +51,15 @@ document.getElementById("loginBtn").addEventListener("click", (event) => {
             }
         })
         .then(data => {
-            if (document.getElementById("inpUsrnm").value.length < 3) {
-                document.getElementById("message").innerHTML = "Username must be more than 2 characters";
-                return
-            }
-            else if (data.message == "invalid username") {
+            if (data.message == "invalid username") {
                 document.getElementById("message").innerHTML = "Username not found";
                 return
             }
-            else if (data.message == "wrong password") {
+            else if (data.message == "invalid password") {
                 document.getElementById("message").innerHTML = "Password incorrect";
                 return
             }
+
             const message = 'Login success: ' + data.name;
             document.getElementById("message").style.color = "#09ff00";
             document.getElementById("message").innerHTML = message;

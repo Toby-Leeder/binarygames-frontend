@@ -53,18 +53,19 @@ document.getElementById("createBtn").onclick = function(){
     }
 
     var passwordConfirm = document.getElementById("pswdConfirm").value.toString()
-    var values = [name, password]
 
     // only run if passwords match
     if (password === passwordConfirm) {
-        var data = `{ "name": "${name}", "password": "${password}"}`
-        var data2 = JSON.parse(data)
+        var body = {
+            "name": name,
+            "pass": password
+        }
         fetch(url + "create", {
             method: 'POST',
             headers:{
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify(data2)
+            body: JSON.stringify(body)
         })
         .then(response => response.json().then(data => {
             console.log(data)

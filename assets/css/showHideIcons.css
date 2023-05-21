@@ -1,0 +1,22 @@
+
+#passwordCont {
+	position: relative;
+}
+
+.visCont {
+	position: absolute;
+	top: 0;
+	right: 0;
+	margin: 5px;
+}
+
+.vis {
+	fill: var(--green);
+	width: 25px;
+	overflow: visible;
+	margin: 3.5px 3px;
+}
+
+.adjusted {
+	margin: 3.5px 1.4px;
+}

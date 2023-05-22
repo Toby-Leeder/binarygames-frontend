@@ -91,11 +91,11 @@
           width: 70px;
           background-image: url('images/mushroom.png');
           background-repeat: no-repeat;
-          background-size: 600% auto; /* Scale the background image */
+          background-size: 600% auto; 
         }
 
         #mushroom {
-          background-position: 100% 0px; /* Start at far right */
+          background-position: 100% 0px; 
         }
     </style>
 </head>
@@ -176,8 +176,8 @@
           constructor() {
             this.frames = 6;
             this.currentFrame = 0;
-            this.frameSpacing = 70; // Pixels between each frame
-            this.animationSpeed = 200; // Time (in milliseconds) between each frame
+            this.frameSpacing = 70; 
+            this.animationSpeed = 200; 
             this.mushroomElement = document.getElementById("mushroom");
             this.mushroomElement.style.position = "absolute";
 
@@ -185,7 +185,7 @@
             const offset = 200; 
             const startingPosition = currentPosition - (offset / window.innerWidth) * 100;
             this.mushroomElement.style.left = `${startingPosition}%`;
-            const startingHeight = 50; // Percentage value for the desired starting height
+            const startingHeight = 50; 
             this.mushroomElement.style.top = `${startingHeight}%`;
         }
       
@@ -198,9 +198,8 @@
           this.currentFrame = 0;
         }
 
-        // Move the image to the left by decreasing the x position
-        const currentPosition = parseFloat(this.mushroomElement.style.left) || 100; // Starting from 100%
-        const newPosition = currentPosition - 1; // Adjust the speed of movement here (decrease by a larger value for faster movement)
+        const currentPosition = parseFloat(this.mushroomElement.style.left) || 100; 
+        const newPosition = currentPosition - 1;
 
         this.mushroomElement.style.left = `${newPosition}%`;
 

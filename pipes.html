@@ -85,11 +85,25 @@
             margin: 0;
             padding: 10px;
         }
+
+          .sprite {
+          height: 70px;
+          width: 70px;
+          background-image: url('images/mushroom.png');
+          background-repeat: no-repeat;
+          background-size: 600% auto; /* Scale the background image */
+        }
+
+        #mushroom {
+          background-position: 100% 0px; /* Start at far right */
+        }
     </style>
 </head>
 <body>
+  
     <div class="top">
         <p class="question-text"><span class="question"></span></p>
+        <p id="mushroom" class="sprite"></p>
     </div>
     <div class="question-container">
         <div class="mushroom"></div>
@@ -158,6 +172,48 @@
             { question: "Question 27", answer: 27 },
             { question: "Question 28", answer: 28 }
         ];
+        class MushroomAnimation {
+          constructor() {
+            this.frames = 6;
+            this.currentFrame = 0;
+            this.frameSpacing = 70; // Pixels between each frame
+            this.animationSpeed = 200; // Time (in milliseconds) between each frame
+            this.mushroomElement = document.getElementById("mushroom");
+            this.mushroomElement.style.position = "absolute";
+
+            const currentPosition = parseFloat(this.mushroomElement.style.left) || 100;
+            const offset = 200; 
+            const startingPosition = currentPosition - (offset / window.innerWidth) * 100;
+            this.mushroomElement.style.left = `${startingPosition}%`;
+            const startingHeight = 50; // Percentage value for the desired starting height
+            this.mushroomElement.style.top = `${startingHeight}%`;
+        }
+      
+
+      animateFrames() {
+        this.mushroomElement.style.backgroundPosition = `-${this.currentFrame * this.frameSpacing}px 0px`;
+
+        this.currentFrame++;
+        if (this.currentFrame >= this.frames) {
+          this.currentFrame = 0;
+        }
+
+        // Move the image to the left by decreasing the x position
+        const currentPosition = parseFloat(this.mushroomElement.style.left) || 100; // Starting from 100%
+        const newPosition = currentPosition - 1; // Adjust the speed of movement here (decrease by a larger value for faster movement)
+
+        this.mushroomElement.style.left = `${newPosition}%`;
+
+        setTimeout(() => {
+          this.animateFrames();
+        }, this.animationSpeed);
+      }
+
+      startAnimation() {
+        this.animateFrames();
+      }
+    }
+      
         let currentQuestion = 0;
         let score = 0;
         let backgroundIndex = 1;
@@ -185,7 +241,8 @@
                 backgroundIndex++;
                 
                 if (currentQuestion === questions.length - 1) {
-                    alert("Congratulations! You completed the quiz!");
+                  const mushroomAnimation = new MushroomAnimation();
+                  mushroomAnimation.startAnimation();
                 } else {
                     currentQuestion++;
                     updateQuestion();

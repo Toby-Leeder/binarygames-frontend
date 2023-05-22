@@ -13,11 +13,9 @@
         <div class="menu-button">Leaderboard</div>
         <div class="menu-button">Back to Escape Room</div>
       </div>
-<!-- starting splash screen  
       <div class="splash">
-        <h1 class = "splash-header">click anywhere to start</h1>
+        <h1 class = "splash-header">click here to start</h1>
       </div>
--->   
       <div class="top-container">
         <p>
           <div class="questions-completed">QUESTIONS COMPLETED: </div>
@@ -41,14 +39,14 @@
       <div class="bottom-UI">
         <div class="questions-given" id="questions-container"> QUESTIONS HERE</div>
         <div class="button-container">
-          <button class="answer-button1" id="answer-button1" onclick="barMove()">-</button>
-          <button class="answer-button2" id="answer-button2" onclick="barMove()">-</button>
-          <button class="answer-button3" id="answer-button3" onclick="barMove()">-</button>
-          <button class="answer-button4" id="answer-button4" onclick="barMove()">-</button>
+          <button class="answer-button1" id="answer-button1">-</button>
+          <button class="answer-button2" id="answer-button2">-</button>
+          <button class="answer-button3" id="answer-button3">-</button>
+          <button class="answer-button4" id="answer-button4">-</button>
         </div>
       </div>
       <div id='progressbar'></div>
-  </div>
+    </div>
   </body>
   <script>
       const progressBar = document.querySelector(".progressbar .inner");
@@ -66,12 +64,19 @@
       const newQuestion = document.getElementById('questions-container')
       var splashScreen = document.querySelector('.splash');
 
-//      splashScreen.addEventListener('click',()=> {
-//          splashScreen.style.opacity = 0;
-//          setTimeout(()=>{
-//            splashScreen.classList.add('hidden')
-//          },610)
-//      })
+      splashScreen.addEventListener('click',()=> {
+          splashScreen.style.opacity = 0;
+          setTimeout(()=>{
+            splashScreen.classList.add('hidden')
+          },610)
+          clearInterval(Interval);
+          Interval = setInterval(startTimer, 10);
+          car1.style.animationName = "moveRight";
+          car1.style.animationPlayState = "running";
+          setTimeout(function() {
+            car1.style.animationPlayState = "paused";
+          }, 500);
+      })
 
 
       let keyframeIndex = 0;
@@ -91,15 +96,6 @@
         addQuestion();
       }
 
-      window.onload = function() {
-        car1.style.animationName = "moveRight";
-        car1.style.animationPlayState = "running";
-        setTimeout(function() {
-          car1.style.animationPlayState = "paused";
-        }, 500);
-        clearInterval(Interval);
-        Interval = setInterval(startTimer, 10);
-      }
 
       function startTimer () {
         mins++; 
@@ -174,6 +170,7 @@
           option1.addEventListener("click", function(){
             const selectedAnswer = parseInt(option1.innerHTML, 2);
             if(selectedAnswer == answer){
+              barMove();
               generate_equation();
             }
             else{
@@ -184,6 +181,7 @@
           option2.addEventListener("click", function(){
             const selectedAnswer = parseInt(option2.innerHTML, 2);
             if(selectedAnswer == answer){
+              barMove();
               generate_equation();
             }
             else{
@@ -194,6 +192,7 @@
           option3.addEventListener("click", function(){
             const selectedAnswer = parseInt(option3.innerHTML, 2);
             if(selectedAnswer == answer){
+              barMove();
               generate_equation();
             }
             else{
@@ -204,6 +203,7 @@
           option4.addEventListener("click", function(){
             const selectedAnswer = parseInt(option4.innerHTML, 2);
             if(selectedAnswer == answer){
+              barMove();
               generate_equation();
           }
           else{

@@ -172,37 +172,45 @@
       };
       
           option1.addEventListener("click", function(){
-                if(option1.innerHTML == answer){
-                  generate_equation();
-                }
-                else{
-                  console.log(`Incorrect`)
-                }
-            });
-          option2.addEventListener("click", function(){
-              if(option2.innerHTML == answer){
-                generate_equation();
-              }
-              else{
-                console.log(`Incorrect`)
-              }
-          });
-          option3.addEventListener("click", function(){
-            if(option3.innerHTML == answer){
+            const selectedAnswer = parseInt(option1.innerHTML, 2);
+            if(selectedAnswer == answer){
               generate_equation();
             }
             else{
               console.log(`Incorrect`)
             }
           });
+          
+          option2.addEventListener("click", function(){
+            const selectedAnswer = parseInt(option2.innerHTML, 2);
+            if(selectedAnswer == answer){
+              generate_equation();
+            }
+            else{
+              console.log(`Incorrect`)
+            }
+          });
+          
+          option3.addEventListener("click", function(){
+            const selectedAnswer = parseInt(option3.innerHTML, 2);
+            if(selectedAnswer == answer){
+              generate_equation();
+            }
+            else{
+              console.log(`Incorrect`)
+            }
+          });
+          
           option4.addEventListener("click", function(){
-          if(option4.innerHTML == answer){
-            generate_equation();
+            const selectedAnswer = parseInt(option4.innerHTML, 2);
+            if(selectedAnswer == answer){
+              generate_equation();
           }
           else{
             console.log(`Incorrect`)
           }
           });
+
 generate_equation()   
   </script>
     </html>

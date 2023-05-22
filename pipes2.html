@@ -21,14 +21,24 @@
 
   <script>
     class MushroomAnimation {
-      constructor() {
+        constructor() {
         this.frames = 6;
         this.currentFrame = 0;
         this.frameSpacing = 70; // Pixels between each frame
         this.animationSpeed = 200; // Time (in milliseconds) between each frame
         this.mushroomElement = document.getElementById("mushroom");
         this.mushroomElement.style.position = "absolute";
-      }
+
+        // Calculate the starting position based on the desired offset
+        const currentPosition = parseFloat(this.mushroomElement.style.left) || 100; // Starting from 100%
+        const offset = 200; // Pixels from the far right
+        const startingPosition = currentPosition - (offset / window.innerWidth) * 100;
+        this.mushroomElement.style.left = `${startingPosition}%`;
+        const startingHeight = 50; // Percentage value for the desired starting height
+    this.mushroomElement.style.top = `${startingHeight}%`;
+  }
+      
+      
 
       animateFrames() {
         this.mushroomElement.style.backgroundPosition = `-${this.currentFrame * this.frameSpacing}px 0px`;

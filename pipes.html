@@ -4,30 +4,40 @@
     <style>
         body {
             display: flex;
-            justify-content: flex-end; 
-            align-items: flex-start; 
-            height: 100vh;
+            justify-content: flex-end;
+            align-items: flex-start;
+            height: 50vh;
             font-family: Arial, sans-serif;
             background-color: #7c72b3;
             background-repeat: no-repeat;
             background-size: cover;
-            background-position: center;
+            background-position: bottom left;
         }
+        
         .quiz-container {
             display: flex;
             flex-direction: column;
-            align-items: center; /* Center align the quiz container */
-            margin-top: 50px;
-            margin-right: 5%; 
+            align-items: center;
+            position: fixed;
+            top: 20px;
+            right: 0px;
+            background-color: #7c72b3;
+            padding: 20px;
+            width: 200px;
+            box-sizing: border-box;
         }
+        
         .question-container {
             text-align: center;
             margin-bottom: 20px;
         }
+        
         .question {
             font-size: 24px;
-            color: #ffffff; 
+            color: #a4d8a4;
+            text-align: center;
         }
+        
         .options {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -37,67 +47,94 @@
             margin: 0;
             justify-content: flex-end;
         }
+        
         .option {
             display: flex;
             justify-content: center;
             align-items: center;
             height: 50px;
-            background-color: #c3ecc3; 
+            background-color: #a4d8a4;
             border: none;
-            border-radius: 5px;
             cursor: pointer;
-            color: #333333; 
+            color: #7c72b3;
         }
+        
         .option:hover {
-            background-color: #a4d8a4; 
+            background-color: #a4d8a4;
         }
+        
         .correct {
-            background-color: #a4d8a4; 
+            background-color: #a4d8a4;
+        }
+        
+        .mushroom {
+            size: 1000%;
+        }
+        
+        .purple-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5vh;
+            background-color: #7c72b3;
+        }
+        
+        .question-text {
+            color: white;
+            text-align: center;
+            font-size: 18px;
+            margin: 0;
+            padding: 10px;
         }
     </style>
 </head>
 <body>
+    <div class="purple-bar">
+        <p class="question-text"><span class="question"></span></p>
+    </div>
+    <div class="question-container">
+        <div class="mushroom"></div>
+    </div>
     <div class="quiz-container">
-        <div class="question-container">
-            <p class="question"></p>
-        </div>
         <ul class="options">
-            <li class="option" id="button1">+</li>
-            <li class="option" id="button2">-</li>
-            <li class="option" id="button3">*</li>
-            <li class="option" id="button4">/</li>
-            <li class="option" id="button5">%</li>
-            <li class="option" id="button6">++</li>
-            <li class="option" id="button7">--</li>
-            <li class="option" id="button8">=</li>
-            <li class="option" id="button9">+=</li>
-            <li class="option" id="button10">-=</li>
-            <li class="option" id="button11">*=</li>
-            <li class="option" id="button12">/=</li>
-            <li class="option" id="button13">%=</li>
-            <li class="option" id="button14">==</li>
-            <li class="option" id="button15">!=</li>
-            <li class="option" id="button16">></li>
-            <li class="option" id="button17"><</li>
-            <li class="option" id="button18">>=</li>
-            <li class="option" id="button19"><=</li>
-            <li class="option" id="button20">&&</li>
-            <li class="option" id="button21">||</li>
-            <li class="option" id="button22">!</li>
-            <li class="option" id="button23">&</li>
-            <li class="option" id="button24">|</li>
-            <li class="option" id="button25">^</li>
-            <li class="option" id="button26">~</li>
-            <li class="option" id="button27"><<</li>
-            <li class="option" id="button28">ㅤㅤ>>ㅤㅤ</li>
+          <li class="option" id="button1">+</li>
+          <li class="option" id="button2">-</li>
+          <li class="option" id="button3">*</li>
+          <li class="option" id="button4">/</li>
+          <li class="option" id="button5">%</li>
+          <li class="option" id="button6">++</li>
+          <li class="option" id="button7">--</li>
+          <li class="option" id="button8">=</li>
+          <li class="option" id="button9">+=</li>
+          <li class="option" id="button10">-=</li>
+          <li class="option" id="button11">*=</li>
+          <li class="option" id="button12">/=</li>
+          <li class="option" id="button13">%=</li>
+          <li class="option" id="button14">==</li>
+          <li class="option" id="button15">!=</li>
+          <li class="option" id="button16">></li>
+          <li class="option" id="button17"><</li>
+          <li class="option" id="button18">>=</li>
+          <li class="option" id="button19"><=</li>
+          <li class="option" id="button20">&&</li>
+          <li class="option" id="button21">||</li>
+          <li class="option" id="button22">!</li>
+          <li class="option" id="button23">&</li>
+          <li class="option" id="button24">|</li>
+          <li class="option" id="button25">^</li>
+          <li class="option" id="button26">~</li>
+          <li class="option" id="button27"><<</li>
+          <li class="option" id="button28">ㅤㅤ>>ㅤㅤ</li>
         </ul>
     </div>
+
     <script>
         const questions = [
-            { question: "Question 1", answer: 1 },
-            { question: "Question 2", answer: 2 },
-            { question: "Question 3", answer: 3 },
-            { question: "Question 4", answer: 4 },
+            { question: "I would like to find the sum of all the numbers in a list", answer: 1 },
+            { question: "I would like to calculate the difference between two numbers", answer: 2 },
+            { question: "I would like to find the product of two numbers", answer: 3 },
+            { question: "I would like to split the elements within a list", answer: 4 },
             { question: "Question 5", answer: 5 },
             { question: "Question 6", answer: 6 },
             { question: "Question 7", answer: 7 },

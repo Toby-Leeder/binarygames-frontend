@@ -8,10 +8,10 @@
             align-items: flex-start;
             height: 50vh;
             font-family: Arial, sans-serif;
-            background-color: #7c72b3;
             background-repeat: no-repeat;
             background-size: cover;
             background-position: bottom left;
+            background-image: url('images/background1.jpg');
         }
         
         .quiz-container {
@@ -144,7 +144,7 @@
 
     <script>
         const questions = [
-            { question: "IWhich operator is used for addition?", answer: 1 },
+            { question: "Which operator is used for addition?", answer: 1 },
             { question: "Which operator is used for subtraction?", answer: 2 },
             { question: "Which operator is used for multiplication?", answer: 3 },
             { question: "Which operator is used for division?", answer: 4 },
@@ -236,16 +236,14 @@
                 buttons[answer - 1].classList.add('hidden');
                 score++;
                 
-                const body = document.querySelector('body');
-                body.style.backgroundImage = `url('images/background${backgroundIndex}.jpg')`;
-                backgroundIndex++;
-                
                 if (currentQuestion === questions.length - 1) {
                   const mushroomAnimation = new MushroomAnimation();
                   mushroomAnimation.startAnimation();
                 } else {
                     currentQuestion++;
                     updateQuestion();
+                    const mushroomAnimation = new MushroomAnimation();
+                    mushroomAnimation.startAnimation();
                 }
             } else {
                 alert("Wrong answer! You lose.");

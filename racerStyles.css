@@ -1,5 +1,5 @@
 html {
-  background: linear-gradient(to bottom, rgb(65, 63, 65), rgb(48, 45, 48));
+  background: linear-gradient(to bottom, rgb(65, 63, 65), rgb(36, 34, 36));
 }
 
 .wrapper {
@@ -313,9 +313,9 @@ img {
 .hidden{
   display : none;
 }
+
 .splash-header {
-  height : 90%;
-  color : white;
+  color : rgb(237, 10, 10);
   font-family: 'Orbitron', sans-serif;
   font-size : 30px;
 }   

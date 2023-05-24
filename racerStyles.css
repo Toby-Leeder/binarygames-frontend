@@ -306,6 +306,50 @@ img {
   }
 }
 
+.leaderboard {
+  background-color: rgb(47, 46, 46);
+  height: 600px;
+  width: 90%;
+  text-align: center;
+  align-items: center;
+}
+
+.leaderboard h1 {
+  font-size: 50px;
+  font-family: 'Orbitron', sans-serif;
+  color: white;
+}
+
+.leaderboard th {
+  font-size: 30px;
+  font-family: 'Orbitron', sans-serif;
+  color: white;
+  align-items: center;
+}
+
+.leaderboard td {
+  font-size: 20px;
+  font-family: 'Orbitron', sans-serif;
+  color: rgb(190, 190, 190);
+  align-items: center;
+}
+
+.leaderboard table {
+  align-self: center;
+  width: 100%;
+}
+
+.leaderboard input {
+  font-size: 20px;
+  font-family: 'Orbitron', sans-serif;
+  align-items: center;
+}
+
+.leaderboard button {
+  font-size: 20px;
+  font-family: 'Orbitron', sans-serif
+}
+
 .splash {
   cursor : pointer;   
 } 
@@ -319,3 +363,40 @@ img {
   font-family: 'Orbitron', sans-serif;
   font-size : 30px;
 }   
+
+/* Traffic light */
+.traffic-light {
+  width: 100px;
+  height: 300px;
+  background-color: black;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+}
+
+.light {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  opacity: 0.2;
+  transition: opacity 0.5s;
+}
+
+.light.red {
+  background-color: red;
+}
+
+.light.yellow {
+  background-color: yellow;
+}
+
+.light.green {
+  background-color: green;
+}
+
+.light.active {
+  opacity: 1;
+}

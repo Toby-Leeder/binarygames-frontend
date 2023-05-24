@@ -306,50 +306,6 @@ img {
   }
 }
 
-.leaderboard {
-  background-color: rgb(47, 46, 46);
-  height: 600px;
-  width: 90%;
-  text-align: center;
-  align-items: center;
-}
-
-.leaderboard h1 {
-  font-size: 50px;
-  font-family: 'Orbitron', sans-serif;
-  color: white;
-}
-
-.leaderboard th {
-  font-size: 30px;
-  font-family: 'Orbitron', sans-serif;
-  color: white;
-  align-items: center;
-}
-
-.leaderboard td {
-  font-size: 20px;
-  font-family: 'Orbitron', sans-serif;
-  color: rgb(190, 190, 190);
-  align-items: center;
-}
-
-.leaderboard table {
-  align-self: center;
-  width: 100%;
-}
-
-.leaderboard input {
-  font-size: 20px;
-  font-family: 'Orbitron', sans-serif;
-  align-items: center;
-}
-
-.leaderboard button {
-  font-size: 20px;
-  font-family: 'Orbitron', sans-serif
-}
-
 .splash {
   cursor : pointer;   
 } 

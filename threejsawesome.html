@@ -19,6 +19,9 @@
         import {GLTFLoader} from 'three/addons/loaders/GLTFLoader.js';
         import { PointerLockControls } from '../assets/js/PointerControls.js';
 
+        var roomLength = 20
+        var roomHeight = 5.5
+
         const canvas = document.getElementById("c")
 
         const scene = new THREE.Scene();
@@ -59,6 +62,8 @@
 
         const axesHelper = new THREE.AxesHelper( 5 );
         scene.add( axesHelper );
+
+        makeRoom();
 
         camera.position.z += 10
 
@@ -223,5 +228,41 @@
             }
             
         }
+
+        function makeRoom(){
+
+            var length = roomLength
+            var height = roomHeight
+
+            const geometry = new THREE.BoxGeometry( length, 15, 0.4 ); 
+            const material = new THREE.MeshBasicMaterial( {color: 0x00ff00} );
+            
+            makeWall()
+            const wall1 = new THREE.Mesh( geometry, material ); 
+            wall1.position.y = height;
+            scene.add( wall1 );
+
+            const wall2 = new THREE.Mesh( geometry, material ); 
+            wall2.position.y = height;
+            wall2.position.x = length/2;
+            wall2.position.z = length/2;
+            wall2.rotation.y = Math.PI/2
+            scene.add( wall2 );
+
+            const wall3 = new THREE.Mesh( geometry, material ); 
+            wall3.position.y = height;
+            wall3.position.x = -length/2;
+            wall3.position.z = length/2;
+            wall3.rotation.y = Math.PI/2
+            scene.add( wall3 );
+
+            const wall4 = new THREE.Mesh( geometry, material ); 
+            wall4.position.y = height;
+            wall4.position.z = length
+            scene.add( wall4 );
+        }
+    function makeWall(){
+        
+    }
     </script>
 </html>

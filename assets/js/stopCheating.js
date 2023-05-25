@@ -1,5 +1,5 @@
 function checkForSignedIn() {
-    if (localStorage.getItem("name")) {
+    if (localStorage.getItem("name") != undefined) {
         return true;
     }
     else {
@@ -16,4 +16,8 @@ function redirectToLogin() {
     else {
         return "Logged in";
     }
+}
+
+window.addEventListener("load", () => {
+    redirectToLogin();
 }

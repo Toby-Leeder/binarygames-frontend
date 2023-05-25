@@ -8,10 +8,10 @@
             align-items: flex-start;
             height: 50vh;
             font-family: Arial, sans-serif;
-            background-color: #7c72b3;
             background-repeat: no-repeat;
             background-size: cover;
             background-position: bottom left;
+            background-image: url('images/background1.jpg');
         }
         
         .quiz-container {
@@ -19,12 +19,13 @@
             flex-direction: column;
             align-items: center;
             position: fixed;
+            justify-content: center;
             top: 20px;
             right: 0px;
             background-color: #7c72b3;
             padding: 20px;
-            width: 200px;
-            box-sizing: border-box;
+            width: 180px;
+            height: 100%;
         }
         
         .question-container {
@@ -52,32 +53,31 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            width: 50px;
             height: 50px;
             background-color: #a4d8a4;
             border: none;
             cursor: pointer;
             color: #7c72b3;
         }
+
         
         .option:hover {
-            background-color: #a4d8a4;
+            background-color: #035603;
         }
         
         .correct {
             background-color: #a4d8a4;
         }
         
-        .mushroom {
-            size: 1000%;
-        }
-        
-        .purple-bar {
+        .top {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 5vh;
             background-color: #7c72b3;
+            z-index: 958433985;
         }
         
         .question-text {
@@ -87,11 +87,26 @@
             margin: 0;
             padding: 10px;
         }
+
+          .sprite {
+          height: 70px;
+          width: 70px;
+          background-image: url('images/mushroom.png');
+          background-repeat: no-repeat;
+          background-size: 600% auto; 
+          right: 200px;
+        }
+
+        #mushroom {
+          background-position: 100% 0px; 
+        }
     </style>
 </head>
 <body>
-    <div class="purple-bar">
+  
+    <div class="top">
         <p class="question-text"><span class="question"></span></p>
+        <p id="mushroom" class="sprite"></p>
     </div>
     <div class="question-container">
         <div class="mushroom"></div>
@@ -125,41 +140,85 @@
           <li class="option" id="button25">^</li>
           <li class="option" id="button26">~</li>
           <li class="option" id="button27"><<</li>
-          <li class="option" id="button28">ㅤㅤ>>ㅤㅤ</li>
+          <li class="option" id="button28">>></li>
         </ul>
     </div>
 
     <script>
         const questions = [
-            { question: "I would like to find the sum of all the numbers in a list", answer: 1 },
-            { question: "I would like to calculate the difference between two numbers", answer: 2 },
-            { question: "I would like to find the product of two numbers", answer: 3 },
-            { question: "I would like to split the elements within a list", answer: 4 },
-            { question: "Question 5", answer: 5 },
-            { question: "Question 6", answer: 6 },
-            { question: "Question 7", answer: 7 },
-            { question: "Question 8", answer: 8 },
-            { question: "Question 9", answer: 9 },
-            { question: "Question 10", answer: 10 },
-            { question: "Question 11", answer: 11 },
-            { question: "Question 12", answer: 12 },
-            { question: "Question 13", answer: 13 },
-            { question: "Question 14", answer: 14 },
-            { question: "Question 15", answer: 15 },
-            { question: "Question 16", answer: 16 },
-            { question: "Question 17", answer: 17 },
-            { question: "Question 18", answer: 18 },
-            { question: "Question 19", answer: 19 },
-            { question: "Question 20", answer: 20 },
-            { question: "Question 21", answer: 21 },
-            { question: "Question 22", answer: 22 },
-            { question: "Question 23", answer: 23 },
-            { question: "Question 24", answer: 24 },
-            { question: "Question 25", answer: 25 },
-            { question: "Question 26", answer: 26 },
-            { question: "Question 27", answer: 27 },
-            { question: "Question 28", answer: 28 }
+            { question: "Which operator is used for addition?", answer: 1 },
+            { question: "Which operator is used for subtraction?", answer: 2 },
+            { question: "Which operator is used for multiplication?", answer: 3 },
+            { question: "Which operator is used for division?", answer: 4 },
+            { question: "Which operator is used for calculating the remainder of a division?", answer: 5 },
+            { question: "Which operator is used for incrementing a variable by 1?", answer: 6 },
+            { question: "Which operator is used for decrementing a variable by 1?", answer: 7 },
+            { question: "Which operator is used for assigning a value to a variable?", answer: 8 },
+            { question: "Which operator is used for adding a value to the current value of a variable and then assigning the result to the variable?", answer: 9 },
+            { question: "Which operator is used for assigning a value to a variable?", answer: 10 },
+            { question: "Which operator is used for multiplying the current value of a variable by a value and then assigning the result to the variable?", answer: 11 },
+            { question: "Which operator is used for dividing the current value of a variable by a value and then assigning the result to the variable?", answer: 12 },
+            { question: "Which operator is used for calculating the remainder of dividing the current value of a variable by a value and then assigning the result to the variable?", answer: 13 },
+            { question: "Which operator is used for checking if two values are equal?", answer: 14 },
+            { question: "Which operator is used for checking if two values are not equal?", answer: 15 },
+            { question: "Which operator is used for checking if one value is greater than another?", answer: 16 },
+            { question: "Which operator is used for checking if one value is less than another?", answer: 17 },
+            { question: "Which operator is used for checking if one value is greater than or equal to another?", answer: 18 },
+            { question: "Which operator is used for checking if one value is less than or equal to another?", answer: 19 },
+            { question: "Which operator is used for performing a logical AND operation between two conditions?", answer: 20 },
+            { question: "Which operator is used for performing a logical OR operation between two conditions?", answer: 21 },
+            { question: "Which operator is used for negating a boolean value?", answer: 22 },
+            { question: "Which operator is used for performing a bitwise AND operation between two values?", answer: 23 },
+            { question: "Which operator is used for performing a bitwise OR operation between two values?", answer: 24 },
+            { question: "Which operator is used for performing a bitwise XOR operation between two values?", answer: 25 },
+            { question: "Which operator is used for performing a bitwise complement operation on a value?", answer: 26 },
+            { question: "Which operator is used for shifting the bits of a value to the left by a specified number of positions?", answer: 27 },
+            { question: "Which operator is used for shifting the bits of a value to the right by a specified number of positions?", answer: 28 }
         ];
+        class MushroomAnimation {
+          constructor(position) {
+            this.frames = 6;
+            this.currentFrame = 0;
+            this.frameSpacing = 70;
+            this.animationSpeed = 200;
+            this.mushroomElement = document.getElementById("mushroom");
+            this.mushroomElement.style.position = "absolute";
+
+            const currentPosition = parseFloat(this.mushroomElement.style.left) || position;
+            const offset = 0;
+            const startingPosition = currentPosition - (offset / window.innerWidth) * 100;
+            this.mushroomElement.style.left = `${startingPosition}%`;
+            const startingHeight = 500;
+            this.mushroomElement.style.top = `${startingHeight}%`;
+    }
+      
+
+      animateFrames() {
+        this.mushroomElement.style.backgroundPosition = `-${this.currentFrame * this.frameSpacing}px 0px`;
+
+        this.currentFrame++;
+        if (this.currentFrame >= this.frames) {
+          this.currentFrame = 0;
+        }
+
+        const currentPosition = parseFloat(this.mushroomElement.style.left) || 100; 
+        const newPosition = currentPosition - 1;
+
+        this.mushroomElement.style.left = `${newPosition}%`;
+
+        setTimeout(() => {
+          this.animateFrames();
+        }, this.animationSpeed);
+      }
+
+      startAnimation() {
+        if (parseFloat(this.mushroomElement.style.left) <= -100) {
+          return;
+        }
+
+        this.animateFrames();
+      }}
+      
         let currentQuestion = 0;
         let score = 0;
         let backgroundIndex = 1;
@@ -182,15 +241,14 @@
                 buttons[answer - 1].classList.add('hidden');
                 score++;
                 
-                const body = document.querySelector('body');
-                body.style.backgroundImage = `url('images/background${backgroundIndex}.jpg')`;
-                backgroundIndex++;
-                
                 if (currentQuestion === questions.length - 1) {
-                    alert("Congratulations! You completed the quiz!");
+                const mushroomAnimation = new MushroomAnimation();
+                mushroomAnimation.startAnimation();
                 } else {
                     currentQuestion++;
                     updateQuestion();
+                    const mushroomAnimation = new MushroomAnimation();
+                    mushroomAnimation.startAnimation();
                 }
             } else {
                 alert("Wrong answer! You lose.");

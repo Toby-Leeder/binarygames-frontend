@@ -270,7 +270,7 @@ img {
   height: auto;
   top: 50px;
   position: absolute;
-  animation: moveRight 5s linear infinite;
+  animation: moveRight 7s linear infinite;
   animation-play-state: paused;
   z-index: 2; 
 }
@@ -286,7 +286,7 @@ img {
   animation: road_animate 3s infinite;
   animation-timing-function: linear; 
   position: absolute;
-  margin-top: -485px;
+  margin-top: -480px;
   height: 200px;
   width: 1420px;
 }
@@ -306,31 +306,53 @@ img {
   }
 }
 
-/* starting splash screen -- do later 
-
 .splash {
-  cursor : pointer;
-  position : fixed;
-  z-index: 3;
-  top : 50%;
-  left : 50%;
-  height : 95%;
-  width : 95%;
-  transform : translate(-50%,-50%);    
-  background-color: rgb(54, 165, 180);
-  transition : all ease-in-out 600ms;
+  cursor : pointer;   
 } 
 
 .hidden{
-  transition : 0.5s;
   display : none;
 }
 .splash-header {
   height : 90%;
   color : white;
-  font-family : consolas;
+  font-family: 'Orbitron', sans-serif;
   font-size : 30px;
-  display : flex;
-  justify-content: 
+}   
+
+/* Traffic light */
+.traffic-light {
+  width: 100px;
+  height: 300px;
+  background-color: black;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
 }
-*/      
+
+.light {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  opacity: 0.2;
+  transition: opacity 0.5s;
+}
+
+.light.red {
+  background-color: red;
+}
+
+.light.yellow {
+  background-color: yellow;
+}
+
+.light.green {
+  background-color: green;
+}
+
+.light.active {
+  opacity: 1;
+}

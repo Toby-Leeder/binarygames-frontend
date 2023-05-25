@@ -51,19 +51,6 @@
         </div>
       </div>
       <div id='progressbar'></div>
-      <!-- Leaderboard stuff -->
-      <div class="leaderboard">
-        <h1>Leaderboard</h1>        
-        <input type="text" id="nameInput" placeholder="Enter your name">
-        <input type="text" id="timeInput" placeholder="Enter your time">
-        <button onclick="addToLeaderboard()">Add to Leaderboard</button>
-        <table id="leaderboardTable">
-          <tr>
-            <th>Time</th>
-            <th>Name</th>
-          </tr>
-        </table>
-      </div>
     </div>
   </body>
   <script>
@@ -82,45 +69,11 @@
         activeLight.classList.remove('active');
         activeLight = activeLight.nextElementSibling || lights[0];
         activeLight.classList.add('active');
-      }, 2000);
+      }, 1000);
     }
     
     activateLights();
-  // Leaderboard stuff change later
-    function addToLeaderboard() {
-      const nameInput = document.getElementById("nameInput");
-      const timeInput = document.getElementById("timeInput");
-  
-      const name = nameInput.value;
-      const time = timeInput.value;
-  
-      if (name && time) {
-        const leaderboardTable = document.getElementById("leaderboardTable");
-        const newRow = leaderboardTable.insertRow(-1);
-  
-        const timeCell = newRow.insertCell(0);
-        const nameCell = newRow.insertCell(1);
-  
-        timeCell.textContent = time;
-        nameCell.textContent = name;
-  
-        // Sort the table based on the time column
-        sortTable();
-      }
-    }
-    function sortTable() {
-      const leaderboardTable = document.getElementById("leaderboardTable");
-      const rows = Array.from(leaderboardTable.rows).slice(1); // Exclude the header row
-  
-      rows.sort((a, b) => {
-        const timeA = a.cells[0].textContent;
-        const timeB = b.cells[0].textContent;
-        return timeA.localeCompare(timeB, undefined, { numeric: true });
-      });
-  
-      rows.forEach((row) => leaderboardTable.appendChild(row));
-    }
-
+ 
       const progressBar = document.querySelector(".progressbar .inner");
       const car1 = document.querySelector(".car1");
       const startButton = document.querySelector("#start-button");

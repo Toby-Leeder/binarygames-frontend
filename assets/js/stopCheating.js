@@ -1,5 +1,5 @@
 function checkForSignedIn() {
-    if (localStorage.get("name")) {
+    if (localStorage.getItem("name")) {
         return true;
     }
     else {

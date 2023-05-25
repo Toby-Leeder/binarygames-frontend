@@ -16,11 +16,12 @@
       <div class="splash">
         <h1 class = "splash-header">click here to start</h1>
       </div>
-      <div class="traffic-light">
+      <div class="traffic-light" id="traffic-light">
         <div class="light red"></div>
         <div class="light yellow"></div>
         <div class="light green"></div>
       </div>
+      <div id="game">
       <div class="top-container">
         <p>
           <div class="questions-completed">QUESTIONS COMPLETED: </div>
@@ -51,7 +52,8 @@
         </div>
       </div>
       <div id='progressbar'></div>
-    </div>
+      </div>
+      </div>
   </body>
   <script>
   // Traffi lights
@@ -72,12 +74,13 @@
       }, 1000);
     }
     
-    activateLights();
  
       const progressBar = document.querySelector(".progressbar .inner");
       const car1 = document.querySelector(".car1");
       const startButton = document.querySelector("#start-button");
       const button1 = document.querySelector("#answer-button1");
+      const game = document.getElementById("game")
+      const trafficLight = document.getElementById("traffic-light")
 
       let seconds = 0;
       let mins = 0;
@@ -88,6 +91,11 @@
       const appendQ = document.getElementById("questions");
       const newQuestion = document.getElementById('questions-container')
       var splashScreen = document.querySelector('.splash');
+
+      window.addEventListener("load", () => {
+          game.style.visibility = "hidden";
+          document.getElementById("traffic-light").style.display = "visible";
+      });
 
       splashScreen.addEventListener('click',()=> {
           splashScreen.style.opacity = 0;
@@ -101,6 +109,11 @@
           setTimeout(function() {
             car1.style.animationPlayState = "paused";
           }, 500);
+          activateLights();
+          setTimeout(function() {
+            document.getElementById("traffic-light").style.display = "none";
+            game.style.visibility = "visible";
+          }, 3000); 
       })
 
 

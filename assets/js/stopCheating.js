@@ -20,4 +20,4 @@ function redirectToLogin() {
 
 window.addEventListener("load", () => {
     redirectToLogin();
-}
+})

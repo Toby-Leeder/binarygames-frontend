@@ -17,3 +17,7 @@ function redirectToLogin() {
         return "Logged in";
     }
 }
+
+window.addEventListener("load", () => {
+    redirectToLogin();
+}

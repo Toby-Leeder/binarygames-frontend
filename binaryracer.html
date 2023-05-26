@@ -9,8 +9,7 @@
   <body>
     <div class="wrapper">
       <div class="menu">
-        <div class="menu-title">B1NARY RACER ⪢⪢⪢</div>
-        <div class="menu-button">Leaderboard</div>
+        <div class="menu-title" >B1NARY RACER ⪢⪢⪢</div>
         <div class="menu-button">Back to Escape Room</div>
       </div>
       <div class="splash">
@@ -19,7 +18,10 @@
       <div class="traffic-light" id="traffic-light">
         <div class="light red"></div>
         <div class="light yellow"></div>
-        <div class="light green"></div>
+        <div class="light green"></div> 
+      </div>
+      <div id="end-screen" style="display: none;">
+        <p>Time taken: <span id="end-time"></span></p>
       </div>
       <div id="game">
       <div class="top-container">
@@ -55,8 +57,8 @@
       </div>
       </div>
   </body>
-  <script>
-  // Traffi lights
+  <script>    
+    // traffic lights
     function activateLights() {
       var lights = document.getElementsByClassName('light');
       
@@ -155,12 +157,25 @@
         }
       }
 
+    
+    function showEndScreen() {
+      clearInterval(Interval);
+      const endTime = document.getElementById("end-time");
+      endTime.textContent = appendSeconds.innerHTML + ":" + appendMins.innerHTML;
+      game.style.visibility = "hidden";
+      const endScreen = document.getElementById("end-screen");
+      endScreen.style.display = "block";
+    }
+
       function addQuestion () { 
         questions++;
         appendQ.innerHTML = questions;
         if (questions > 10) {
             questions = 10;
             appendQ.innerHTML = questions;
+        }
+        if (questions === 10) {
+          showEndScreen();
         }
       }
 

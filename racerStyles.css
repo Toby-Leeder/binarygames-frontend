@@ -255,7 +255,7 @@ img {
   font-size: 50px;
   font-family: 'Orbitron', sans-serif;
   flex-grow: 1;
-  text-align: center;
+  text-align: left;
 }
 
 .menu-button {
@@ -355,4 +355,16 @@ img {
 
 .light.active {
   opacity: 1;
+}
+
+.end-screen {
+  text-align: center;
+  margin-top: 50px;
+  width: 100px;
+  height: 100px;
+}
+
+.end-screen p {
+  font-size: 30px;
+  font-family: 'Orbitron', sans-serif;
 }

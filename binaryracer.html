@@ -40,9 +40,11 @@
         <div class="inner"></div>
       </div>
       <div class="image-container">
-        <img src="BRG_road.png" alt="road">
+        <img src="images/BRG_road.png" alt="road">
         <div class="lines-body"></div>
-        <img class="car1" src="girlpowercar.png">
+        <canvas id="spriteContainer" class="carContainer">
+          <img class="car1" id ="car" src="images/carSprites.png">
+        </canvas>
       </div>
       <div class="bottom-UI">
         <div class="questions-given" id="questions-container"> QUESTIONS HERE</div>
@@ -104,8 +106,6 @@
           setTimeout(()=>{
             splashScreen.classList.add('hidden')
           },610)
-          clearInterval(Interval);
-          Interval = setInterval(startTimer, 10);
           car1.style.animationName = "moveRight";
           car1.style.animationPlayState = "running";
           setTimeout(function() {
@@ -115,6 +115,8 @@
           setTimeout(function() {
             document.getElementById("traffic-light").style.display = "none";
             game.style.visibility = "visible";
+            clearInterval(Interval);
+            Interval = setInterval(startTimer, 10);
           }, 3000); 
       })
 
@@ -266,5 +268,45 @@
           });
 
 generate_equation()
+
+window.addEventListener('load', function(){
+  const canvas = document.getElementById('spriteContainer');
+  const ctx = canvas.getContext('2d');
+  canvas.width = 240;
+  canvas.height = 180; 
+
+  class Car {
+      constructor(){ 
+          this.image = document.getElementById("car")
+          this.spriteWidth = 220;
+          this.spriteHeight = 160;
+          this.width = this.spriteWidth;
+          this.height = this.spriteHeight;
+          this.x = 0;
+          this.y = 0;
+          this.minFrame = 0;
+          this.maxFrame = 48;
+          this.frameX = 0;
+          this.frameY = 0;
+      }
+      draw(context){
+          context.drawImage(this.image, this.frameX * this.spriteWidth, this.frameY * this.spriteHeight, this.spriteWidth, this.spriteHeight, this.x, this.y, this.width, this.height);
+      }
+      update(){
+          if (this.frameX < 15) this.frameX++ 
+          else this.frameX = 0;
+      }
+  }
+  const car = new Car();
+
+  function animate(){
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      car.draw(ctx);
+      car.update();
+      requestAnimationFrame(animate);
+  }
+  animate();
+});
+
   </script>
 </html>

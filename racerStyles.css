@@ -140,6 +140,7 @@ img {
   margin-top: -10px;
   width: 400px;
   margin-left: 850px;
+  margin-bottom: 100px;
 }
 
 .answer-button1 {
@@ -273,6 +274,12 @@ img {
   animation: moveRight 7s linear infinite;
   animation-play-state: paused;
   z-index: 2; 
+  display: none;
+}
+
+.carContainer { 
+  position: absolute;
+  top: 25px;
 }
 
 .road_lines { 
@@ -324,6 +331,7 @@ img {
 .traffic-light {
   width: 100px;
   height: 300px;
+  margin-top: 30px;
   background-color: black;
   border-radius: 10px;
   display: flex;

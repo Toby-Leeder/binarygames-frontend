@@ -9,8 +9,7 @@
   <body>
     <div class="wrapper">
       <div class="menu">
-        <div class="menu-title">B1NARY RACER ⪢⪢⪢</div>
-        <div class="menu-button">Leaderboard</div>
+        <div class="menu-title" >B1NARY RACER ⪢⪢⪢</div>
         <div class="menu-button">Back to Escape Room</div>
       </div>
       <div class="splash">
@@ -19,7 +18,10 @@
       <div class="traffic-light" id="traffic-light">
         <div class="light red"></div>
         <div class="light yellow"></div>
-        <div class="light green"></div>
+        <div class="light green"></div> 
+      </div>
+      <div id="end-screen" style="display: none;">
+        <p>Time taken: <span id="end-time"></span></p>
       </div>
       <div id="game">
       <div class="top-container">
@@ -38,9 +40,11 @@
         <div class="inner"></div>
       </div>
       <div class="image-container">
-        <img src="BRG_road.png" alt="road">
+        <img src="images/BRG_road.png" alt="road">
         <div class="lines-body"></div>
-        <img class="car1" src="girlpowercar.png">
+        <canvas id="spriteContainer" class="carContainer">
+          <img class="car1" id ="car" src="images/carSprites.png">
+        </canvas>
       </div>
       <div class="bottom-UI">
         <div class="questions-given" id="questions-container"> QUESTIONS HERE</div>
@@ -55,8 +59,8 @@
       </div>
       </div>
   </body>
-  <script>
-  // Traffi lights
+  <script>    
+    // traffic lights
     function activateLights() {
       var lights = document.getElementsByClassName('light');
       
@@ -102,8 +106,6 @@
           setTimeout(()=>{
             splashScreen.classList.add('hidden')
           },610)
-          clearInterval(Interval);
-          Interval = setInterval(startTimer, 10);
           car1.style.animationName = "moveRight";
           car1.style.animationPlayState = "running";
           setTimeout(function() {
@@ -113,6 +115,8 @@
           setTimeout(function() {
             document.getElementById("traffic-light").style.display = "none";
             game.style.visibility = "visible";
+            clearInterval(Interval);
+            Interval = setInterval(startTimer, 10);
           }, 3000); 
       })
 
@@ -155,12 +159,25 @@
         }
       }
 
+    
+    function showEndScreen() {
+      clearInterval(Interval);
+      const endTime = document.getElementById("end-time");
+      endTime.textContent = appendSeconds.innerHTML + ":" + appendMins.innerHTML;
+      game.style.visibility = "hidden";
+      const endScreen = document.getElementById("end-screen");
+      endScreen.style.display = "block";
+    }
+
       function addQuestion () { 
         questions++;
         appendQ.innerHTML = questions;
         if (questions > 10) {
             questions = 10;
             appendQ.innerHTML = questions;
+        }
+        if (questions === 10) {
+          showEndScreen();
         }
       }
 
@@ -251,5 +268,45 @@
           });
 
 generate_equation()
+
+window.addEventListener('load', function(){
+  const canvas = document.getElementById('spriteContainer');
+  const ctx = canvas.getContext('2d');
+  canvas.width = 240;
+  canvas.height = 180; 
+
+  class Car {
+      constructor(){ 
+          this.image = document.getElementById("car")
+          this.spriteWidth = 220;
+          this.spriteHeight = 160;
+          this.width = this.spriteWidth;
+          this.height = this.spriteHeight;
+          this.x = 0;
+          this.y = 0;
+          this.minFrame = 0;
+          this.maxFrame = 48;
+          this.frameX = 0;
+          this.frameY = 0;
+      }
+      draw(context){
+          context.drawImage(this.image, this.frameX * this.spriteWidth, this.frameY * this.spriteHeight, this.spriteWidth, this.spriteHeight, this.x, this.y, this.width, this.height);
+      }
+      update(){
+          if (this.frameX < 15) this.frameX++ 
+          else this.frameX = 0;
+      }
+  }
+  const car = new Car();
+
+  function animate(){
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      car.draw(ctx);
+      car.update();
+      requestAnimationFrame(animate);
+  }
+  animate();
+});
+
   </script>
 </html>

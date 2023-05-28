@@ -269,7 +269,7 @@ img {
 .car1 {
   width: 200px;
   height: auto;
-  top: 50px;
+  top: 30px;
   position: absolute;
   animation: moveRight 7s linear infinite;
   animation-play-state: paused;
@@ -279,7 +279,23 @@ img {
 
 .carContainer { 
   position: absolute;
-  top: 25px;
+  top: 10px;
+  animation: movecarRight 5s linear forwards;
+  animation-play-state: paused;
+}
+
+
+@keyframes movecarRight {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(1000px);
+  }
+}
+
+.carContainer.translate-left {
+  transform: translateX(-200px);
 }
 
 .road_lines { 
@@ -365,14 +381,14 @@ img {
   opacity: 1;
 }
 
-.end-screen {
+.endScreen {
   text-align: center;
   margin-top: 50px;
   width: 100px;
   height: 100px;
-}
-
-.end-screen p {
-  font-size: 30px;
+  font-size: 50px;
+  color: white;
   font-family: 'Orbitron', sans-serif;
 }
+
+

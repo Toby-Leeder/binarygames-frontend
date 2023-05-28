@@ -1,109 +1,12 @@
 <html>
 <head>
-    <title>Quiz Game</title>
-    <style>
-        body {
-            display: flex;
-            justify-content: flex-end;
-            align-items: flex-start;
-            height: 50vh;
-            font-family: Arial, sans-serif;
-            background-repeat: no-repeat;
-            background-size: cover;
-            background-position: bottom left;
-            background-image: url('images/background1.jpg');
-        }
-        
-        .quiz-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            position: fixed;
-            justify-content: center;
-            top: 20px;
-            right: 0px;
-            background-color: #7c72b3;
-            padding: 20px;
-            width: 180px;
-            height: 100%;
-        }
-        
-        .question-container {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        
-        .question {
-            font-size: 24px;
-            color: #a4d8a4;
-            text-align: center;
-        }
-        
-        .options {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            grid-gap: 10px;
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            justify-content: flex-end;
-        }
-        
-        .option {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 50px;
-            height: 50px;
-            background-color: #a4d8a4;
-            border: none;
-            cursor: pointer;
-            color: #7c72b3;
-        }
-
-        
-        .option:hover {
-            background-color: #035603;
-        }
-        
-        .correct {
-            background-color: #a4d8a4;
-        }
-        
-        .top {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 5vh;
-            background-color: #7c72b3;
-            z-index: 958433985;
-        }
-        
-        .question-text {
-            color: white;
-            text-align: center;
-            font-size: 18px;
-            margin: 0;
-            padding: 10px;
-        }
-
-          .sprite {
-          height: 70px;
-          width: 70px;
-          background-image: url('images/mushroom.png');
-          background-repeat: no-repeat;
-          background-size: 600% auto; 
-          right: 200px;
-        }
-
-        #mushroom {
-          background-position: 100% 0px; 
-        }
-    </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com/">
+  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="pipes.css">
 </head>
 <body>
-  
+  <div class="wrapper">
     <div class="top">
         <p class="question-text"><span class="question"></span></p>
         <p id="mushroom" class="sprite"></p>
@@ -111,6 +14,18 @@
     <div class="question-container">
         <div class="mushroom"></div>
     </div>
+    <div class="pipes-container">
+      <div class="pipes-image"></div>
+  </div>
+    <div class="cheese"></div>
+    <div class="popup-container">
+      <div class="popup">
+          <p class="popup-message">You must answer these questions to help Shroomy (the mushroom) get to his precious cheese!</p>
+          <button class="popup-button">Got it!</button>
+        </div>
+    </div>
+      </div>
+  </div>
     <div class="quiz-container">
         <ul class="options">
           <li class="option" id="button1">+</li>
@@ -143,8 +58,9 @@
           <li class="option" id="button28">>></li>
         </ul>
     </div>
-
+<div>
     <script>
+
         const questions = [
             { question: "Which operator is used for addition?", answer: 1 },
             { question: "Which operator is used for subtraction?", answer: 2 },
@@ -175,97 +91,157 @@
             { question: "Which operator is used for shifting the bits of a value to the left by a specified number of positions?", answer: 27 },
             { question: "Which operator is used for shifting the bits of a value to the right by a specified number of positions?", answer: 28 }
         ];
-        class MushroomAnimation {
-          constructor(position) {
-            this.frames = 6;
-            this.currentFrame = 0;
-            this.frameSpacing = 70;
-            this.animationSpeed = 200;
-            this.mushroomElement = document.getElementById("mushroom");
-            this.mushroomElement.style.position = "absolute";
 
-            const currentPosition = parseFloat(this.mushroomElement.style.left) || position;
-            const offset = 0;
-            const startingPosition = currentPosition - (offset / window.innerWidth) * 100;
-            this.mushroomElement.style.left = `${startingPosition}%`;
-            const startingHeight = 500;
-            this.mushroomElement.style.top = `${startingHeight}%`;
+class MushroomAnimation {
+  constructor(position) {
+    this.frames = 6;
+    this.currentFrame = 0;
+    this.frameSpacing = 70;
+    this.animationSpeed = 200;
+    this.mushroomElement = document.getElementById("mushroom");
+    this.mushroomElement.style.position = "absolute";
+
+    const currentPosition = parseFloat(this.mushroomElement.style.left) || position;
+    const offset = 0;
+    const startingPosition = currentPosition - (offset / window.innerWidth) * 100;
+    this.mushroomElement.style.left = `${startingPosition}%`;
+    const startingHeight = 1350;
+    this.mushroomElement.style.top = `${startingHeight}%`;
+    this.animationTimeout = null;
+  }
+
+  animateFrames() {
+    this.mushroomElement.style.backgroundPosition = `-${this.currentFrame * this.frameSpacing}px 0px`;
+
+    this.currentFrame++;
+    if (this.currentFrame >= this.frames) {
+      this.currentFrame = 0;
+      this.stopAnimation();
     }
-      
 
-      animateFrames() {
-        this.mushroomElement.style.backgroundPosition = `-${this.currentFrame * this.frameSpacing}px 0px`;
+    const currentPosition = parseFloat(this.mushroomElement.style.left) || 100; 
+    const newPosition = currentPosition - 1;
 
-        this.currentFrame++;
-        if (this.currentFrame >= this.frames) {
-          this.currentFrame = 0;
-        }
+    this.mushroomElement.style.left = `${newPosition}%`;
 
-        const currentPosition = parseFloat(this.mushroomElement.style.left) || 100; 
-        const newPosition = currentPosition - 1;
+    this.animationTimeout = setTimeout(() => {
+      this.animateFrames();
+    }, this.animationSpeed);
+  }
 
-        this.mushroomElement.style.left = `${newPosition}%`;
 
-        setTimeout(() => {
-          this.animateFrames();
-        }, this.animationSpeed);
-      }
+  startAnimation() {
+    if (parseFloat(this.mushroomElement.style.left) <= -100) {
+      return;
+    }
+    if (animationStarted) {
+      return;
+    }
 
-      startAnimation() {
-        if (parseFloat(this.mushroomElement.style.left) <= -100) {
-          return;
-        }
+    this.animateFrames();
+  }
 
-        this.animateFrames();
-      }}
-      
-        let currentQuestion = 0;
-        let score = 0;
-        let backgroundIndex = 1;
-        
-        function updateQuestion() {
-            const questionElement = document.querySelector('.question');
-            const buttons = document.querySelectorAll('.option');
+  pauseAnimation() {
+    clearTimeout(this.animationTimeout);
+    this.animationTimeout = null;
+  }
 
-            questionElement.textContent = questions[currentQuestion].question;
-            
-            const answer = questions[currentQuestion].answer;
-            buttons[answer - 1].classList.add('correct');
-        }
-        
-        function handleAnswer(selectedAnswer) {
-            const answer = questions[currentQuestion].answer;
-            
-            if (selectedAnswer === answer) {
-                const buttons = document.querySelectorAll('.option');
-                buttons[answer - 1].classList.add('hidden');
-                score++;
-                
-                if (currentQuestion === questions.length - 1) {
-                const mushroomAnimation = new MushroomAnimation();
-                mushroomAnimation.startAnimation();
-                } else {
-                    currentQuestion++;
-                    updateQuestion();
-                    const mushroomAnimation = new MushroomAnimation();
-                    mushroomAnimation.startAnimation();
-                }
-            } else {
-                alert("Wrong answer! You lose.");
-            }
-        }
-        
-        function initializeQuiz() {
-            updateQuestion();
-        }
-        
-        initializeQuiz();
-        
-        const buttons = document.querySelectorAll('.option');
+  resumeAnimation() {
+    if (!this.animationTimeout) {
+      this.animateFrames();
+    }
+  }
 
-        buttons.forEach((button, index) => {
-            button.addEventListener('click', () => handleAnswer(index + 1));
-        });
+  stopAnimation() {
+    clearTimeout(this.animationTimeout);
+    this.animationTimeout = null;
+  }
+}
+
+let currentQuestion = 0;
+let score = 0;
+let animationStarted = false;
+let mushroomAnimation;
+
+function updateQuestion() {
+  const questionElement = document.querySelector('.question');
+  const buttons = document.querySelectorAll('.option');
+
+  questionElement.textContent = questions[currentQuestion].question;
+
+  const answer = questions[currentQuestion].answer;
+  buttons[answer - 1].classList.add('correct');
+}
+
+function handleAnswer(selectedAnswer) {
+  const answer = questions[currentQuestion].answer;
+
+  if (selectedAnswer === answer) {
+    const buttons = document.querySelectorAll('.option');
+    buttons[answer - 1].classList.add('hidden');
+    score++;
+
+    if (currentQuestion === questions.length - 1) {
+      mushroomAnimation.startAnimation();
+      setTimeout(() => {
+        mushroomAnimation.stopAnimation();
+      }, 2000);
+    } else {
+      currentQuestion++;
+      updateQuestion();
+      mushroomAnimation.resumeAnimation();
+      setTimeout(() => {
+        mushroomAnimation.pauseAnimation();
+      }, 300);
+    }
+  } else {
+    alert("Wrong answer! You lose.");
+  }
+}
+
+function initializeQuiz() {
+  updateQuestion();
+}
+
+initializeQuiz();
+
+const buttons = document.querySelectorAll('.option');
+
+buttons.forEach((button, index) => {
+  button.addEventListener('click', () => handleAnswer(index + 1));
+});
+
+mushroomAnimation = new MushroomAnimation(100);
+
+function showPopup() {
+  const popupContainer = document.querySelector('.popup-container');
+  popupContainer.style.opacity = '1';
+  popupContainer.style.visibility = 'visible';
+}
+
+function hidePopup() {
+  const popupContainer = document.querySelector('.popup-container');
+  popupContainer.style.opacity = '0';
+  popupContainer.style.visibility = 'hidden';
+  setTimeout(() => {
+    mushroomAnimation.startAnimation();
+    setTimeout(() => {
+      mushroomAnimation.stopAnimation();
+    }, 3500);
+  }, 1000);
+}
+
+document.querySelector('.popup-button').addEventListener('click', hidePopup);
+
+setTimeout(showPopup, 500);
+
+
+const quizContainer = document.querySelector('.quiz-container');
+const goHomeButton = document.createElement('a');
+goHomeButton.href = 'https://binarygames.tech/';
+goHomeButton.innerText = 'Go home';
+goHomeButton.classList.add('option');
+quizContainer.appendChild(goHomeButton);
     </script>
 </body>
 </html>

@@ -79,7 +79,7 @@
             camera.position.x += vx
             camera.position.z += vz
 
-            raycaster.setFromCamera({x: pos.x, y:pos.y}, camera);
+            raycaster.setFromCamera({x: 0, y:0}, camera);
             const intersectedObjects = raycaster.intersectObjects(scene.children);
             if(oldObject){
                 oldObject.object.material.color = oldObjectColor
@@ -261,7 +261,7 @@
             wall4.position.z = length
             scene.add( wall4 );
         }
-    function makeWall(){
+    function makeWall(geometry, material, wallNum){
         
     }
     </script>

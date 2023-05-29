@@ -20,7 +20,7 @@
         <div class="light yellow"></div>
         <div class="light green"></div> 
       </div>
-      <div  class="endScreen" id="end-screen" style="display: none;">
+      <div class="end-screen" id="end-screen" style="display: none;">
         <p>Time taken: <span id="end-time"></span></p>
       </div>
       <div id="game">
@@ -180,6 +180,15 @@
       }
 
       
+      function startMoveLeft() {
+        const roadLines = document.querySelector('.lines-body');
+        const animationDuration = 9;
+        roadLines.style.animationDuration = `${animationDuration}s`;
+        setTimeout(() => {
+            roadLines.style.animationDuration = '3s'; 
+        }, 2000);
+      }
+
       // start of questions and answers code
       const option1 = document.getElementById("answer-button1"),
       option2 = document.getElementById("answer-button2"),
@@ -232,8 +241,8 @@
               generate_equation();
             }
             else{
+              startMoveLeft()
               newQuestion.innerHTML = "Incorrect";
-              carCont.style.transform = "translateX(-100px)";
               ans = 2
               setTimeout(function() {
                 ans = 0
@@ -253,9 +262,9 @@
               generate_equation();
             }
             else{
-              ans = 2
+              startMoveLeft()
               newQuestion.innerHTML = "Incorrect";
-              carCont.style.transform = "translateX(-100px)";
+              ans = 2
               setTimeout(function() {
                 ans = 0
                 generate_equation()
@@ -274,9 +283,9 @@
               generate_equation();
             }
             else{
-              ans = 2
+              startMoveLeft()
               newQuestion.innerHTML = "Incorrect";
-              carCont.style.transform = "translateX(-100px)";
+              ans = 2
               setTimeout(function() {
                 ans = 0
                 generate_equation()
@@ -295,9 +304,9 @@
               generate_equation();
           }
           else{
-            ans = 2
+            startMoveLeft()
             newQuestion.innerHTML = "Incorrect";
-            carCont.style.transform = "translateX(-100px)";
+            ans = 2
             setTimeout(function() {
               ans = 0
               generate_equation()

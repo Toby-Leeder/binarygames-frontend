@@ -17,7 +17,10 @@
     <script type="module">
         import * as THREE from 'three'
         import {GLTFLoader} from 'three/addons/loaders/GLTFLoader.js';
+        import { PointerLockControls } from '../assets/js/PointerControls.js';
 
+        var roomLength = 20
+        var roomHeight = 5.5
 
         const canvas = document.getElementById("c")
 
@@ -54,6 +57,14 @@
         const raycaster = new THREE.Raycaster()
         let pickPosition = {x:0, y:0}
 
+        const controls = new PointerLockControls( camera, document.body );
+        controls.connect();
+
+        const axesHelper = new THREE.AxesHelper( 5 );
+        scene.add( axesHelper );
+
+        makeRoom();
+
         camera.position.z += 10
 
         let vx = 0 
@@ -68,7 +79,7 @@
             camera.position.x += vx
             camera.position.z += vz
 
-            raycaster.setFromCamera({x: pos.x, y:pos.y}, camera);
+            raycaster.setFromCamera({x: 0, y:0}, camera);
             const intersectedObjects = raycaster.intersectObjects(scene.children);
             if(oldObject){
                 oldObject.object.material.color = oldObjectColor
@@ -79,6 +90,8 @@
                 oldObjectColor ={...intersectedObjects[0].object.material.color}
                 intersectedObjects[0].object.material.color = new THREE.Color(0x00FFFF);
             }
+
+            move();
 
             renderer.render(scene, camera)
             requestAnimationFrame(render)
@@ -127,9 +140,13 @@
         
         window.addEventListener("click", (event) => {
             const rect = canvas.getBoundingClientRect();
+            // raycaster.setFromCamera({
+            //     x: ((event.clientX - rect.left) / rect.width) * 2 - 1,
+            //     y: ((event.clientY - rect.top) / rect.height) * -2 + 1
+            // }, camera);            
             raycaster.setFromCamera({
-                x: ((event.clientX - rect.left) / rect.width) * 2 - 1,
-                y: ((event.clientY - rect.top) / rect.height) * -2 + 1
+                x: 0,
+                y: 0
             }, camera);
             const intersectedObjects = raycaster.intersectObjects(scene.children);
             if(oldObject){
@@ -145,12 +162,107 @@
                 // intersectedObjects[0].object.material.color = color
                 // console.log(intersectedObjects[0].object.id)
 
-                if(object.id == 10){
-                    alert("Click!")
-                }
+                // if(object.id == 10){
+                //     alert("Click!")
+                // }
 
                 // alert("You Clicked Me!")
             }
         })
+
+        var forward = false;
+        var back = false;
+        var left = false;
+        var right = false;
+        var unlocked = true;
+        document.addEventListener("keydown", (event) => {
+            switch (event.code) {
+                case 'KeyW':
+                    forward = true
+                    break
+                case 'KeyA':
+                    left = true
+                    break
+                case 'KeyS':
+                    back = true
+                    break
+                case 'KeyD':
+                    right = true
+                    break
+            }
+        });
+
+        document.addEventListener("keyup", (event) => {
+            switch (event.code) {
+                case 'KeyW':
+                    forward = false
+                    break
+                case 'KeyA':
+                    left = false
+                    break
+                case 'KeyS':
+                    back = false
+                    break
+                case 'KeyD':
+                    right = false
+                    break
+            }
+        })
+
+        canvas.addEventListener("click", (event) => {
+            controls.lock();
+        });
+
+        function move(){
+            if (forward){
+                controls.moveForward(0.1);
+            }
+            if (back){
+                controls.moveBackward(0.1);
+            }
+            if (right){
+                controls.moveRight(0.1);
+            }
+            if (left){
+                controls.moveLeft(0.1);
+            }
+            
+        }
+
+        function makeRoom(){
+
+            var length = roomLength
+            var height = roomHeight
+
+            const geometry = new THREE.BoxGeometry( length, 15, 0.4 ); 
+            const material = new THREE.MeshBasicMaterial( {color: 0x00ff00} );
+            
+            makeWall()
+            const wall1 = new THREE.Mesh( geometry, material ); 
+            wall1.position.y = height;
+            scene.add( wall1 );
+
+            const wall2 = new THREE.Mesh( geometry, material ); 
+            wall2.position.y = height;
+            wall2.position.x = length/2;
+            wall2.position.z = length/2;
+            wall2.rotation.y = Math.PI/2
+            scene.add( wall2 );
+
+            const wall3 = new THREE.Mesh( geometry, material ); 
+            wall3.position.y = height;
+            wall3.position.x = -length/2;
+            wall3.position.z = length/2;
+            wall3.rotation.y = Math.PI/2
+            scene.add( wall3 );
+
+            const wall4 = new THREE.Mesh( geometry, material ); 
+            wall4.position.y = height;
+            wall4.position.z = length
+            scene.add( wall4 );
+        }
+    function makeWall(geometry, material, wallNum){
+        
+    }
     </script>
 </html>

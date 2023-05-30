@@ -37,7 +37,11 @@
                 grid-column: 1;
                 grid-row: 1;
             }
-
+            
+            .gateDiv {
+                width:80px;
+                display:grid;
+            }
             /* .el {
                 grid-column: 1;
                 grid-row: 1;
@@ -48,25 +52,27 @@
         <div style="height: 50px; border:2px; border-radius: 2px; border-color:black;">
             This Is A Navbar
         </div>
-        <div style="display:flex; justify-content: center; align-items: center; user-select: none;">
-            <div style="height: 80vh; width: 80vw; border:2px; border-color: black; border-style: solid; user-select: none;">
+        <div style="display:flex; justify-content: center; align-items: flex-start; user-select: none;">
+            <div id="space" style="height: 80vh; width: 80vw; border:2px; border-color: black; border-style: solid; user-select: none;">
                 <div id="playspace" style="background-color: black; height:100%; width:100%; display:flex; align-items: center; user-select: none;" id="target">
                     <div id="getBar" style="background-color: grey; height: 100%;width: 20%;display:flex;flex-direction: column;justify-content: space-around;align-items: center; user-select: none;">
-                        <div class="and" id="anddiv" style="width:80px; display:grid;">
+                        <div class="and gateDiv" id="anddiv">
                             <canvas class="and" id="ANDgate" height="80px" width="80px"></canvas>
                             <canvas class="and" id="ANDgate1" height="80px" width="80px"></canvas>
                             <canvas class="and" id="ANDgate2" height="80px" width="80px"></canvas>
                         </div>
-                        <div class="or" id="ordiv">
+                        <div class="or gateDiv" id="ordiv">
                             <canvas class="or" id="ORgate" height="80px" width="80px"></canvas>
+                            <canvas class="or" id="ORgate1" height="80px" width="80px"></canvas>
                         </div>
-                        <div class="nand" id="nanddiv">
+                        <div class="nand gateDiv" id="nanddiv">
                             <canvas class="nand" id="NANDgate" height="80px" width="80px"></canvas>
                         </div>
-                        <div class="nor" id="nordiv">
+                        <div class="nor gateDiv" id="nordiv">
                             <canvas class="nor" id="NORgate" height="80px" width="80px"></canvas>
+                            <canvas class="nor" id="NORgate1" height="80px" width="80px"></canvas>
                         </div>
-                        <div class="xor" id="xordiv">
+                        <div class="xor gateDiv" id="xordiv">
                             <canvas class="xor" id="XORgate" height="80px" width="80px"></canvas>
                         </div>
                     </div>
@@ -83,6 +89,10 @@
 
                     </div> -->
                 </div>
+            </div>
+            <div style="display:flex; flex-direction: column;">
+                <button id="checkButton">Check</button>
+                <img id="map" src="images/map.png" style="width:80px">
             </div>
         </div>
         <!-- <img src="blog/images/tea-logo.png" style="height: 20px; position:absolute" id="imaage"> -->

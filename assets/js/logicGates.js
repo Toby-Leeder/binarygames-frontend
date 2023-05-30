@@ -42,6 +42,7 @@ function drawOR(ctx){
 }
 
 drawOR(document.getElementById("ORgate").getContext("2d"))
+drawOR(document.getElementById("ORgate1").getContext("2d"))
 
 //NAND gate
 function drawNAND(ctx){
@@ -81,6 +82,7 @@ function drawNOR(ctx){
 }
 
 drawNOR(document.getElementById("NORgate").getContext("2d"))
+drawNOR(document.getElementById("NORgate1").getContext("2d"))
 
 //XOR gate
 function drawXOR(ctx){
@@ -104,7 +106,9 @@ function drawXOR(ctx){
 drawXOR(document.getElementById("XORgate").getContext("2d"))
 
 var tempDivRect = document.getElementsByClassName("tempDiv")[0].getBoundingClientRect()
-var logicValues = [[["false", "true"], ["false", "false"], ["true", "true"], ["true", "false"], ["true", "true"]], [["", ""], [" ", " "]], [["", ""]], [["", ""]]]
+var logicValues = [[["false", "true"], ["false", "false"], ["true", "true"], ["true", "false"], ["true", "true"]], [["", ""], [" ", " "]], [["", ""]], [["", ""]], [[""]]]
+var logicBoolValues = [[[false, true], [false, false], [true, true], [true, false], [true, true]], [["", ""], [" ", " "]], [["", ""]], [["", ""]]]
+var logicBoolValuesCorrect = [[[false, true], [false, false], [true, true],[true, false], [true, true]], [[false, true], [true, true]], [[false, false]], [[false, true]]]
 
 function makeDoubleLine(ctx, down, margin, width, start, text){
   setCtx(ctx)
@@ -112,12 +116,6 @@ function makeDoubleLine(ctx, down, margin, width, start, text){
   ctx.fillRect(start, down*margin + 14, width, 2)
   ctx.fillText(text[1], start + 4, down * margin + 4)
   ctx.fillRect(start, down*margin - 16, width, 2)
-  // var start = width + 80
-  // var mult = mod % 2 == 1 ? -1 : 1
-  // ctx.fillRect(start, down*margin - 1, 20, 2)
-  // ctx.fillRect(start + 20, down*margin - mult * 1, 2, mult * 23)
-  // ctx.fillRect(start + 20, down*margin + mult * 22 - 1, 200, 2)
-  // mod++
 }
 var connectIterator = 0
 var idnum = 0
@@ -154,9 +152,42 @@ function makeLines(){
   // var canvases = [firstCanvas, secondCanvas, thirdCanvas]
   firstCanvas.height = canvasHeights
   firstCanvas.width = canvasWidths
+
+  let ctx = firstCanvas.getContext("2d")
+  ctx.clearRect(0, 0, firstCanvas.height, firstCanvas.width)
   doubleLines.forEach((el, i) => {
-    drawLines(firstCanvas, doubleLines[i], lineMargin[i], rowStarts[i], logicValues[i])
+    drawLines(firstCanvas, doubleLines[i], lineMargin[i], rowStarts[i], logicBoolValues[i])
   })
+  connectLines(true)
+  // makeText()
+}
+
+function resetLines(){
+  var canvasHeights = document.getElementById(`playspace`).getBoundingClientRect().height
+  var canvasWidths = document.getElementById(`canvasDiv`).getBoundingClientRect().width
+  
+  firstCanvas.height = canvasHeights
+  firstCanvas.width = canvasWidths
+
+  let ctx = firstCanvas.getContext("2d")
+  ctx.clearRect(0, 0, firstCanvas.height, firstCanvas.width)
+  doubleLines.forEach((el, i) => {
+    var ctx = firstCanvas.getContext("2d")
+    var lines = doubleLines[i]
+    var mar = lineMargin[i]
+    var row = rowStarts[i]
+    var texts = logicBoolValues[i]
+    var height = firstCanvas.height
+    var width = firstCanvas.width * 0.2 * 0.25
+    var margin = height/mar
+    var start = (width * 2 + 80) * row
+    lines.forEach((line, j) => {
+      makeDoubleLine(ctx, line, margin, width, start, texts[j])
+    })
+  })
+  connectLines(true)
+  setFinal()
+  // makeText()
 }
 
 var globalTargetDivs = []
@@ -230,6 +261,26 @@ function connectLines(isWhite){
   })
 }
 
+function makeText(){
+  var canvas = firstCanvas
+  var ctx = canvas.getContext("2d")
+  setCtx(ctx)
+  doubleLines.forEach((el, i) => {
+    var lines = doubleLines[i]
+    var mar = lineMargin[i]
+    var row = rowStarts[i]
+    var text = logicBoolValues[i]
+    var height = canvas.height
+    var width = canvas.width * 0.2 * 0.25
+    var margin = height/mar
+    var start = (width * 2 + 80) * row
+    lines.forEach((line, j) => {
+      ctx.fillText(text[j][0], start + 4, line * margin - 24)
+      ctx.fillText(text[j][1], start + 4, line * margin + 4)
+    })
+  })
+}
+
 function makeConnectingLines(ctx, width, topPlace, start, i, row, isWhite, firstHeight){
   var strokeWidth = isWhite ? 2 : 4
   var targetDivs = document.getElementsByClassName("targetDiv")
@@ -290,11 +341,13 @@ var ANDgate = document.getElementById("ANDgate")
 var ANDgate1 = document.getElementById("ANDgate1")
 var ANDgate2 = document.getElementById("ANDgate2")
 var ORgate = document.getElementById("ORgate")
+var ORgate1 = document.getElementById("ORgate1")
 var NANDgate = document.getElementById("NANDgate")
 var NORgate = document.getElementById("NORgate")
+var NORgate1 = document.getElementById("NORgate1")
 var XORgate = document.getElementById("XORgate")
 
-var gates = [ANDgate, ANDgate1, ANDgate2, ORgate, NANDgate, NORgate, XORgate]
+var gates = [ANDgate, ANDgate1, ANDgate2, ORgate, ORgate1, NANDgate, NORgate, NORgate1, XORgate]
 
 // sets dragging functions to each gate
 gates.forEach((gate) => {
@@ -327,8 +380,17 @@ function dragStart(event){
     type = each
   })
   document.getElementById(`${type}div`).appendChild(dragger)
-  connectLines(false)
 
+  // let divs = document.getElementsByClassName("targetDiv")
+  // for(let i = 0; i < divs.length; i++){
+  //   if(divs[i].childNodes.length > 0){
+  //     divs[i].style.display = "grid"
+  //     console.log(divs[i])
+  //   }
+  // }
+  // connectLines(false)
+  checkLogic()
+  resetLines()
   // var targetDiv = document.getElementById(`${type}div`)
   // targetDivBound = targetDiv.getBoundingClientRect()
 }
@@ -353,7 +415,7 @@ function dragEnd(event){
       dragger.style.position = "static"
       dragger.classList.add("placedGate")
       goodDiv.push(div)
-      setOutput(logic(div), div)
+      // setOutput(logic(div), div)
     }
     div.style.display = "none"
     gates.forEach(gate => {
@@ -363,7 +425,11 @@ function dragEnd(event){
     })
 
   })
-    connectLines(true)
+  checkLogic()
+  resetLines()
+  // makeText()
+    // connectLines(true)
+
   dragger = ''
 }
 
@@ -398,18 +464,15 @@ function deleteTargetDivs(){
 
 makeLines()
 function resize(){
+  logicBoolValues = [[[false, true], [false, false], [true, true], [true, false], [true, true]], [["", ""], [" ", " "]], [["", ""]], [["", ""]]]
+  logicBoolValuesCorrect = [[[false, true], [false, false], [true, true],[true, false], [true, true]], [[false, true], [true, true]], [[false, false]], [[false, true]]]
+  finalGate = ""
   deleteTargetDivs()
   makeLines()
   getBarRect = document.getElementById(`getBar`).getBoundingClientRect()
   playspace = document.getElementById(`playspace`).getBoundingClientRect()
   gates.forEach(gate => {
-    var types = ["and", "or", "nand", "nor", "xor"]
-    var type
-    types.forEach((each) => {
-      if(gate.classList.contains(each))
-      type = each
-    })
-    document.getElementById(`${type}div`).appendChild(gate)
+    document.getElementById(`${gate.classList[0]}div`).appendChild(gate)
   })
 }
 
@@ -424,7 +487,6 @@ function logic(div){
     gate = reverseString((reverseString(div.firstChild.id).slice(4)))
   }
   inputs = checkInput(div.id)
-  console.log(inputs)
   if (gate == "AND"){
       if (inputs[0] == "true" && inputs[1] == "true"){
         return true
@@ -459,7 +521,6 @@ function reverseString(str) {
 
 function checkInput(div){
   gateNum = parseInt(div[0])
-  console.log(gateNum)
   if (gateNum <= 4){
     return logicValues[0][parseInt(div[0])];
   }
@@ -474,7 +535,7 @@ function checkInput(div){
 function setOutput(bool, div){
   divNum = parseInt(div.id[0])
   if(divNum < 4){
-    console.log(logicValues[1][1][divNum])
+    // console.log(logicValues[1][1][divNum])
     if (bool){
       logicValues[1][1][divNum] = "true";
     }
@@ -487,3 +548,115 @@ function setOutput(bool, div){
   }
   
 }
+
+let finalGate = ""
+
+function setFinal(){
+  let canvas = document.getElementById("firstCanvas")
+  let ctx = canvas.getContext("2d")
+  setCtx(ctx)
+  ctx.fillText(finalGate, canvas.width * 0.35 + 321, canvas.height/2 - 4)
+  // ctx.clearRect(0, 0, canvas.width, canvas.height)
+  // ctx.fillText(out, 20, 20)
+}
+
+function checkLogic(){
+  let divs = document.getElementsByClassName("targetDiv")
+  let iter = 0
+  for(let it = 0; it < logicBoolValues.length; it++){
+    let row = logicBoolValues[it]
+    row.forEach((col, i)=> {
+      const rw = it + 1 // sets row in front of current row
+      const halfi = Math.floor(i/2) // sets the two boxes to one box
+      const modi = i % 2 // top or bottom alternates
+      if(divs[iter].childNodes.length > 0){
+        if(iter == 8)
+          // setFinal(gateOut(col[0], col[1], divs[iter].childNodes[0].classList[0]))
+          finalGate = gateOut(col[0], col[1], divs[iter].childNodes[0].classList[0])
+        else if(iter == 4)
+          logicBoolValues[3][0][1] = gateOut(col[0], col[1], divs[iter].childNodes[0].classList[0])
+        else
+          logicBoolValues[rw][halfi][modi] = gateOut(col[0], col[1], divs[iter].childNodes[0].classList[0])
+      } 
+      else {
+        let isEmpty = "No"
+        try {
+          isEmpty = logicBoolValues[rw][halfi][modi] ?? "No"
+        } catch {
+          // trying to access array out of bounds
+        }
+        if(isEmpty != "No")
+          if(iter == 4)
+          logicBoolValues[3][0][1] = ""
+          else
+          logicBoolValues[rw][halfi][modi] = ""
+      }
+      iter++
+    })
+  }
+}
+
+function gateOut(top, bottom, gate){
+  if((top === "") || (bottom === "")) return ""
+  switch (gate) {
+    case "and":
+      return top && bottom
+
+    case "or":  
+      return top || bottom
+    
+    case "nand":
+      return !(top && bottom)
+
+    case "nor":
+      return !(top || bottom)
+
+    case "xor":
+      if(!(top && bottom))
+        return top || bottom
+      else
+        return false
+  }
+}
+
+document.getElementById("checkButton").onclick = () => {
+  let foundBad = false
+  let c = logicBoolValuesCorrect
+  logicBoolValues.forEach((row, i) => {
+    row.forEach((col, j) => {
+      if(col[0] != c[i][j][0]) {
+        foundBad = true; console.log(col[0], c[i][j][0])
+      }
+      if(col[1] != c[i][j][1]){
+      foundBad = true
+      }
+    })
+  })
+  if(!foundBad && finalGate)
+    alert("You Win!")
+  else 
+    alert("You Lose!")
+
+}
+let map = document.getElementById("map")
+map.addEventListener("mousedown", () => {
+  let space = document.getElementById("space")
+  let button = document.getElementById("checkButton")
+  let img = document.getElementById("map")
+
+  space.style.display = "none"
+  button.style.display = "none"
+  img.style.height = "80vh"
+  img.style.width = "80vw"
+})
+
+map.addEventListener("mouseup", () => {
+  let space = document.getElementById("space")
+  let button = document.getElementById("checkButton")
+  let img = document.getElementById("map")
+
+  space.style.display = "block"
+  button.style.display = "block"
+  img.style.height = "80px"
+  img.style.width = "80px"
+})

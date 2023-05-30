@@ -174,10 +174,18 @@ option1.addEventListener("click", function(){
   }
   else{
     startMoveLeft()
+    document.getElementById("answer-button1").disabled = true;
+    document.getElementById("answer-button2").disabled = true;
+    document.getElementById("answer-button3").disabled = true;
+    document.getElementById("answer-button4").disabled = true;
     newQuestion.innerHTML = "Incorrect";
     ans = 2
     setTimeout(function() {
       ans = 0
+      document.getElementById("answer-button1").disabled = false;
+      document.getElementById("answer-button2").disabled = false;
+      document.getElementById("answer-button3").disabled = false;
+      document.getElementById("answer-button4").disabled = false;
       generate_equation()
     }, 2000);
   }
@@ -195,10 +203,18 @@ option2.addEventListener("click", function(){
   }
   else{
     startMoveLeft()
+    document.getElementById("answer-button1").disabled = true;
+    document.getElementById("answer-button2").disabled = true;
+    document.getElementById("answer-button3").disabled = true;
+    document.getElementById("answer-button4").disabled = true;
     newQuestion.innerHTML = "Incorrect";
     ans = 2
     setTimeout(function() {
       ans = 0
+      document.getElementById("answer-button1").disabled = false;
+      document.getElementById("answer-button2").disabled = false;
+      document.getElementById("answer-button3").disabled = false;
+      document.getElementById("answer-button4").disabled = false;
       generate_equation()
     }, 2000);
   }
@@ -216,10 +232,18 @@ option3.addEventListener("click", function(){
   }
   else{
     startMoveLeft()
+    document.getElementById("answer-button1").disabled = true;
+    document.getElementById("answer-button2").disabled = true;
+    document.getElementById("answer-button3").disabled = true;
+    document.getElementById("answer-button4").disabled = true;
     newQuestion.innerHTML = "Incorrect";
     ans = 2
     setTimeout(function() {
       ans = 0
+      document.getElementById("answer-button1").disabled = false;
+      document.getElementById("answer-button2").disabled = false;
+      document.getElementById("answer-button3").disabled = false;
+      document.getElementById("answer-button4").disabled = false;
       generate_equation()
     }, 2000);
   }
@@ -237,10 +261,18 @@ option4.addEventListener("click", function(){
 }
 else{
   startMoveLeft()
+  document.getElementById("answer-button1").disabled = true;
+  document.getElementById("answer-button2").disabled = true;
+  document.getElementById("answer-button3").disabled = true;
+  document.getElementById("answer-button4").disabled = true;
   newQuestion.innerHTML = "Incorrect";
   ans = 2
   setTimeout(function() {
     ans = 0
+    document.getElementById("answer-button1").disabled = false;
+    document.getElementById("answer-button2").disabled = false;
+    document.getElementById("answer-button3").disabled = false;
+    document.getElementById("answer-button4").disabled = false;
     generate_equation()
   }, 2000);
 }
@@ -308,4 +340,3 @@ function animate(){
 }
 animate();
 });
-

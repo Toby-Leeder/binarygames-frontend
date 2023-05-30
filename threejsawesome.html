@@ -6,13 +6,14 @@
         <div id="container">
             <canvas id="c" width="600" height="600"></canvas>
             <img id="overlay">
+            <div id="popUp"></div>
         </div>
     </body>
     <style>
         #container{
             position:relative;
         }
-        #c, #overlay {
+        #c, #overlay #popUp {
             position: absolute;
         }
     </style>
@@ -26,11 +27,11 @@
         overlay.style.maxWidth = `${canvas.height/20}px`
 
         function makeOverlay(){
-            var popUp = 
-            popUp.maxWidth = "200px"
-            popUp.backgroundColor = "red"
-            popUp.
-
+            var popUp = document.getElementById("popUp")
+            popUp.style.maxWidth = "200px"
+            popUp.style.backgroundColor = "red"
+            popUp.style.maxWidth = "200px"
+            console.log("running")
         }
     </script>
     <script type="importmap">

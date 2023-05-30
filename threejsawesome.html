@@ -3,8 +3,36 @@
 
     </head>
     <body>
-        <canvas id="c" width="600" height="600"></canvas>
+        <div id="container">
+            <canvas id="c" width="600" height="600"></canvas>
+            <img id="overlay">
+        </div>
     </body>
+    <style>
+        #container{
+            position:relative;
+        }
+        #c, #overlay {
+            position: absolute;
+        }
+    </style>
+    <script>
+        const canvas = document.getElementById("c")
+        const overlay = document.getElementById("overlay")
+        var left = canvas.width/2 - canvas.width/50
+        overlay.style.top = `${canvas.height/2}px`
+        overlay.style.left = `${left}px`;
+        overlay.src = "../images/cursor.png";
+        overlay.style.maxWidth = `${canvas.height/20}px`
+
+        function makeOverlay(){
+            var popUp = 
+            popUp.maxWidth = "200px"
+            popUp.backgroundColor = "red"
+            popUp.
+
+        }
+    </script>
     <script type="importmap">
         {
           "imports": {
@@ -21,8 +49,6 @@
 
         var roomLength = 20
         var roomHeight = 5.5
-
-        const canvas = document.getElementById("c")
 
         const scene = new THREE.Scene();
         const camera = new THREE.PerspectiveCamera(75, canvas.width / canvas.height, 0.1, 1000);
@@ -157,16 +183,17 @@
                 let object = intersectedObjects[0].object
                 oldObject = {...intersectedObjects[0]}
                 oldObjectColor ={...intersectedObjects[0].object.material.color}
-                // const color = new THREE.Color("hsl(0, 100%, 50%)");
-                // intersectedObjects[0].object.material.color = {isColor: true, r:0, g:1, b:0}
-                // intersectedObjects[0].object.material.color = color
-                // console.log(intersectedObjects[0].object.id)
+                const color = new THREE.Color("hsl(0, 100%, 50%)");
+                intersectedObjects[0].object.material.color = {isColor: true, r:0, g:1, b:0}
+                intersectedObjects[0].object.material.color = color
+                console.log(intersectedObjects[0].object.id)
 
-                // if(object.id == 10){
-                //     alert("Click!")
-                // }
+                if(object.id == 10 && controls.isLocked){
+                    controls.unlock()
+                    makeOverlay()
+                }
 
-                // alert("You Clicked Me!")
+                console.log("You Clicked Me!")
             }
         })
 
@@ -210,7 +237,11 @@
         })
 
         canvas.addEventListener("click", (event) => {
-            controls.lock();
+            if (!controls.isLocked){
+                controls.lock();
+            }
+            else {
+            }
         });
 
         function move(){
@@ -230,14 +261,12 @@
         }
 
         function makeRoom(){
-
             var length = roomLength
             var height = roomHeight
 
             const geometry = new THREE.BoxGeometry( length, 15, 0.4 ); 
             const material = new THREE.MeshBasicMaterial( {color: 0x00ff00} );
             
-            makeWall()
             const wall1 = new THREE.Mesh( geometry, material ); 
             wall1.position.y = height;
             scene.add( wall1 );
@@ -261,8 +290,5 @@
             wall4.position.z = length
             scene.add( wall4 );
         }
-    function makeWall(geometry, material, wallNum){
-        
-    }
     </script>
 </html>

@@ -1,0 +1,10 @@
+#escapeContainer{
+    position:relative;
+    width:auto;
+    height:40rem;
+    margin: auto;
+}
+#escapeCanvas, #overlay  {
+    position: absolute;
+    left: 0px;
+}

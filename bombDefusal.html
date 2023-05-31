@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Binary Games by JCK</title>
+        <meta charset="utf-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, user-scalable=no"
+        />
+        <link rel="stylesheet" href="assets/css/main.css" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap"
+            rel="stylesheet"
+        />
+        <link rel="stylesheet" href="assets/css/B64styles.css" />
+        <noscript
+            ><link rel="stylesheet" href="assets/css/noscript.css"
+        /></noscript>
+    </head>
+    <body class="is-preload">
+        <div id="wrapper">
+            <div
+                class="navContainer"
+                style="display: flex; justify-content: space-between"
+            >
+                <a
+                    href="http://binarygames.tech/"
+                    class="button"
+                    style="margin: 2rem 0rem 0rem 0rem; font-size: 1rem"
+                    onclick="localStorage.clear()"
+                    >&#60; <span style="font-size: 0.85rem">Log Out</span></a
+                >
+                <a
+                    href="http://binarygames.tech/account.html"
+                    class="button"
+                    style="margin: 2rem 0rem 0rem 0rem; font-size: 1rem"
+                    onclick=""
+                    >Account</a
+                >
+            </div>
+            <!-- Header -->
+            <header
+                id="header"
+                class="alt"
+                style="padding: 3rem 0rem 2rem 0rem"
+            >
+                <h1><strong>Binary Games</strong></h1>
+                <p>Play individual games here!</p>
+            </header>
+
+            <!-- Nav -->
+            <nav id="nav3">
+                <ul>
+                    <li><a href="escaperoom.html">Room</a></li>
+                    <li><a href="leaderboard.html">Leaderboard</a></li>
+                    <li><a href="games.html" class="active">Games</a></li>
+                </ul>
+            </nav>
+            <nav id="nav2">
+                <ul>
+                    <li>
+                        <a href="http://binarygames.tech/binaryRacer.html"
+                            >Binary Racer</a
+                        >
+                    </li>
+                    <li>
+                        <a href="http://binarygames.tech/pipes.html">Pipes</a>
+                    </li>
+                    <li>
+                        <a href="http://binarygames.tech/logic.html">Logic</a>
+                    </li>
+                    <li>
+                        <a href="http://binarygames.tech/rgbGuesser.html"
+                            >RGB Guesser</a
+                        >
+                    </li>
+                    <li>
+                        <a href="#bombDefusal" class="active">Bomb Defusal</a>
+                    </li>
+                </ul>
+            </nav>
+
+            <!-- Main -->
+            <div id="main">
+                <!-- First Section -->
+                <section
+                    id="first"
+                    class="main special"
+                    style="padding-bottom: 1rem"
+                >
+                    <header class="major">
+                        <h2>Games</h2>
+                    </header>
+                </section>
+
+                <!-- Game code here -->
+                <div id="bombDefusal" class="gameSection">
+                    <h2>Bomb Defusal</h2>
+                    <div id="bomb" class="container" style="display: none">
+                        <div class="container2">
+                            <div class="timerContainer">
+                                <div class="timer" id="timer">12:00</div>
+                            </div>
+                            <div class="codeContainer">
+                                <div class="defusal">
+                                    <div class="screen">
+                                        DECODE THE FOLLOWING:
+                                        <br />
+                                        <span id="encodedBox"></span>
+                                    </div>
+                                    <div class="codeInput" id="codeInput">
+                                        ____
+                                    </div>
+                                </div>
+                                <div class="keypad">
+                                    <div class="row">
+                                        <div class="data" onclick="keypad('1')">
+                                            1
+                                        </div>
+                                        <div class="data" onclick="keypad('2')">
+                                            2
+                                        </div>
+                                        <div class="data" onclick="keypad('3')">
+                                            3
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="data" onclick="keypad('4')">
+                                            4
+                                        </div>
+                                        <div class="data" onclick="keypad('5')">
+                                            5
+                                        </div>
+                                        <div class="data" onclick="keypad('6')">
+                                            6
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="data" onclick="keypad('7')">
+                                            7
+                                        </div>
+                                        <div class="data" onclick="keypad('8')">
+                                            8
+                                        </div>
+                                        <div class="data" onclick="keypad('9')">
+                                            9
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div
+                                            class="data"
+                                            onclick="keypad('back')"
+                                        >
+                                            ⌫
+                                        </div>
+                                        <div class="data" onclick="keypad('0')">
+                                            0
+                                        </div>
+                                        <div
+                                            class="data"
+                                            onclick="keypad('enter')"
+                                        >
+                                            ↩
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="container3">
+                            <div class="options1" onclick="modalOpen('base64')">
+                                BASE64
+                            </div>
+                            <div class="options2" onclick="modalOpen('ascii')">
+                                ASCII
+                            </div>
+                            <div
+                                class="options3"
+                                onclick="modalOpen('notepad')"
+                            >
+                                NOTEPAD
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="container" id="startScreen">
+                        <div class="container2">
+                            <div class="timerContainer">
+                                <div class="startText">
+                                    BASE64
+                                    <br />
+                                    DEFUSAL
+                                </div>
+                            </div>
+                            <div class="difficultyList">
+                                <div
+                                    class="difficulty"
+                                    onclick="difficultySelect(10)"
+                                >
+                                    EASY (10 MIN)
+                                </div>
+                                <div
+                                    class="difficulty"
+                                    onclick="difficultySelect(5)"
+                                >
+                                    MEDIUM (5 MIN)
+                                </div>
+                                <div
+                                    class="difficulty"
+                                    onclick="difficultySelect(1)"
+                                >
+                                    HARD (1 MIN)
+                                </div>
+                            </div>
+                        </div>
+                        <div class="container3">
+                            <div
+                                class="options1"
+                                onclick="modalOpen('tutorial')"
+                            >
+                                TUTORIAL
+                            </div>
+                            <div
+                                class="options2"
+                                onclick="modalOpen('rankings')"
+                            >
+                                RANKINGS
+                            </div>
+                            <div
+                                class="options3"
+                                onclick="window.open('https://www.base64decode.org/')"
+                            >
+                                DECODER
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="container" style="display: none" id="winScreen">
+                        <div class="container2">
+                            <div class="timerContainer">
+                                <div class="startText">YOU WIN!</div>
+                            </div>
+                            <div class="codeContainer">
+                                <div class="defusal">
+                                    <div class="screen">
+                                        TIME REMAINING:
+                                        <span id="winTime"></span>
+                                    </div>
+                                    <div class="codeInput" id="winCode"></div>
+                                </div>
+                                <div class="keypad">
+                                    <div
+                                        class="restart"
+                                        onclick="restart('win')"
+                                    >
+                                        RESTART
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="container3">
+                            <div
+                                class="options1"
+                                onclick="modalOpen('tutorial')"
+                            >
+                                TUTORIAL
+                            </div>
+                            <div
+                                class="options2"
+                                onclick="modalOpen('rankings')"
+                            >
+                                RANKINGS
+                            </div>
+                            <div
+                                class="options3"
+                                onclick="window.open('https://www.base64decode.org/')"
+                            >
+                                DECODER
+                            </div>
+                        </div>
+                    </div>
+
+                    <div
+                        class="container"
+                        style="display: none"
+                        id="lossScreen"
+                    >
+                        <div class="container2">
+                            <div class="timerContainer">
+                                <div class="startText">YOU LOSE!</div>
+                            </div>
+                            <div class="codeContainer">
+                                <div class="defusal">
+                                    <div class="screen">
+                                        <span id="lossText"></span>
+                                        <span id="lossTime"></span>
+                                    </div>
+                                    <div class="codeInput" id="lossCode"></div>
+                                </div>
+                                <div class="keypad">
+                                    <div
+                                        class="restart"
+                                        onclick="restart('loss')"
+                                    >
+                                        RESTART
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="container3">
+                            <div
+                                class="options1"
+                                onclick="modalOpen('tutorial')"
+                            >
+                                TUTORIAL
+                            </div>
+                            <div
+                                class="options2"
+                                onclick="modalOpen('rankings')"
+                            >
+                                RANKINGS
+                            </div>
+                            <div
+                                class="options3"
+                                onclick="window.open('https://www.base64decode.org/')"
+                            >
+                                DECODER
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="tutorial" class="modal">
+                        <span onclick="modalClose('tutorial')" class="close"
+                            >&times;</span
+                        >
+                        <img
+                            class="modal-content"
+                            src="https://github.com/Azeem-Khan1/fastpages-project/assets/111464932/195f18a5-7848-4299-a22f-0ab85a3dbbb8"
+                        />
+                    </div>
+
+                    <div id="rankings" class="modal">
+                        <span onclick="modalClose('rankings')" class="close"
+                            >&times;</span
+                        >
+                        <div class="modal-content">
+                            <div class="leaderboardContainer">
+                                <div class="tabs">
+                                    <div
+                                        class="tab"
+                                        id="easyTab"
+                                        onclick="showTab(0)"
+                                    >
+                                        EASY
+                                    </div>
+                                    <div
+                                        class="tab"
+                                        id="mediumTab"
+                                        onclick="showTab(1)"
+                                    >
+                                        MEDIUM
+                                    </div>
+                                    <div
+                                        class="tab"
+                                        id="hardTab"
+                                        onclick="showTab(2)"
+                                    >
+                                        HARD
+                                    </div>
+                                </div>
+                                <div class="leaderboard" id="leaderboard"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="base64" class="modal">
+                        <span onclick="modalClose('base64')" class="close"
+                            >&times;</span
+                        >
+                        <img
+                            class="modal-content"
+                            src="https://github.com/Azeem-Khan1/fastpages-project/assets/111464932/50b6a1db-13ef-4403-ba76-3714a4a1363e"
+                        />
+                    </div>
+
+                    <div id="ascii" class="modal">
+                        <span onclick="modalClose('ascii')" class="close"
+                            >&times;</span
+                        >
+                        <img
+                            class="modal-content"
+                            src="https://github.com/Azeem-Khan1/fastpages-project/assets/111464932/683ec7fa-03d8-4a7c-aafd-1133b7ccc7af"
+                        />
+                    </div>
+
+                    <div id="notepad" class="modal">
+                        <span onclick="modalClose('notepad')" class="close"
+                            >&times;</span
+                        >
+                        <div class="modal-content">
+                            <textarea cols="100" rows="25"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <footer id="footer">
+                <header
+                    id="header"
+                    class="alt"
+                    style="margin: 0px; padding: 0px"
+                >
+                    <span
+                        class="logo"
+                        style="
+                            width: 100%;
+                            padding-bottom: 20px;
+                            margin: 40px auto;
+                        "
+                        ><img
+                            src="https://user-images.githubusercontent.com/111464932/233187334-7ad51d02-50ad-46cc-b634-aa8359a152b3.png"
+                            alt=""
+                            style="width: 175px"
+                    /></span>
+                </header>
+                <section>
+                    <h2>Created by Team JCK</h2>
+                    <p>
+                        2022-2023 Trimester 3 final project. <br /><br />
+                        Contributors: <br />
+                        Aiden Huynh, Toby Leeder, Azeem Khan, Dash Penning, Ekam
+                        Kaire, Nathan Capule, Colin Mills, Ishi Singh.
+                    </p>
+                    <div
+                        class="navContainer"
+                        style="
+                            display: flex;
+                            justify-content: center;
+                            margin: 0.75rem 0rem 0rem 0rem;
+                        "
+                    >
+                        <a
+                            href="http://scrum.binarygames.tech/"
+                            class="button"
+                            style="
+                                margin: 0rem 2rem 0rem 0rem;
+                                font-size: 0.75rem;
+                            "
+                            onclick=""
+                            target="_blank"
+                            >Scrum Board</a
+                        >
+                        <a
+                            href="http://calendar.binarygames.tech"
+                            class="button"
+                            style="
+                                margin: 0rem 0rem 2rem 0rem;
+                                font-size: 0.75rem;
+                            "
+                            onclick=""
+                            target="_blank"
+                            >Calendar</a
+                        >
+                        <a
+                            href="http://backend.binarygames.tech"
+                            class="button"
+                            style="
+                                margin: 0rem 0rem 2rem 2rem;
+                                font-size: 0.75rem;
+                            "
+                            onclick=""
+                            target="_blank"
+                            >Backend</a
+                        >
+                    </div>
+                    <ul class="icons">
+                        <li>
+                            <a
+                                href="https://github.com/toby-leeder/binarygames-frontend"
+                                class="icon brands fa-github alt"
+                                target="_blank"
+                                ><span class="label">GitHub</span></a
+                            >
+                        </li>
+                    </ul>
+                </section>
+                <p class="copyright">
+                    Binary Games by JCK. Original template by:
+                    <a href="https://html5up.net">HTML5 UP</a>.
+                </p>
+            </footer>
+        </div>
+
+        <!-- Scripts -->
+        <script src="assets/js/jquery.min.js"></script>
+        <script src="assets/js/jquery.scrollex.min.js"></script>
+        <script src="assets/js/jquery.scrolly.min.js"></script>
+        <script src="assets/js/browser.min.js"></script>
+        <script src="assets/js/breakpoints.min.js"></script>
+        <script src="assets/js/util.js"></script>
+        <script src="assets/js/main.js"></script>
+        <script src="assets/js/stopCheating.js"></script>
+        <script src="assets/js/B64script.js"></script>
+    </body>
+</html>

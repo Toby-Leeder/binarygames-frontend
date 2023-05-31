@@ -7,8 +7,14 @@
             name="viewport"
             content="width=device-width, initial-scale=1, user-scalable=no"
         />
-        <link rel="stylesheet" href="assets/css/pipes.css" />
         <link rel="stylesheet" href="assets/css/main.css" />
+        <link rel="preconnect" href="https://fonts.googleapis.com/" />
+        <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap"
+            rel="stylesheet"
+        />
+        <link rel="stylesheet" href="assets/css/racerStyles.css" />
         <noscript
             ><link rel="stylesheet" href="assets/css/noscript.css"
         /></noscript>
@@ -55,12 +61,10 @@
             <nav id="nav2">
                 <ul>
                     <li>
-                        <a href="http://binarygames.tech/binaryRacer.html"
-                            >Binary Racer</a
-                        >
+                        <a href="#binaryRacer" class="active">Binary Racer</a>
                     </li>
                     <li>
-                        <a href="#pipes" class="active">Pipes</a>
+                        <a href="http://binarygames.tech/pipes.html">Pipes</a>
                     </li>
                     <li>
                         <a href="http://binarygames.tech/logic.html">Logic</a>
@@ -92,67 +96,108 @@
                 </section>
 
                 <!-- Game code here -->
-                <div id="pipes" class="gameSection">
-                    <h2>Pipes Operator</h2>
-                    <div class="wrapper">
-                        <div class="top">
-                            <p class="question-text">
-                                <span class="question"></span>
-                            </p>
-                            <p id="mushroom" class="sprite"></p>
-                        </div>
-                        <div class="question-container">
-                            <div class="mushroom"></div>
-                        </div>
-                        <div class="pipes-container">
-                            <div class="pipes-image"></div>
-                        </div>
-                        <div class="cheese"></div>
-                        <div class="popup-container">
-                            <div class="popup">
-                                <p class="popup-message">
-                                    You must answer these questions to help
-                                    Shroomy (the mushroom) get to his precious
-                                    cheese!
-                                </p>
-                                <button class="popup-button">Got it!</button>
+                <div id="binaryRacer" class="gameSection">
+                    <h2>Binary Racer</h2>
+                    <div>
+                        <br>
+                        <!-- the div for the entire game starts here...-->
+                        <div class="wrapper">
+                            <div class="splash">
+                                <h1 class="splash-header">
+                                    click here to start
+                                </h1>
+                            </div>
+                            <div class="traffic-light" id="traffic-light">
+                                <div class="light red"></div>
+                                <div class="light yellow"></div>
+                                <div class="light green"></div>
+                            </div>
+                            <div
+                                class="end-screen"
+                                id="end-screen"
+                                style="display: none"
+                            >
+                                <p style="text-align: center">Time taken: <span id="end-time"></span></p>
+                            </div>
+                            <div id="game">
+                                <div class="top-container">
+                                    <p></p>
+                                    <div class="questions-completed">
+                                        QUESTIONS COMPLETED:
+                                    </div>
+                                    <div
+                                        id="questions"
+                                        class="questions-completed"
+                                    >
+                                        0
+                                    </div>
+                                    <div class="questions-completed">/ 10</div>
+                                    <div class="time-container">
+                                        <div class="time-elapsed">TIME :</div>
+                                        <div class="time-elapsed" id="seconds">
+                                            00 :
+                                        </div>
+                                        <div class="time-elapsed" id="mins">
+                                            00
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="progressbar">
+                                    <div class="inner"></div>
+                                </div>
+                                <div class="image-container">
+                                    <img src="images/BRG_road.png" alt="road" />
+                                    <div class="lines-body"></div>
+                                    <canvas
+                                        id="spriteContainer"
+                                        class="carContainer"
+                                    >
+                                        <img
+                                            class="car1"
+                                            id="car"
+                                            src="images/carSprites.png"
+                                        />
+                                    </canvas>
+                                </div>
+                                <div class="bottom-UI">
+                                    <div
+                                        class="questions-given"
+                                        id="questions-container"
+                                    >
+                                        QUESTIONS HERE
+                                    </div>
+                                    <div class="button-container">
+                                        <button
+                                            class="answer-button1"
+                                            id="answer-button1"
+                                        >
+                                            -
+                                        </button>
+                                        <button
+                                            class="answer-button2"
+                                            id="answer-button2"
+                                        >
+                                            -
+                                        </button>
+                                        <button
+                                            class="answer-button3"
+                                            id="answer-button3"
+                                        >
+                                            -
+                                        </button>
+                                        <button
+                                            class="answer-button4"
+                                            id="answer-button4"
+                                        >
+                                            -
+                                        </button>
+                                    </div>
+                                </div>
+                                <div id="progressbar"></div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="quiz-container">
-                    <ul class="options">
-                        <li class="option" id="button1">+</li>
-                        <li class="option" id="button2">-</li>
-                        <li class="option" id="button3">*</li>
-                        <li class="option" id="button4">/</li>
-                        <li class="option" id="button5">%</li>
-                        <li class="option" id="button6">++</li>
-                        <li class="option" id="button7">--</li>
-                        <li class="option" id="button8">=</li>
-                        <li class="option" id="button9">+=</li>
-                        <li class="option" id="button10">-=</li>
-                        <li class="option" id="button11">*=</li>
-                        <li class="option" id="button12">/=</li>
-                        <li class="option" id="button13">%=</li>
-                        <li class="option" id="button14">==</li>
-                        <li class="option" id="button15">!=</li>
-                        <li class="option" id="button16">></li>
-                        <li class="option" id="button17"><</li>
-                        <li class="option" id="button18">>=</li>
-                        <li class="option" id="button19"><=</li>
-                        <li class="option" id="button20">&&</li>
-                        <li class="option" id="button21">||</li>
-                        <li class="option" id="button22">!</li>
-                        <li class="option" id="button23">&</li>
-                        <li class="option" id="button24">|</li>
-                        <li class="option" id="button25">^</li>
-                        <li class="option" id="button26">~</li>
-                        <li class="option" id="button27"><<</li>
-                        <li class="option" id="button28">>></li>
-                    </ul>
-                </div>
-                <div></div>
             </div>
 
             <!-- Footer -->
@@ -252,6 +297,6 @@
         <script src="assets/js/util.js"></script>
         <script src="assets/js/main.js"></script>
         <script src="assets/js/stopCheating.js"></script>
-        <script src="assets/js/pipes.js"></script>
+        <script src="assets/js/racer-script.js"></script>
     </body>
 </html>

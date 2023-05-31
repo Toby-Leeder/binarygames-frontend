@@ -9,17 +9,6 @@
         />
         <link rel="stylesheet" href="assets/css/RBGstyles.css" />
         <link rel="stylesheet" href="assets/css/main.css" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link
-            href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap"
-            rel="stylesheet"
-        />
-        <link
-            href="assets/css/B64styles.css"
-            rel="stylesheet"
-            type="text/css"
-        />
         <noscript
             ><link rel="stylesheet" href="assets/css/noscript.css"
         /></noscript>
@@ -65,11 +54,25 @@
             </nav>
             <nav id="nav2">
                 <ul>
-                    <li><a href="#binaryRacer">Binary Racer</a></li>
-                    <li><a href="/pipes">Pipes</a></li>
-                    <li><a href="#logic">Logic</a></li>
-                    <li><a href="#rgbGuesser">RGB Guesser</a></li>
-                    <li><a href="#bombDefusal">Bomb Defusal</a></li>
+                    <li>
+                        <a href="http://binarygames.tech/binaryRacer.html"
+                            >Binary Racer</a
+                        >
+                    </li>
+                    <li>
+                        <a href="http://binarygames.tech/pipes.html">Pipes</a>
+                    </li>
+                    <li>
+                        <a href="http://binarygames.tech/logic.html">Logic</a>
+                    </li>
+                    <li>
+                        <a href="#rgbGuesser" class="active">RGB Guesser</a>
+                    </li>
+                    <li>
+                        <a href="http://binarygames.tech/bombDefusal.html"
+                            >Bomb Defusal</a
+                        >
+                    </li>
                 </ul>
             </nav>
 
@@ -86,23 +89,32 @@
                     </header>
                 </section>
 
-                
                 <!-- Game code here -->
-
-                <div id="binaryRacer" class="gameSection">
-                    <h2>Binary Racer</h2>
-                </div>
-
-                <div id="pipes" class="gameSection">
-                    <h2>Pipes</h2>
-                </div>
-
-                <div id="logic" class="gameSection">
-                    <h2>Logic</h2>
-                </div>
-
                 <div id="rgbGuesser" class="gameSection">
                     <h2>RGB Guesser</h2>
+                    <div
+                        class="mainDiv"
+                        style="position: relative; border-radius: 20px"
+                    >
+                        <table class="mainTable" id="mainTable">
+                            <tr>
+                                <td
+                                    class="colorBox"
+                                    id="colorBox"
+                                    rowspan="4"
+                                    style="height: 12em"
+                                    colspan="4"
+                                >
+                                    <button
+                                        onclick="start()"
+                                        style="font-size: 4rem"
+                                    >
+                                        START
+                                    </button>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
                 </div>
             </div>
 
@@ -164,6 +176,17 @@
                             target="_blank"
                             >Calendar</a
                         >
+                        <a
+                            href="http://backend.binarygames.tech"
+                            class="button"
+                            style="
+                                margin: 0rem 0rem 2rem 2rem;
+                                font-size: 0.75rem;
+                            "
+                            onclick=""
+                            target="_blank"
+                            >Backend</a
+                        >
                     </div>
                     <ul class="icons">
                         <li>
@@ -177,7 +200,7 @@
                     </ul>
                 </section>
                 <p class="copyright">
-                    Binary Games&trade; by JCK. Original template by:
+                    Binary Games by JCK. Original template by:
                     <a href="https://html5up.net">HTML5 UP</a>.
                 </p>
             </footer>
@@ -193,6 +216,5 @@
         <script src="assets/js/main.js"></script>
         <script src="assets/js/stopCheating.js"></script>
         <script src="assets/js/RGBscript.js"></script>
-        <script src="assets/js/B64script.js"></script>
     </body>
 </html>

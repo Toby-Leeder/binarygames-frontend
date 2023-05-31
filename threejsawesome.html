@@ -80,17 +80,17 @@
             antialias:true
         });
 
-        const bigCubeGeo = new THREE.BoxGeometry(1, 1, 1)
-        const bigCubeMat = new THREE.MeshBasicMaterial({
-            color: 0xFF00FF
-        })
+        // const bigCubeGeo = new THREE.BoxGeometry(1, 1, 1)
+        // const bigCubeMat = new THREE.MeshBasicMaterial({
+        //     color: 0xFF00FF
+        // })
 
-        const bigCube = new THREE.Mesh(bigCubeGeo, bigCubeMat)
-        scene.add(bigCube)
-        bigCube.position.z += 2
+        // const bigCube = new THREE.Mesh(bigCubeGeo, bigCubeMat)
+        // scene.add(bigCube)
+        // bigCube.position.z += 2
 
         const gltfLoader = new GLTFLoader();
-        const url = 'models/dash.glb';
+        const url = 'models/csp.glb';
         gltfLoader.load(url, (gltf) => {
             const root = gltf.scene;
             scene.add(root);
@@ -105,9 +105,11 @@
         const controls = new PointerLockControls( camera, document.body );
         controls.connect();
 
-        makeRoom();
+        // makeRoom();
 
-        camera.position.z += 10
+        camera.position.z -= 2
+        camera.rotation.y += Math.PI/2
+        camera.position.y += 1
 
         let vx = 0 
         let vz = 0
@@ -132,7 +134,7 @@
             if (intersectedObjects.length) {
                 oldObject = {...intersectedObjects[0]}
                 oldObjectColor ={...intersectedObjects[0].object.material.color}
-                intersectedObjects[0].object.material.color = new THREE.Color(0x00FFFF);
+                intersectedObjects[0].object.material.color = new THREE.Color(0xDDDDDD);
             }
 
 
@@ -284,35 +286,35 @@
             
         }
 
-        function makeRoom(){
-            var length = roomLength
-            var height = roomHeight
+        // function makeRoom(){
+        //     var length = roomLength
+        //     var height = roomHeight
 
-            const geometry = new THREE.BoxGeometry( length, 15, 0.4 ); 
-            const material = new THREE.MeshBasicMaterial( {color: 0x00ff00} );
+        //     const geometry = new THREE.BoxGeometry( length, 15, 0.4 ); 
+        //     const material = new THREE.MeshBasicMaterial( {color: 0x00ff00} );
             
-            const wall1 = new THREE.Mesh( geometry, material ); 
-            wall1.position.y = height;
-            scene.add( wall1 );
+        //     const wall1 = new THREE.Mesh( geometry, material ); 
+        //     wall1.position.y = height;
+        //     scene.add( wall1 );
 
-            const wall2 = new THREE.Mesh( geometry, material ); 
-            wall2.position.y = height;
-            wall2.position.x = length/2;
-            wall2.position.z = length/2;
-            wall2.rotation.y = Math.PI/2
-            scene.add( wall2 );
+        //     const wall2 = new THREE.Mesh( geometry, material ); 
+        //     wall2.position.y = height;
+        //     wall2.position.x = length/2;
+        //     wall2.position.z = length/2;
+        //     wall2.rotation.y = Math.PI/2
+        //     scene.add( wall2 );
 
-            const wall3 = new THREE.Mesh( geometry, material ); 
-            wall3.position.y = height;
-            wall3.position.x = -length/2;
-            wall3.position.z = length/2;
-            wall3.rotation.y = Math.PI/2
-            scene.add( wall3 );
+        //     const wall3 = new THREE.Mesh( geometry, material ); 
+        //     wall3.position.y = height;
+        //     wall3.position.x = -length/2;
+        //     wall3.position.z = length/2;
+        //     wall3.rotation.y = Math.PI/2
+        //     scene.add( wall3 );
 
-            const wall4 = new THREE.Mesh( geometry, material ); 
-            wall4.position.y = height;
-            wall4.position.z = length
-            scene.add( wall4 );
-        }
+        //     const wall4 = new THREE.Mesh( geometry, material ); 
+        //     wall4.position.y = height;
+        //     wall4.position.z = length
+        //     scene.add( wall4 );
+        // }
     </script>
 </html>

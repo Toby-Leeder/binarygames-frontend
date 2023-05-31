@@ -178,5 +178,5 @@ const goHomeButton = document.createElement('a');
 goHomeButton.href = 'https://binarygames.tech/escaperoom.html';
 goHomeButton.innerText = 'Go home';
 goHomeButton.classList.add('option');
-goHomeButton.style.textAlign('center');
+goHomeButton.style.textAlign = 'center';
 quizContainer.appendChild(goHomeButton);

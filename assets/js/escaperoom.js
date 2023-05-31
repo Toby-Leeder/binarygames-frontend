@@ -24,7 +24,6 @@ function makeOverlay(){
     popUp.style.maxWidth = "50%"
     popUp.style.maxHeight = "50%"
     popUp.style.backgroundColor = "red"
-    // popUp.innerHTML = binaryRacer
     popUp.style.top = `50%`
     popUp.style.left = `50%`;
     document.getElementById("escapeContainer").appendChild(popUp);
@@ -52,15 +51,6 @@ const renderer = new THREE.WebGLRenderer({
 
 renderer.setPixelRatio(window.devicePixelRatio);
 
-// const bigCubeGeo = new THREE.BoxGeometry(1, 1, 1)
-// const bigCubeMat = new THREE.MeshBasicMaterial({
-//     color: 0xFF00FF
-// })
-
-// const bigCube = new THREE.Mesh(bigCubeGeo, bigCubeMat)
-// scene.add(bigCube)
-// bigCube.position.z += 2
-
 const gltfLoader = new GLTFLoader();
 const url = 'models/csp.glb';
 gltfLoader.load(url, (gltf) => {
@@ -72,19 +62,13 @@ const light = new THREE.AmbientLight(0xFFFFFF, 1);
 scene.add(light);   
 
 const raycaster = new THREE.Raycaster()
-let pickPosition = {x:0, y:0}
 
 const controls = new PointerLockControls( camera, document.body );
 controls.connect();
 
-// makeRoom();
-
 camera.position.z -= 2
 camera.rotation.y += Math.PI/2
 camera.position.y += 1
-
-let vx = 0 
-let vz = 0
 
 let pos = {x: -10000, y:-10000}
 
@@ -94,8 +78,6 @@ let oldObject2
 let oldObjectColor2
 
 function render(){
-    camera.position.x += vx
-    camera.position.z += vz
 
     raycaster.setFromCamera({x: 0, y:0}, camera);
     const intersectedObjects = raycaster.intersectObjects(scene.children);
@@ -103,7 +85,7 @@ function render(){
         oldObject.object.material.color = oldObjectColor
         oldObject = undefined
     }
-    if (intersectedObjects.length) {
+    if (intersectedObjects.length && intersectedObjectCheck(intersectedObjects[0].object.id)) {
         oldObject = {...intersectedObjects[0]}
         oldObjectColor ={...intersectedObjects[0].object.material.color}
         intersectedObjects[0].object.material.color = new THREE.Color(0xDDDDDD);
@@ -122,53 +104,20 @@ requestAnimationFrame(render)
 
 renderer.render(scene, camera)
 
-
-document.addEventListener("keydown", (event) => {
-    if(event.keyCode == 37){
-        vx = -0.1
-    } else if(event.keyCode == 39){
-        vx = 0.1
-    } else if(event.keyCode == 38){
-        vz = -0.1
-    } else if(event.keyCode == 40){
-        vz = 0.1
+let raycastIds = [58, 32, 45, 50, 46]
+function intersectedObjectCheck(id){
+    if (raycastIds.includes(id)){
+        return true
     }
-
-    renderer.render(scene, camera)
-})
-document.addEventListener("keyup", () => {
-    vx = 0
-    vz = 0
-})
-
-function setPos(event){
-    const rect = canvas.getBoundingClientRect();
-    pos = {
-        x: ((event.clientX - rect.left) / rect.width) * 2 - 1,
-        y: ((event.clientY - rect.top) / rect.height) * -2 + 1
+    else{
+        return false
     }
 }
-
-function clearPos(){
-    pos = {
-        x: -10000,
-        y: -10000
-    }
-}
-
-// window.addEventListener('mousemove', setPos);
-// window.addEventListener('mouseout', clearPos);
-// window.addEventListener('mouseleave', clearPos);
 
 window.addEventListener("click", (event) => {
     const rect = canvas.getBoundingClientRect();
     console.log(scene)
 
-
-    // raycaster.setFromCamera({
-    //     x: ((event.clientX - rect.left) / rect.width) * 2 - 1,
-    //     y: ((event.clientY - rect.top) / rect.height) * -2 + 1
-    // }, camera);            
     raycaster.setFromCamera({
         x: 0,
         y: 0
@@ -201,7 +150,6 @@ var forward = false;
 var back = false;
 var left = false;
 var right = false;
-var unlocked = true;
 document.addEventListener("keydown", (event) => {
     switch (event.code) {
         case 'KeyW':
@@ -276,5 +224,5 @@ function scrollDisable() {
     
 function scrollEnable() {
     window.onscroll = function() {};
-    }
+}
     

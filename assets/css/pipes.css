@@ -139,15 +139,15 @@ cursor: pointer;
 }
 
 .cheese {
-    position: fixed;
+    position: absolute;
     top: 73%;
     left: 17%;
-    height: 5%;
-    width: 5%;
+    height: 100px;
+    width: 100px;
     background-image: url('images/cheese.png');
     background-repeat: no-repeat;
     background-size: contain;
-    z-index: 4;
+    z-index: 6;
 }
 
 .pipes-image {
@@ -156,7 +156,7 @@ cursor: pointer;
     background-size: cover;
     width: 100%;
     height: 100%;
-    z-index: 6;
+    z-index: 7;
 }
 
 .pipes-container {
@@ -165,5 +165,5 @@ cursor: pointer;
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: 6;
+  z-index: 7;
 }

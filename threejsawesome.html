@@ -4,34 +4,50 @@
     </head>
     <body>
         <div id="container">
-            <canvas id="c" width="600" height="600"></canvas>
-            <img id="overlay">
-            <div id="popUp"></div>
+            <canvas id="c" width="600" height="600" ></canvas>
         </div>
     </body>
     <style>
         #container{
             position:relative;
         }
-        #c, #overlay #popUp {
+        #c, #overlay  {
             position: absolute;
         }
     </style>
+    <link rel="stylesheet" href="assets/css/racerStyles.css">
+    <script src="../assets/js/gameStrings.js"></script>
+    <script src="assets/js/racer-script.js"></script>
     <script>
         const canvas = document.getElementById("c")
-        const overlay = document.getElementById("overlay")
-        var left = canvas.width/2 - canvas.width/50
-        overlay.style.top = `${canvas.height/2}px`
-        overlay.style.left = `${left}px`;
-        overlay.src = "../images/cursor.png";
-        overlay.style.maxWidth = `${canvas.height/20}px`
+        makeCursor()
+
+        function makeCursor(){
+            if(document.getElementById("overlay")){
+                document.getElementById("overlay").remove();
+            }
+            var overlay = document.createElement("img")
+            var left = canvas.width/2 - canvas.width/50
+            overlay.id = "overlay"
+            overlay.style.top = `${canvas.height/2}px`
+            overlay.style.left = `${left}px`;
+            overlay.src = "../images/cursor.png";
+            overlay.style.maxWidth = `${canvas.height/20}px`
+            document.getElementById("container").appendChild(overlay);
+        }
 
         function makeOverlay(){
-            var popUp = document.getElementById("popUp")
+            document.getElementById("overlay").remove();
+            var popUp = document.createElement("div")
+            var left = canvas.width/2 - canvas.width/3
+            popUp.id = "overlay"
             popUp.style.maxWidth = "200px"
+            popUp.style.maxHeight = "200px"
             popUp.style.backgroundColor = "red"
-            popUp.style.maxWidth = "200px"
-            console.log("running")
+            // popUp.innerHTML = binaryRacer
+            popUp.style.top = `${canvas.height/2}px`
+            popUp.style.left = `${left}px`;
+            document.getElementById("container").appendChild(popUp);
         }
     </script>
     <script type="importmap">
@@ -239,6 +255,7 @@
 
         canvas.addEventListener("click", (event) => {
             if (!controls.isLocked){
+                makeCursor();
                 controls.lock();
             }
             else {

@@ -1,4 +1,7 @@
 const canvas = document.getElementById("escapeCanvas")
+console.log(canvas.style.height)
+canvas.width = "1980"
+canvas.height = "1080"
 makeCursor()
 
 function makeCursor(){

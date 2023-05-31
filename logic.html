@@ -7,7 +7,6 @@
             name="viewport"
             content="width=device-width, initial-scale=1, user-scalable=no"
         />
-        <link rel="stylesheet" href="assets/css/pipes.css" />
         <link rel="stylesheet" href="assets/css/main.css" />
         <noscript
             ><link rel="stylesheet" href="assets/css/noscript.css"
@@ -60,15 +59,13 @@
                         >
                     </li>
                     <li>
-                        <a href="#pipes" class="active">Pipes</a>
+                        <a href="http://binarygames.tech/pipes.html">Pipes</a>
                     </li>
                     <li>
-                        <a href="http://binarygames.tech/logic.html">Logic</a>
+                        <a href="#logic" class="active">Logic</a>
                     </li>
                     <li>
-                        <a href="http://binarygames.tech/rgbGuesser.html"
-                            >RGB Guesser</a
-                        >
+                        <a href="http://binarygames.tech/rgbGuesser.html">RGB Guesser</a>
                     </li>
                     <li>
                         <a href="http://binarygames.tech/bombDefusal.html"
@@ -92,67 +89,144 @@
                 </section>
 
                 <!-- Game code here -->
-                <div id="pipes" class="gameSection">
-                    <h2>Pipes Operator</h2>
-                    <div class="wrapper">
-                        <div class="top">
-                            <p class="question-text">
-                                <span class="question"></span>
-                            </p>
-                            <p id="mushroom" class="sprite"></p>
-                        </div>
-                        <div class="question-container">
-                            <div class="mushroom"></div>
-                        </div>
-                        <div class="pipes-container">
-                            <div class="pipes-image"></div>
-                        </div>
-                        <div class="cheese"></div>
-                        <div class="popup-container">
-                            <div class="popup">
-                                <p class="popup-message">
-                                    You must answer these questions to help
-                                    Shroomy (the mushroom) get to his precious
-                                    cheese!
-                                </p>
-                                <button class="popup-button">Got it!</button>
+                <div id="logic" class="gameSection">
+                    <h2>Logic Gates</h2>
+                    <div
+                        style="
+                            position: relative;
+                            width: 95%;
+                            left: 2.5%;
+                            display: flex;
+                            justify-content: center;
+                            align-items: flex-start;
+                            user-select: none;
+                        "
+                    >
+                        <div
+                            id="space"
+                            style="
+                                height: 80vh;
+                                width: 80vw;
+                                border: 2px;
+                                border-color: black;
+                                border-style: solid;
+                                user-select: none;
+                            "
+                        >
+                            <div
+                                id="playspace"
+                                style="
+                                    background-color: black;
+                                    height: 100%;
+                                    width: 100%;
+                                    display: flex;
+                                    align-items: center;
+                                    user-select: none;
+                                "
+                                id="target"
+                            >
+                                <div
+                                    id="getBar"
+                                    style="
+                                        background-color: grey;
+                                        height: 100%;
+                                        width: 20%;
+                                        display: flex;
+                                        flex-direction: column;
+                                        justify-content: space-around;
+                                        align-items: center;
+                                        user-select: none;
+                                    "
+                                >
+                                    <div class="and gateDiv" id="anddiv">
+                                        <canvas
+                                            class="and"
+                                            id="ANDgate"
+                                            height="80px"
+                                            width="80px"
+                                        ></canvas>
+                                        <canvas
+                                            class="and"
+                                            id="ANDgate1"
+                                            height="80px"
+                                            width="80px"
+                                        ></canvas>
+                                        <canvas
+                                            class="and"
+                                            id="ANDgate2"
+                                            height="80px"
+                                            width="80px"
+                                        ></canvas>
+                                    </div>
+                                    <div class="or gateDiv" id="ordiv">
+                                        <canvas
+                                            class="or"
+                                            id="ORgate"
+                                            height="80px"
+                                            width="80px"
+                                        ></canvas>
+                                        <canvas
+                                            class="or"
+                                            id="ORgate1"
+                                            height="80px"
+                                            width="80px"
+                                        ></canvas>
+                                    </div>
+                                    <div class="nand gateDiv" id="nanddiv">
+                                        <canvas
+                                            class="nand"
+                                            id="NANDgate"
+                                            height="80px"
+                                            width="80px"
+                                        ></canvas>
+                                    </div>
+                                    <div class="nor gateDiv" id="nordiv">
+                                        <canvas
+                                            class="nor"
+                                            id="NORgate"
+                                            height="80px"
+                                            width="80px"
+                                        ></canvas>
+                                        <canvas
+                                            class="nor"
+                                            id="NORgate1"
+                                            height="80px"
+                                            width="80px"
+                                        ></canvas>
+                                    </div>
+                                    <div class="xor gateDiv" id="xordiv">
+                                        <canvas
+                                            class="xor"
+                                            id="XORgate"
+                                            height="80px"
+                                            width="80px"
+                                        ></canvas>
+                                    </div>
+                                </div>
+                                <div id="canvasDiv" class="tempDiv">
+                                    <canvas id="firstCanvas"></canvas>
+                                </div>
+                                <!-- <div class="tempDiv">
+                                    <canvas id="secondCanvas"></canvas>
+                                </div>
+                                <div class="tempDiv">
+                                    <canvas id="thirdCanvas"></canvas>
+                                </div>
+                                <div class="tempDiv">
+            
+                                </div> -->
                             </div>
+                        </div>
+                        <div style="display: flex; flex-direction: column">
+                            <button id="checkButton">Check</button>
+                            <img
+                                id="map"
+                                src="images/map.png"
+                                style="width: 80px"
+                            />
                         </div>
                     </div>
                 </div>
-                <div class="quiz-container">
-                    <ul class="options">
-                        <li class="option" id="button1">+</li>
-                        <li class="option" id="button2">-</li>
-                        <li class="option" id="button3">*</li>
-                        <li class="option" id="button4">/</li>
-                        <li class="option" id="button5">%</li>
-                        <li class="option" id="button6">++</li>
-                        <li class="option" id="button7">--</li>
-                        <li class="option" id="button8">=</li>
-                        <li class="option" id="button9">+=</li>
-                        <li class="option" id="button10">-=</li>
-                        <li class="option" id="button11">*=</li>
-                        <li class="option" id="button12">/=</li>
-                        <li class="option" id="button13">%=</li>
-                        <li class="option" id="button14">==</li>
-                        <li class="option" id="button15">!=</li>
-                        <li class="option" id="button16">></li>
-                        <li class="option" id="button17"><</li>
-                        <li class="option" id="button18">>=</li>
-                        <li class="option" id="button19"><=</li>
-                        <li class="option" id="button20">&&</li>
-                        <li class="option" id="button21">||</li>
-                        <li class="option" id="button22">!</li>
-                        <li class="option" id="button23">&</li>
-                        <li class="option" id="button24">|</li>
-                        <li class="option" id="button25">^</li>
-                        <li class="option" id="button26">~</li>
-                        <li class="option" id="button27"><<</li>
-                        <li class="option" id="button28">>></li>
-                    </ul>
-                </div>
-                <div></div>
             </div>
 
             <!-- Footer -->
@@ -252,6 +326,6 @@
         <script src="assets/js/util.js"></script>
         <script src="assets/js/main.js"></script>
         <script src="assets/js/stopCheating.js"></script>
-        <script src="assets/js/pipes.js"></script>
+        <script src="assets/js/logicGates.js"></script>
     </body>
 </html>

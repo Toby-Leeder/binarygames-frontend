@@ -1,8 +1,8 @@
-html {
-    background: linear-gradient(to bottom, rgb(65, 63, 65), rgb(36, 34, 36));
-}
-
 .wrapper {
+    position: relative !important;
+    width: 90%;
+    left: 5%;
+    right: 5%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -12,7 +12,7 @@ html {
     width: 100%;
     text-align: left;
     font-size: 30px;
-    font-family: "Orbitron", sans-serif;
+    font-family: monospace;
     margin-top: 30px;
     color: white;
 }
@@ -20,21 +20,20 @@ html {
 .questions-completed {
     display: inline-block;
     position: relative;
-    font-size: .7em;
-    font-family: "Orbitron", sans-serif;
+    font-size: 20px;
+    font-family: monospace;
     margin-top: 25px;
     color: white;
     vertical-align: left;
 }
 
 .questions-given {
-    display: inline-block;
+    display: block;
     position: relative;
-    font-size: 1.5em;
-    font-family: "Orbitron", sans-serif;
-    margin-top: -20px;
+    font-size: 20px;
+    font-family: monospace;
+    margin-top: -4rem;
     color: white;
-    vertical-align: left;
 }
 
 .time-container {
@@ -48,8 +47,8 @@ html {
     display: inline-block;
     position: relative;
     padding: 0px;
-    font-size: .7em;
-    font-family: "Orbitron", sans-serif;
+    font-size: 20px;
+    font-family: monospace;
     margin-top: -10px;
     color: white;
     vertical-align: right;
@@ -134,22 +133,20 @@ img {
 }
 
 .button-container {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: flex-end;
-    margin-top: -10px;
-    width: 400px;
-    margin-left: 850px;
-    margin-bottom: 100px;
+    margin-top: 2rem;
+    display: block;
+    position: relative;
+    width: 100% !important;
+    
 }
 
 .answer-button1 {
-    background-color: rgb(11, 83, 148);
-    color: white;
+    background-color: rgb(11, 83, 148) !important;
+    color: white !important;
     border: none;
     text-align: center;
-    font-family: "Orbitron", sans-serif;
-    font-size: 1.9em;
+    font-family: monospace;
+    font-size: 30px;
     padding: 10px 20px;
     border-radius: 4px;
     margin-bottom: 10px;
@@ -158,45 +155,44 @@ img {
 }
 
 .answer-button1:hover {
-    background-color: rgb(7, 59, 105);
+    background-color: rgb(7, 59, 105) !important;
 }
 
 .answer-button1:active {
-    background-color: rgb(7, 59, 105);
+    background-color: rgb(7, 59, 105) !important;
     transform: translateY(4px);
 }
 
 .answer-button2 {
-    background-color: rgb(241, 194, 50);
-    color: white;
+    background-color: rgb(241, 194, 50) !important;
+    color: black !important;
     border: none;
     text-align: center;
-    font-family: "Orbitron", sans-serif;
-    font-size: 1.9em;
+    font-family: monospace;
+    font-size: 30px;
     padding: 10px 20px;
     border-radius: 4px;
     margin-bottom: 10px;
-    margin-left: 10px;
     width: 150px;
     cursor: pointer;
 }
 
 .answer-button2:hover {
-    background-color: rgb(232, 184, 10);
+    background-color: rgb(232, 184, 10) !important;
 }
 
 .answer-button2:active {
-    background-color: rgb(232, 184, 10);
+    background-color: rgb(232, 184, 10) !important;
     transform: translateY(4px);
 }
 
 .answer-button3 {
-    background-color: rgb(204, 0, 0);
-    color: white;
+    background-color: rgb(204, 0, 0) !important;
+    color: white !important;
     border: none;
     text-align: center;
-    font-family: "Orbitron", sans-serif;
-    font-size: 1.9em;
+    font-family: monospace;
+    font-size: 30px;
     padding: 10px 20px;
     border-radius: 4px;
     margin-bottom: 10px;
@@ -205,42 +201,41 @@ img {
 }
 
 .answer-button3:hover {
-    background-color: rgb(160, 9, 9);
+    background-color: rgb(160, 9, 9) !important;
 }
 
 .answer-button3:active {
-    background-color: rgb(160, 9, 9);
+    background-color: rgb(160, 9, 9) !important;
     transform: translateY(4px);
 }
 
 .answer-button4 {
-    background-color: rgb(106, 168, 79);
-    color: white;
+    background-color: rgb(106, 168, 79) !important;
+    color: white !important;
     border: none;
     text-align: center;
-    font-family: "Orbitron", sans-serif;
-    font-size: 1.9em;
+    font-family: monospace;
+    font-size: 30px;
     padding: 10px 20px;
     border-radius: 4px;
     margin-bottom: 10px;
-    margin-left: 10px;
     width: 150px;
     cursor: pointer;
 }
 
 .answer-button4:hover {
-    background-color: rgb(68, 148, 33);
+    background-color: rgb(68, 148, 33) !important;
 }
 
 .answer-button4:active {
-    background-color: rgb(68, 148, 33);
+    background-color: rgb(68, 148, 33) !important;
     transform: translateY(4px);
 }
 
 .menu {
-    display: flex;
+    display: flex !important;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-between !important;
     background-color: #000;
     color: white;
     height: 75px;
@@ -252,46 +247,46 @@ img {
 }
 
 .menu-title {
-    font-size: 2.5em;
-    font-family: "Orbitron", sans-serif;
+    font-size: 50px;
+    font-family: monospace;
     flex-grow: 1;
     text-align: left;
 }
 
 .menu-button {
-    font-size: 1.5em;
-    font-family: "Orbitron", sans-serif;
+    font-size: 20px;
+    font-family: monospace;
     flex-grow: 1;
     text-align: center;
 }
 
 .car1 {
-  width: 200px;
-  height: auto;
-  top: 50px;
-  position: absolute;
-  animation: moveRight 7s linear infinite;
-  animation-play-state: paused;
-  z-index: 2; 
-  display: none;
+    width: 200px;
+    height: auto;
+    top: 50px;
+    position: absolute;
+    animation: moveRight 7s linear infinite;
+    animation-play-state: paused;
+    z-index: 2;
+    display: none;
 }
 
 .carContainer {
     position: absolute;
+    left: 0px;
     top: 10px;
     animation: movecarRight 5s linear forwards;
     animation-play-state: paused;
-  }
-  
+}
+
 @keyframes movecarRight {
     0% {
-      transform: translateX(0);
+        transform: translateX(0);
     }
     100% {
-      transform: translateX(1000px);
+        transform: translateX(1000px);
     }
 }
-  
 
 .road_lines {
     position: absolute;
@@ -334,8 +329,8 @@ img {
 
 .splash-header {
     color: rgb(237, 10, 10);
-    font-family: "Orbitron", sans-serif;
-    font-size: 3em;
+    font-family: monospace;
+    font-size: 30px;
 }
 
 /* Traffic light */
@@ -381,12 +376,14 @@ img {
     margin-top: 50px;
     width: 100px;
     height: 100px;
-  }
-  
-  .end-screen p {
+}
+
+.end-screen p {
     font-size: 50px;
     color: white;
-    font-family: 'Orbitron', sans-serif;
-  }
+    font-family: monospace;
+}
 
-
+#game {
+    margin-top: -7rem;
+}

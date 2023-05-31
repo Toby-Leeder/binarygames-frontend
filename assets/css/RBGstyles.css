@@ -1,0 +1,75 @@
+.submit {
+    position: relative;
+    font-size: 1.25em;
+    height: 100%;
+    overflow-wrap: break-word;
+}
+
+input {
+    box-sizing: border-box;
+    border-radius: 0.4em;
+    border-style: none;
+    display: inline-block;
+    height: 2.5em;
+    line-height: 1.25em;
+    margin: 2rem 0 0 0;
+    outline: none;
+    padding: 0.5em 0.8em;
+    position: relative;
+    width: 100%;
+}
+
+.mainTable {
+    font-family: monospace;
+    table-layout: fixed;
+    width: 90%;
+    position: relative;
+    left: 5%;
+    right: 5%;
+}
+
+.textBox {
+    text-align: center;
+    border-bottom: none;
+}
+
+.buttons {
+    text-align: center;
+    border-top: none;
+}
+
+.colorBox {
+    width: 50%;
+    vertical-align: middle;
+    text-align: center;
+    font-size: 2.5em;
+}
+
+.red {
+    color: rgb(204, 0, 0);
+}
+
+.redBox {
+    background-color: rgb(204, 0, 0);
+}
+
+.green {
+    color: rgb(106, 168, 79);
+}
+
+.greenBox {
+    background-color: rgb(106, 168, 79);
+}
+
+.blue {
+    color: rgb(60, 120, 216);
+}
+
+.blueBox {
+    background-color: rgb(60, 120, 216);
+}
+
+.guessCount {
+    font-size: 0.5em;
+    color: #404040;
+}

@@ -106,6 +106,9 @@ function render(){
         intersectedObjects[0].object.material.color = new THREE.Color(0xDDDDDD);
     }
 
+    if (!controls.isLocked){
+        scrollEnable()
+    }
 
     move();
 
@@ -226,12 +229,13 @@ document.addEventListener("keyup", (event) => {
             break
         case 'KeyD':
             right = false
-            break
+            break            
     }
 })
 
 canvas.addEventListener("click", (event) => {
     if (!controls.isLocked){
+        scrollDisable()
         makeCursor();
         controls.lock();
     }
@@ -240,17 +244,34 @@ canvas.addEventListener("click", (event) => {
 });
 
 function move(){
-    if (forward){
-        controls.moveForward(0.1);
+    if(controls.isLocked){
+        if (forward){
+            controls.moveForward(0.1);
+        }
+        if (back){
+            controls.moveBackward(0.1);
+        }
+        if (right){
+            controls.moveRight(0.1);
+        }
+        if (left){
+            controls.moveLeft(0.1);
+        }   
     }
-    if (back){
-        controls.moveBackward(0.1);
-    }
-    if (right){
-        controls.moveRight(0.1);
-    }
-    if (left){
-        controls.moveLeft(0.1);
+}
+
+function scrollDisable() {
+    // To get the scroll position of current webpage
+    var topScroll = window.pageYOffset || document.documentElement.scrollTop;
+    var leftScroll = window.pageXOffset || document.documentElement.scrollLeft;
+    
+    // if scroll happens, set it to the previous value
+    window.onscroll = function() {
+    window.scrollTo(leftScroll, topScroll);
+            };
     }
     
-}
+function scrollEnable() {
+    window.onscroll = function() {};
+    }
+    

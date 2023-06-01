@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Binary Games by JCK</title>
-        <meta charset="utf-8" />
-        <meta
+        <!-- <title>Binary Games by JCK</title> -->
+        <!-- <meta charset="utf-8" /> -->
+        <!-- <meta
             name="viewport"
             content="width=device-width, initial-scale=1, user-scalable=no"
-        />
+        /> -->
         <!-- <link rel="stylesheet" href="assets/css/logicGates.css"> -->
         <style>
             img {
@@ -31,12 +31,11 @@
 
             .targetDiv {
                 /* display:grid; */
-                position: fixed;
+                position: absolute;
                 height:80px;
                 width:80px;
-                /* border-style: solid;
+                border-style: solid;
                 border-color: white;
-                border:2px; */
                 user-select: text;                
             }
 
@@ -51,14 +50,14 @@
                 display:grid;
             }
         </style>
-        <link rel="stylesheet" href="assets/css/main.css" />
+        <!-- <link rel="stylesheet" href="assets/css/main.css" />
         <noscript
             ><link rel="stylesheet" href="assets/css/noscript.css"
-        /></noscript>
+        /></noscript> -->
     </head>
     <body class="is-preload">
-        <div id="wrapper">
-            <div
+        <!-- <div id="wrapper"> -->
+            <!-- <div
                 class="navContainer"
                 style="display: flex; justify-content: space-between"
             >
@@ -76,26 +75,26 @@
                     onclick=""
                     >Account</a
                 >
-            </div>
+            </div> -->
             <!-- Header -->
-            <header
+            <!-- <header
                 id="header"
                 class="alt"
                 style="padding: 3rem 0rem 2rem 0rem"
             >
                 <h1><strong>Binary Games</strong></h1>
                 <p>Play individual games here!</p>
-            </header>
+            </header> -->
 
             <!-- Nav -->
-            <nav id="nav3">
+            <!-- <nav id="nav3">
                 <ul>
                     <li><a href="escaperoom.html">Room</a></li>
                     <li><a href="leaderboard.html">Leaderboard</a></li>
                     <li><a href="binaryRacer.html" class="active">Games</a></li>
                 </ul>
-            </nav>
-            <nav id="nav2">
+            </nav> -->
+            <!-- <nav id="nav2">
                 <ul>
                     <li>
                         <a href="http://binarygames.tech/binaryRacer.html"
@@ -117,12 +116,12 @@
                         >
                     </li>
                 </ul>
-            </nav>
+            </nav> -->
 
             <!-- Main -->
-            <div id="main">
+            <!-- <div id="main"> -->
                 <!-- First Section -->
-                <section
+                <!-- <section
                     id="first"
                     class="main special"
                     style="padding-bottom: 1rem"
@@ -130,20 +129,23 @@
                     <header class="major">
                         <h2>Games</h2>
                     </header>
-                </section>
+                </section> -->
 
                 <!-- Game code here -->
-                <div id="logic" class="gameSection">
-                    <h2>Logic Gates</h2>
+                <!-- <div id="logic" class="gameSection"> -->
+                    <!-- <h2>Logic Gates</h2> -->
+                    <!-- <div style="height: 50px; border:2px; border-radius: 2px; border-color:black;">
+                        This Is A Navbar
+                    </div>
                     <div
                         id="logicGame"
                         style="
                             position: relative;
-                            /* width: 100%; */
+                            /* width: 95%; */
                             /* height:100%; */
                             /* left: 2.5%; */
-                            height: 80vh;
-                            /* width: 80vw; */
+                            /* height: 80vh;
+                            width: 80vw; */
                             display: flex;
                             justify-content: center;
                             align-items: flex-start;
@@ -153,10 +155,10 @@
                         <div
                             id="space"
                             style="
-                                /* height: 80vh;
-                                width: 80vw; */
-                                width: 100%;
-                                height: 100%;
+                                height: 80vh;
+                                width: 80vw;
+                                /* width: 100%;
+                                height: 100%; */
                                 /* border: 2px; */
                                 /* border-color: black; */
                                 /* border-style: solid; */
@@ -266,12 +268,12 @@
                                 style="width: 80px"
                             />
                         </div>
-                    </div>
-                </div>
-            </div>
+                    </div> -->
+                <!-- </div> -->
+            <!-- </div> -->
 
             <!-- Footer -->
-            <footer id="footer">
+            <!-- <footer id="footer">
                 <header
                     id="header"
                     class="alt"
@@ -355,18 +357,63 @@
                     Binary Games by JCK. Original template by:
                     <a href="https://html5up.net">HTML5 UP</a>.
                 </p>
-            </footer>
-        </div>
+            </footer> -->
+        <!-- </div> -->
+        <!-- <div style="height: 50px; border:2px; border-radius: 2px; border-color:black;">
+            This Is A Navbar
+        </div> -->
+        <div style="display:flex; justify-content: center; align-items: flex-start; user-select: none;">
+            <div id="space" style="height: 80vh; width: 80vw; border:2px; user-select: none;">
+                <div id="playspace" style="background-color: black; height:100%; width:100%; display:flex; align-items: center; user-select: none;" id="target">
+                    <div id="getBar" style="background-color: grey; height: 100%;width: 20%;display:flex;flex-direction: column;justify-content: space-around;align-items: center; user-select: none;">
+                        <div class="and gateDiv" id="anddiv">
+                            <canvas class="and" id="ANDgate" height="80px" width="80px"></canvas>
+                            <canvas class="and" id="ANDgate1" height="80px" width="80px"></canvas>
+                            <canvas class="and" id="ANDgate2" height="80px" width="80px"></canvas>
+                        </div>
+                        <div class="or gateDiv" id="ordiv">
+                            <canvas class="or" id="ORgate" height="80px" width="80px"></canvas>
+                            <canvas class="or" id="ORgate1" height="80px" width="80px"></canvas>
+                        </div>
+                        <div class="nand gateDiv" id="nanddiv">
+                            <canvas class="nand" id="NANDgate" height="80px" width="80px"></canvas>
+                        </div>
+                        <div class="nor gateDiv" id="nordiv">
+                            <canvas class="nor" id="NORgate" height="80px" width="80px"></canvas>
+                            <canvas class="nor" id="NORgate1" height="80px" width="80px"></canvas>
+                        </div>
+                        <div class="xor gateDiv" id="xordiv">
+                            <canvas class="xor" id="XORgate" height="80px" width="80px"></canvas>
+                        </div>
+                    </div>
+                    <div id="canvasDiv" class="tempDiv">
+                        <canvas id="firstCanvas"></canvas>
+                    </div>
+                    <!-- <div class="tempDiv">
+                        <canvas id="secondCanvas"></canvas>
+                    </div>
+                    <div class="tempDiv">
+                        <canvas id="thirdCanvas"></canvas>
+                    </div>
+                    <div class="tempDiv">
 
+                    </div> -->
+                </div>
+            </div>
+            <div style="display:flex; flex-direction: column;">
+                <button id="checkButton">Check</button>
+                <img id="map" src="images/map.png" style="width:80px">
+            </div>
+        </div>
         <!-- Scripts -->
-        <script src="assets/js/jquery.min.js"></script>
+        <!-- <script src="assets/js/jquery.min.js"></script>
         <script src="assets/js/jquery.scrollex.min.js"></script>
         <script src="assets/js/jquery.scrolly.min.js"></script>
         <script src="assets/js/browser.min.js"></script>
         <script src="assets/js/breakpoints.min.js"></script>
         <script src="assets/js/util.js"></script>
         <script src="assets/js/main.js"></script>
-        <script src="assets/js/stopCheating.js"></script>
-        <script src="assets/js/logicGates2.js"></script>
+        <script src="assets/js/stopCheating.js"></script> -->
+        <script src="assets/js/logicGates.js"></script>
     </body>
 </html>

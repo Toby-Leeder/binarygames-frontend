@@ -201,12 +201,12 @@ function genDiv(width, topPlace, start, idnum){
   // div.id = `${idnum}targetDiv`
   div.classList.add("targetDiv")
   div.draggable = false;
-  div.style.top = topPlace + 20 + "px";
+  div.style.top = topPlace + 63 + "px";
   div.style.left = start + width + rect.left + "px";
-  div.style.display = "none"
+  // div.style.display = "none"
 
   globalTargetDivs.push(div)
-  document.getElementById("playspace").appendChild(div);
+  document.getElementById("canvasDiv").appendChild(div);
 }
 
 function makeTargetDivsVisible(){
@@ -368,7 +368,7 @@ function dragStart(event){
     parent.style.display = "none"
   }
 
-  dragger.style.position = "absolute"
+  dragger.style.position = "fixed"
 
   dragger.style.left = event.clientX - 40 + "px"
   dragger.style.top = event.clientY - 40 + "px"
@@ -474,10 +474,12 @@ function resize(){
   playspace = document.getElementById(`playspace`).getBoundingClientRect()
   gates.forEach(gate => {
     document.getElementById(`${gate.classList[0]}div`).appendChild(gate)
+    gate.style = ""
   })
 }
 
 window.onresize = resize
+window.onscroll = resize
 
 function logic(div){
   var gate

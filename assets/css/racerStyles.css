@@ -9,6 +9,8 @@
 }
 
 .top-container {
+    display: flex;
+    flex-direction: row;
     width: 90% !important;
     text-align: left;
     font-size: 30px;
@@ -37,11 +39,11 @@
 }
 
 .time-container {
-    display: float;
-    float: right;
+    display: inline-block;
     margin-top: 1rem;
     margin-left: 80%;
     width: 100%;
+    top: 5%;
     top: 5%;
 }
 
@@ -263,7 +265,7 @@ img {
 }
 
 .car1 {
-    width: 8%;
+    width: auto;
     height: auto;
     top: 5%;
     position: absolute;
@@ -301,7 +303,7 @@ img {
     animation: road_animate 3s infinite;
     animation-timing-function: linear;
     position: absolute;
-    margin-top: -50%;
+    margin-top: 50%;
     width: 100%;
 }
 
@@ -374,8 +376,8 @@ img {
 
 .end-screen {
     text-align: center;
-    margin-top: 3.125em;
-    width: 5em;
+    margin-top: 5%;
+    width: 90%;
     height: 6.25em;
 }
 

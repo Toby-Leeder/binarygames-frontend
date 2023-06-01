@@ -1,6 +1,6 @@
 .wrapper {
     position: relative !important;
-    width: 70%;
+    width: 90%;
     left: 5%;
     right: 5%;
     display: flex;
@@ -9,7 +9,7 @@
 }
 
 .top-container {
-    width: 0.8em;
+    width: 1em;
     text-align: left;
     font-size: 30px;
     font-family: 'Orbitron', sans-serif;
@@ -40,7 +40,7 @@
     display: float;
     float: right;
     margin-top: 1rem;
-    width: 10em;
+    width: 12.5em;
 }
 
 .time-elapsed {
@@ -55,7 +55,7 @@
 }
 
 .progressbar {
-    width: 0.65em;
+    width: 0.8em;
     margin-top: 3.125em;
     border-radius: 0.375;
 }
@@ -261,7 +261,7 @@ img {
 }
 
 .car1 {
-    width: 10em;
+    width: 12.5em;
     height: auto;
     top: 3.125em;
     position: absolute;
@@ -291,7 +291,7 @@ img {
 .road_lines {
     position: absolute;
     top: 0;
-    width: 60em;
+    width: 75em;
 }
 
 .lines-body {
@@ -301,7 +301,7 @@ img {
     position: absolute;
     margin-top: -30em;
     height: 12.5em;
-    width: 71em;
+    width: 88.75em;
 }
 
 @keyframes road_animate {

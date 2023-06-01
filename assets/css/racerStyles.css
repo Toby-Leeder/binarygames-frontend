@@ -1,6 +1,6 @@
 .wrapper {
     position: relative !important;
-    width: 90%;
+    width: 70%;
     left: 5%;
     right: 5%;
     display: flex;
@@ -9,7 +9,7 @@
 }
 
 .top-container {
-    width: 1em;
+    width: 0.8em;
     text-align: left;
     font-size: 30px;
     font-family: 'Orbitron', sans-serif;
@@ -21,7 +21,7 @@
     display: inline-block;
     position: relative;
     font-size: 20px;
-    font-family: monospace;
+    font-family: 'Orbitron', sans-serif;
     margin-top: 1.563em;
     color: white;
     vertical-align: left;
@@ -31,7 +31,7 @@
     display: block;
     position: relative;
     font-size: 20px;
-    font-family: monospace;
+    font-family: 'Orbitron', sans-serif;
     margin-top: -4rem;
     color: white;
 }
@@ -40,7 +40,7 @@
     display: float;
     float: right;
     margin-top: 1rem;
-    width: 12.5em;
+    width: 10em;
 }
 
 .time-elapsed {
@@ -48,14 +48,14 @@
     position: relative;
     padding: 0px;
     font-size: 20px;
-    font-family: monospace;
+    font-family: 'Orbitron', sans-serif;
     margin-top: -0.625em;
     color: white;
     vertical-align: right;
 }
 
 .progressbar {
-    width: 0.8em;
+    width: 0.65em;
     margin-top: 3.125em;
     border-radius: 0.375;
 }
@@ -129,14 +129,14 @@
 img {
     display: block;
     top: 2rem;
-    width: 88.75rem;
+    width: 71rem;
 }
 
 .button-container {
     margin-top: 2rem;
     display: block;
     position: relative;
-    width: 100% !important;
+    width: 70% !important;
     
 }
 
@@ -145,12 +145,12 @@ img {
     color: white !important;
     border: none;
     text-align: center;
-    font-family: monospace;
+    font-family: 'Orbitron', sans-serif;
     font-size: 2rem;
     padding: 0.6rem 2rem;
     border-radius: .5rem;
     margin-bottom: 10rem;
-    width: 10rem;
+    width: 8rem;
     cursor: pointer;
 }
 
@@ -168,12 +168,12 @@ img {
     color: black !important;
     border: none;
     text-align: center;
-    font-family: monospace;
+    font-family: 'Orbitron', sans-serif;
     font-size: 2rem;
     padding: 0.6rem 2rem;
     border-radius: .5rem;
     margin-bottom: 10rem;
-    width: 10rem;
+    width: 8rem;
     cursor: pointer;
 }
 
@@ -191,12 +191,12 @@ img {
     color: white !important;
     border: none;
     text-align: center;
-    font-family: monospace;
+    font-family: 'Orbitron', sans-serif;
     font-size: 2rem;
     padding: 0.6rem 2rem;
     border-radius: .5rem;
     margin-bottom: 10rem;
-    width: 10rem;
+    width: 8rem;
     cursor: pointer;
 }
 
@@ -214,12 +214,12 @@ img {
     color: white !important;
     border: none;
     text-align: center;
-    font-family: monospace;
+    font-family: 'Orbitron', sans-serif;
     font-size: 2rem;
     padding: 0.6rem 2rem;
     border-radius: .5rem;
     margin-bottom: 10rem;
-    width: 10rem;
+    width: 8rem;
     cursor: pointer;
 }
 
@@ -248,20 +248,20 @@ img {
 
 .menu-title {
     font-size: 50px;
-    font-family: monospace;
+    font-family: 'Orbitron', sans-serif;
     flex-grow: 1;
     text-align: left;
 }
 
 .menu-button {
     font-size: 20px;
-    font-family: monospace;
+    font-family: 'Orbitron', sans-serif;
     flex-grow: 1;
     text-align: center;
 }
 
 .car1 {
-    width: 12.5em;
+    width: 10em;
     height: auto;
     top: 3.125em;
     position: absolute;
@@ -291,7 +291,7 @@ img {
 .road_lines {
     position: absolute;
     top: 0;
-    width: 75em;
+    width: 60em;
 }
 
 .lines-body {
@@ -301,7 +301,7 @@ img {
     position: absolute;
     margin-top: -30em;
     height: 12.5em;
-    width: 88.75em;
+    width: 71em;
 }
 
 @keyframes road_animate {
@@ -329,7 +329,7 @@ img {
 
 .splash-header {
     color: rgb(237, 10, 10);
-    font-family: monospace;
+    font-family: 'Orbitron', sans-serif;
     font-size: 30px;
 }
 
@@ -374,14 +374,14 @@ img {
 .end-screen {
     text-align: center;
     margin-top: 3.125em;
-    width: 6.25em;
+    width: 5em;
     height: 6.25em;
 }
 
 .end-screen p {
     font-size: 50px;
     color: white;
-    font-family: monospace;
+    font-family: 'Orbitron', sans-serif;
 }
 
 #game {

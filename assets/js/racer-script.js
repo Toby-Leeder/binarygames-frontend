@@ -129,21 +129,39 @@ option2 = document.getElementById("answer-button2"),
 option3 = document.getElementById("answer-button3"),
 option4 = document.getElementById("answer-button4");
 function generate_equation() {
-  console.log('Correct')
   var num1 = Math.floor(Math.random() * 9),
   num2 = Math.floor(Math.random() * 9),
   binary1 = num1.toString(2).padStart(4, '0'),
   binary2 = num2.toString(2).padStart(4, '0');
   
   var choice1 = Math.floor(Math.random() * 9),
-  binchoice1 = choice1.toString(2).padStart(4, '0'),
   choice2 = Math.floor(Math.random() * 9),
-  binchoice2 = choice2.toString(2).padStart(4, '0'),
   choice3 = Math.floor(Math.random() * 9),
-  binchoice3 = choice3.toString(2).padStart(4, '0'),
   allAnswers = [],
   switchAnswers = [];
 
+  function uniqueAnswers() {
+    while (choice1 == choice2 || choice1 == choice3 || choice1 == eval(num1 + num2)){
+      console.log("not unique C1")
+      choice1 = Math.floor(Math.random() * 9)
+    }
+    while (choice2 == choice3 || choice2 == eval(num1 + num2)) {
+      console.log("not unique C2")
+      choice2 = Math.floor(Math.random() * 9)
+    }
+    while (choice3 == eval(num1 + num2)){
+      console.log("not unique C3")
+      choice3 = Math.floor(Math.random() * 9)
+    }
+  }
+  while (choice1 == choice2 || choice1 == choice3 || choice1 == eval(num1 + num2) || choice2 == choice3 || choice2 == eval(num1 + num2) || choice3 == eval(num1 + num2)){
+    uniqueAnswers()
+  }
+
+  var binchoice1 = choice1.toString(2).padStart(4, '0'),
+  binchoice2 = choice2.toString(2).padStart(4, '0'),
+  binchoice3 = choice3.toString(2).padStart(4, '0');
+  
   answer = eval(num1 + num2);
   binanswer = answer.toString(2).padStart(4, '0') 
 

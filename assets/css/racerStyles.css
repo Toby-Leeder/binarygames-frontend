@@ -128,8 +128,8 @@
 
 img {
     display: block;
-    top: 20px;
-    width: 1420px;
+    top: 2rem;
+    width: 88.75rem;
 }
 
 .button-container {
@@ -146,11 +146,11 @@ img {
     border: none;
     text-align: center;
     font-family: monospace;
-    font-size: 30px;
-    padding: 10px 20px;
-    border-radius: 4px;
-    margin-bottom: 10px;
-    width: 150px;
+    font-size: 2rem;
+    padding: 0.6rem 2rem;
+    border-radius: .5rem;
+    margin-bottom: 10rem;
+    width: 10rem;
     cursor: pointer;
 }
 
@@ -160,7 +160,7 @@ img {
 
 .answer-button1:active {
     background-color: rgb(7, 59, 105) !important;
-    transform: translateY(4px);
+    transform: translateY(.25rem);
 }
 
 .answer-button2 {
@@ -169,11 +169,11 @@ img {
     border: none;
     text-align: center;
     font-family: monospace;
-    font-size: 30px;
-    padding: 10px 20px;
-    border-radius: 4px;
-    margin-bottom: 10px;
-    width: 150px;
+    font-size: 2rem;
+    padding: 0.6rem 2rem;
+    border-radius: .5rem;
+    margin-bottom: 10rem;
+    width: 10rem;
     cursor: pointer;
 }
 
@@ -183,7 +183,7 @@ img {
 
 .answer-button2:active {
     background-color: rgb(232, 184, 10) !important;
-    transform: translateY(4px);
+    transform: translateY(.25rem);
 }
 
 .answer-button3 {
@@ -192,11 +192,11 @@ img {
     border: none;
     text-align: center;
     font-family: monospace;
-    font-size: 30px;
-    padding: 10px 20px;
-    border-radius: 4px;
-    margin-bottom: 10px;
-    width: 150px;
+    font-size: 2rem;
+    padding: 0.6rem 2rem;
+    border-radius: .5rem;
+    margin-bottom: 10rem;
+    width: 10rem;
     cursor: pointer;
 }
 
@@ -206,7 +206,7 @@ img {
 
 .answer-button3:active {
     background-color: rgb(160, 9, 9) !important;
-    transform: translateY(4px);
+    transform: translateY(.25rem);
 }
 
 .answer-button4 {
@@ -215,11 +215,11 @@ img {
     border: none;
     text-align: center;
     font-family: monospace;
-    font-size: 30px;
-    padding: 10px 20px;
-    border-radius: 4px;
-    margin-bottom: 10px;
-    width: 150px;
+    font-size: 2rem;
+    padding: 0.6rem 2rem;
+    border-radius: .5rem;
+    margin-bottom: 10rem;
+    width: 10rem;
     cursor: pointer;
 }
 
@@ -229,7 +229,7 @@ img {
 
 .answer-button4:active {
     background-color: rgb(68, 148, 33) !important;
-    transform: translateY(4px);
+    transform: translateY(.25rem);
 }
 
 .menu {
@@ -238,7 +238,7 @@ img {
     justify-content: space-between !important;
     background-color: #000;
     color: white;
-    height: 75px;
+    height: 6rem;
     padding: 0 30px;
     position: sticky;
     top: 0;

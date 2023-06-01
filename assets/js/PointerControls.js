@@ -84,6 +84,8 @@ class PointerLockControls extends EventDispatcher {
 
 		_vector.crossVectors( camera.up, _vector );
 
+		this.checkWall(1)
+
 		camera.position.addScaledVector( _vector, distance );
 
 	}
@@ -99,6 +101,8 @@ class PointerLockControls extends EventDispatcher {
 
 		_vector.crossVectors( camera.up, _vector );
 
+		this.checkWall(-1)
+
 		camera.position.addScaledVector( _vector, -distance );
 
 	}
@@ -110,6 +114,11 @@ class PointerLockControls extends EventDispatcher {
 
 		_vector.setFromMatrixColumn( camera.matrix, 0 );
 
+		this.checkWall(1)
+
+		console.log("vector", _vector)
+
+
 		camera.position.addScaledVector( _vector, distance );
 
 	}
@@ -119,6 +128,8 @@ class PointerLockControls extends EventDispatcher {
 		const camera = this.camera;
 
 		_vector.setFromMatrixColumn( camera.matrix, 0 );
+
+		this.checkWall(-1)
 
 		camera.position.addScaledVector( _vector, -distance );
 
@@ -136,8 +147,32 @@ class PointerLockControls extends EventDispatcher {
 
 	}
 
-}
+	checkWall(direction){
+		const camera = this.camera;
+		if (camera.position.x < -5){
+			if (_vector.x * direction < 0){
+				_vector.setComponent(0, 0)
+			}
+		}
+		if (camera.position.x > 5){
+			if (_vector.x * direction > 0){
+				_vector.setComponent(0, 0)
+			}
+		}
+		if (camera.position.z < -5){
+			if (_vector.z * direction < 0){
+				_vector.setComponent(2, 0)
+			}
+		}
+		if (camera.position.z > 5){
+			if (_vector.z * direction > 0){
+				_vector.setComponent(2, 0)
+			}
+		}
+		return _vector
+	}
 
+}
 // event listeners
 
 function onMouseMove( event ) {

@@ -1,6 +1,6 @@
 .wrapper {
     position: relative !important;
-    width: 90%;
+    width: 100%;
     left: 5%;
     right: 5%;
     display: flex;
@@ -9,11 +9,11 @@
 }
 
 .top-container {
-    width: 90% !important;
+    width: 100% !important;
     text-align: left;
     font-size: 30px;
     font-family: 'Orbitron', sans-serif;
-    margin-top: 1.875em;
+    margin-top: 5%;
     color: white;
 }
 
@@ -22,7 +22,7 @@
     position: relative;
     font-size: 20px;
     font-family: 'Orbitron', sans-serif;
-    margin-top: 90%;
+    margin-top: 5%;
     color: white;
     vertical-align: left;
 }
@@ -32,7 +32,7 @@
     position: relative;
     font-size: 20px;
     font-family: 'Orbitron', sans-serif;
-    margin-top: -4rem;
+    margin-top: 5%;
     color: white;
 }
 
@@ -40,7 +40,8 @@
     display: float;
     float: right;
     margin-top: 1rem;
-    width: 90%;
+    margin-left: 60%;
+    width: 100%;
 }
 
 .time-elapsed {
@@ -129,7 +130,7 @@
 img {
     display: block;
     top: 2rem;
-    width: 90%;
+    width: 100%;
 }
 
 .button-container {
@@ -150,7 +151,7 @@ img {
     padding: 0.6rem 2rem;
     border-radius: .5rem;
     margin-bottom: 10rem;
-    width: 8rem;
+    width: 20%;
     cursor: pointer;
 }
 
@@ -173,7 +174,7 @@ img {
     padding: 0.6rem 2rem;
     border-radius: .5rem;
     margin-bottom: 10rem;
-    width: 8rem;
+    width: 20%;
     cursor: pointer;
 }
 
@@ -196,7 +197,7 @@ img {
     padding: 0.6rem 2rem;
     border-radius: .5rem;
     margin-bottom: 10rem;
-    width: 8rem;
+    width: 20%;
     cursor: pointer;
 }
 
@@ -219,7 +220,7 @@ img {
     padding: 0.6rem 2rem;
     border-radius: .5rem;
     margin-bottom: 10rem;
-    width: 8rem;
+    width: 20%;
     cursor: pointer;
 }
 
@@ -291,7 +292,7 @@ img {
 .road_lines {
     position: absolute;
     top: 0;
-    width: 71em;
+    width: 100%;
 }
 
 .lines-body {
@@ -301,7 +302,7 @@ img {
     position: absolute;
     margin-top: -30em;
     height: 12.5em;
-    width: 90%;
+    width: 100%;
 }
 
 @keyframes road_animate {

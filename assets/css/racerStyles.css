@@ -9,11 +9,11 @@
 }
 
 .top-container {
-    width: 100%;
+    width: 1em;
     text-align: left;
     font-size: 30px;
-    font-family: monospace;
-    margin-top: 30px;
+    font-family: 'Orbitron', sans-serif;
+    margin-top: 1.875em;
     color: white;
 }
 
@@ -22,7 +22,7 @@
     position: relative;
     font-size: 20px;
     font-family: monospace;
-    margin-top: 25px;
+    margin-top: 1.563em;
     color: white;
     vertical-align: left;
 }
@@ -40,7 +40,7 @@
     display: float;
     float: right;
     margin-top: 1rem;
-    width: 200px;
+    width: 12.5em;
 }
 
 .time-elapsed {
@@ -49,19 +49,19 @@
     padding: 0px;
     font-size: 20px;
     font-family: monospace;
-    margin-top: -10px;
+    margin-top: -0.625em;
     color: white;
     vertical-align: right;
 }
 
 .progressbar {
-    width: 80%;
-    margin-top: 50px;
-    border-radius: 6px;
+    width: 0.8em;
+    margin-top: 3.125em;
+    border-radius: 0.375;
 }
 
 .progressbar .inner {
-    height: 15px;
+    height: 0.938em;
     animation: progressbar-countdown 5s forwards;
     animation-duration: 5s;
     animation-iteration-count: 1;
@@ -121,7 +121,7 @@
 }
 
 .image-container {
-    top: 20px;
+    top: 1.25em;
     position: relative;
     width: 100%;
 }
@@ -239,7 +239,7 @@ img {
     background-color: #000;
     color: white;
     height: 6rem;
-    padding: 0 30px;
+    padding: 0 1.875em;
     position: sticky;
     top: 0;
     width: 100%;
@@ -261,9 +261,9 @@ img {
 }
 
 .car1 {
-    width: 200px;
+    width: 12.5em;
     height: auto;
-    top: 50px;
+    top: 3.125em;
     position: absolute;
     animation: moveRight 7s linear infinite;
     animation-play-state: paused;
@@ -273,8 +273,8 @@ img {
 
 .carContainer {
     position: absolute;
-    left: 0px;
-    top: 10px;
+    left: 0em;
+    top: 0.625em;
     animation: movecarRight 5s linear forwards;
     animation-play-state: paused;
 }
@@ -291,7 +291,7 @@ img {
 .road_lines {
     position: absolute;
     top: 0;
-    width: 1200px;
+    width: 75em;
 }
 
 .lines-body {
@@ -299,9 +299,9 @@ img {
     animation: road_animate 3s infinite;
     animation-timing-function: linear;
     position: absolute;
-    margin-top: -480px;
-    height: 200px;
-    width: 1420px;
+    margin-top: -30em;
+    height: 12.5em;
+    width: 88.75em;
 }
 
 @keyframes road_animate {
@@ -336,20 +336,20 @@ img {
 /* Traffic light */
 .traffic-light {
     width: 8em;
-    height: 300px;
-    margin-top: 30px;
+    height: 18.75em;
+    margin-top: 1.875em;
     background-color: black;
-    border-radius: 10px;
+    border-radius: 0.625em;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    padding: 10px;
+    padding: 0.625em;
 }
 
 .light {
-    width: 80px;
-    height: 80px;
+    width: 5em;
+    height: 5em;
     border-radius: 50%;
     opacity: 0.2;
     transition: opacity 0.5s;
@@ -373,9 +373,9 @@ img {
 
 .end-screen {
     text-align: center;
-    margin-top: 50px;
-    width: 100px;
-    height: 100px;
+    margin-top: 3.125em;
+    width: 6.25em;
+    height: 6.25em;
 }
 
 .end-screen p {

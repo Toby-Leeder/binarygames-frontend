@@ -9,7 +9,7 @@
 }
 
 .top-container {
-    width: 1em;
+    width: 100% !important;
     text-align: left;
     font-size: 30px;
     font-family: 'Orbitron', sans-serif;
@@ -136,7 +136,7 @@ img {
     margin-top: 2rem;
     display: block;
     position: relative;
-    width: 70% !important;
+    width: 100% !important;
     
 }
 
@@ -291,7 +291,7 @@ img {
 .road_lines {
     position: absolute;
     top: 0;
-    width: 75em;
+    width: 71em;
 }
 
 .lines-body {
@@ -301,8 +301,7 @@ img {
     position: absolute;
     margin-top: -30em;
     height: 12.5em;
-    width: 88.75em;
-}
+    width: 71rem;}
 
 @keyframes road_animate {
     100% {

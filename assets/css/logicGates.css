@@ -1,0 +1,40 @@
+img {
+    user-select: none;
+}
+.box {
+    height:80px;
+    width:80px;
+}
+canvas {
+    grid-column: 1;
+    grid-row: 1;    
+}
+
+.tempDiv {
+    /* border-color:white; */
+    /* border-style: solid; */
+    /* display:flex; */
+    height:100%;
+    width:80%;
+}
+
+.targetDiv {
+    /* display:grid; */
+    position: absolute;
+    height:80px;
+    width:80px;
+    /* border-style: solid;
+    border-color: white; */
+    user-select: text;                
+}
+
+.placedGate {
+    position: static;
+    grid-column: 1;
+    grid-row: 1;
+}
+
+.gateDiv {
+    width:80px;
+    display:grid;
+}

@@ -137,6 +137,7 @@ function render(){
         scrollEnable()
     }
 
+
     move();
 
     renderer.render(scene, camera)
@@ -154,6 +155,7 @@ function intersectedObjectCheck(id){
     else{
         return false
     }
+    // console.log(id)
 }
 
 window.addEventListener("click", (event) => {

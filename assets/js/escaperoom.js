@@ -95,6 +95,7 @@ function render(){
         scrollEnable()
     }
 
+
     move();
 
     renderer.render(scene, camera)
@@ -112,6 +113,7 @@ function intersectedObjectCheck(id){
     else{
         return false
     }
+    // console.log(id)
 }
 
 window.addEventListener("click", (event) => {
@@ -140,6 +142,10 @@ window.addEventListener("click", (event) => {
         if(object.id == 10 && controls.isLocked){
             controls.unlock()
             makeOverlay()
+        }
+
+        if(object.id == 32){
+            window.open("http://binarygames.tech/logic.html#logic", "_blank")
         }
 
         console.log("You Clicked Me!")

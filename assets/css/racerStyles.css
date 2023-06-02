@@ -27,6 +27,8 @@
     font-family: 'Orbitron', sans-serif;
     margin-top: 5%;
     color: white;
+    margin-left: 0%;
+    margin-right: 0%;
     vertical-align: left;
 }
 
@@ -36,6 +38,8 @@
     font-size: 20px;
     font-family: 'Orbitron', sans-serif;
     margin-top: 5%;
+    margin-left: 0%;
+    margin-right: 0%;
     color: white;
 }
 
@@ -44,7 +48,7 @@
     margin-top: 1rem;
     /*margin-left: 80%;*/
     /*width: 100%;*/
-    top: 5%;
+    top: 7%;
     bottom: 5%;
 }
 
@@ -133,7 +137,6 @@
 
 img {
     display: block;
-    top: 2rem;
     width: 100%;
 }
 
@@ -151,11 +154,11 @@ img {
     border: none;
     text-align: center;
     font-family: 'Orbitron', sans-serif;
-    font-size: 2rem;
-    padding: 0.6rem 2rem;
+    font-size: 1.7rem;
+    padding: auto;
     border-radius: .5rem;
     margin-bottom: 10rem;
-    width: 1em;
+    width: 0.5em;
     cursor: pointer;
 }
 
@@ -174,11 +177,11 @@ img {
     border: none;
     text-align: center;
     font-family: 'Orbitron', sans-serif;
-    font-size: 2rem;
-    padding: 0.6rem 2rem;
+    font-size: 1.7rem;
+    padding: auto;
     border-radius: .5rem;
     margin-bottom: 10rem;
-    width: 1em;
+    width: 0.5em;
     cursor: pointer;
 }
 
@@ -197,11 +200,11 @@ img {
     border: none;
     text-align: center;
     font-family: 'Orbitron', sans-serif;
-    font-size: 2rem;
-    padding: 0.6rem 2rem;
+    font-size: 1.7rem;
+    padding: auto;
     border-radius: .5rem;
     margin-bottom: 10rem;
-    width: 1em;
+    width: 0.5em;
     cursor: pointer;
 }
 
@@ -220,11 +223,11 @@ img {
     border: none;
     text-align: center;
     font-family: 'Orbitron', sans-serif;
-    font-size: 2rem;
-    padding: 0.6rem 2rem;
+    font-size: 1.7rem;
+    padding: auto;
     border-radius: .5rem;
     margin-bottom: 10rem;
-    width: 1em;
+    width: 0.5em;
     cursor: pointer;
 }
 
@@ -293,21 +296,21 @@ img {
     }
 }
 
-.road_lines {
+.road_lines { 
     position: absolute;
     top: 0;
     width: 100%;
-}
-
-.lines-body {
-    background-image: url(images/BRG_roadlines.png);
+  }
+  
+  .lines-body { 
+    background-image: url(BRG_roadlines.png);
     animation: road_animate 3s infinite;
-    animation-timing-function: linear;
+    animation-timing-function: linear; 
     position: absolute;
-    margin-top: 50%;
-    width: 100%;
-    z-index: 1;
-}
+    margin-top: -480px;
+    height: 200px;
+    width: 1420px;
+  }
 
 @keyframes road_animate {
     100% {

@@ -9,11 +9,14 @@
 }
 
 .top-container {
-    width: 1em;
-    text-align: left;
+    display: flex;
+    flex-direction: row !important; 
+    justify-content: space-between;
+    width: 90% !important;
     font-size: 30px;
     font-family: 'Orbitron', sans-serif;
-    margin-top: 1.875em;
+    margin-top: 5%;
+    align-items: center;
     color: white;
 }
 
@@ -21,26 +24,28 @@
     display: inline-block;
     position: relative;
     font-size: 20px;
-    font-family: monospace;
-    margin-top: 1.563em;
+    font-family: 'Orbitron', sans-serif;
+    margin-top: 5%;
     color: white;
     vertical-align: left;
 }
 
 .questions-given {
-    display: block;
+    display: inline-block;
     position: relative;
     font-size: 20px;
-    font-family: monospace;
-    margin-top: -4rem;
+    font-family: 'Orbitron', sans-serif;
+    margin-top: 5%;
     color: white;
 }
 
 .time-container {
-    display: float;
-    float: right;
+    display: inline-block;
     margin-top: 1rem;
-    width: 12.5em;
+    /*margin-left: 80%;*/
+    /*width: 100%;*/
+    top: 5%;
+    bottom: 5%;
 }
 
 .time-elapsed {
@@ -48,14 +53,14 @@
     position: relative;
     padding: 0px;
     font-size: 20px;
-    font-family: monospace;
-    margin-top: -0.625em;
+    font-family: 'Orbitron', sans-serif;
+    margin-top: -10%;
     color: white;
     vertical-align: right;
 }
 
 .progressbar {
-    width: 0.8em;
+    width: 100%;
     margin-top: 3.125em;
     border-radius: 0.375;
 }
@@ -129,7 +134,7 @@
 img {
     display: block;
     top: 2rem;
-    width: 88.75rem;
+    width: 100%;
 }
 
 .button-container {
@@ -145,12 +150,12 @@ img {
     color: white !important;
     border: none;
     text-align: center;
-    font-family: monospace;
+    font-family: 'Orbitron', sans-serif;
     font-size: 2rem;
     padding: 0.6rem 2rem;
     border-radius: .5rem;
     margin-bottom: 10rem;
-    width: 10rem;
+    width: 1em;
     cursor: pointer;
 }
 
@@ -168,12 +173,12 @@ img {
     color: black !important;
     border: none;
     text-align: center;
-    font-family: monospace;
+    font-family: 'Orbitron', sans-serif;
     font-size: 2rem;
     padding: 0.6rem 2rem;
     border-radius: .5rem;
     margin-bottom: 10rem;
-    width: 10rem;
+    width: 1em;
     cursor: pointer;
 }
 
@@ -191,12 +196,12 @@ img {
     color: white !important;
     border: none;
     text-align: center;
-    font-family: monospace;
+    font-family: 'Orbitron', sans-serif;
     font-size: 2rem;
     padding: 0.6rem 2rem;
     border-radius: .5rem;
     margin-bottom: 10rem;
-    width: 10rem;
+    width: 1em;
     cursor: pointer;
 }
 
@@ -214,12 +219,12 @@ img {
     color: white !important;
     border: none;
     text-align: center;
-    font-family: monospace;
+    font-family: 'Orbitron', sans-serif;
     font-size: 2rem;
     padding: 0.6rem 2rem;
     border-radius: .5rem;
     margin-bottom: 10rem;
-    width: 10rem;
+    width: 1em;
     cursor: pointer;
 }
 
@@ -242,28 +247,28 @@ img {
     padding: 0 1.875em;
     position: sticky;
     top: 0;
-    width: 100%;
+    width: 90%;
     z-index: 1;
 }
 
 .menu-title {
     font-size: 50px;
-    font-family: monospace;
+    font-family: 'Orbitron', sans-serif;
     flex-grow: 1;
     text-align: left;
 }
 
 .menu-button {
     font-size: 20px;
-    font-family: monospace;
+    font-family: 'Orbitron', sans-serif;
     flex-grow: 1;
     text-align: center;
 }
 
 .car1 {
-    width: 12.5em;
+    width: auto;
     height: auto;
-    top: 3.125em;
+    top: 5%;
     position: absolute;
     animation: moveRight 7s linear infinite;
     animation-play-state: paused;
@@ -291,7 +296,7 @@ img {
 .road_lines {
     position: absolute;
     top: 0;
-    width: 75em;
+    width: 100%;
 }
 
 .lines-body {
@@ -299,9 +304,9 @@ img {
     animation: road_animate 3s infinite;
     animation-timing-function: linear;
     position: absolute;
-    margin-top: -30em;
-    height: 12.5em;
-    width: 88.75em;
+    margin-top: 50%;
+    width: 100%;
+    z-index: 1;
 }
 
 @keyframes road_animate {
@@ -329,7 +334,7 @@ img {
 
 .splash-header {
     color: rgb(237, 10, 10);
-    font-family: monospace;
+    font-family: 'Orbitron', sans-serif;
     font-size: 30px;
 }
 
@@ -373,15 +378,15 @@ img {
 
 .end-screen {
     text-align: center;
-    margin-top: 3.125em;
-    width: 6.25em;
+    margin-top: 5%;
+    width: 90%;
     height: 6.25em;
 }
 
 .end-screen p {
     font-size: 50px;
     color: white;
-    font-family: monospace;
+    font-family: 'Orbitron', sans-serif;
 }
 
 #game {

@@ -858,7 +858,7 @@ var codeGuess = "";
 // Create global variable for initial minutes
 var initialMinutes = "";
 
-function random(min, max) {
+function b64random(min, max) {
     // Round up minimum
     min = Math.ceil(min);
 
@@ -875,7 +875,7 @@ function generateCode() {
 
     // Concatenate 4 random digits to unencoded variable to create code
     for (let i = 0; i < 4; i++) {
-        unencoded += random(0, 9).toString();
+        unencoded += b64random(0, 9).toString();
     }
 
     // Encode the 4 digit code using JavaScript's btoa() function, define as variable for later use

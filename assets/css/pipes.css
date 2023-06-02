@@ -1,142 +1,73 @@
-body {
-    display: flex;
-    justify-content: flex-end;
-    align-items: flex-start;
-    height: 50vh;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: bottom left;
-    background-image: url('images/background1.jpg');
-    z-index: 1;
-}
-
-.quiz-container {
+.wrapper {
+    position: relative;
+    width: 90%;
+    left: 5%;
+    right: 5%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    position: fixed;
+}
+
+#bgImage {
+    position: relative;
+    width: 90%;
+    overflow: hidden;
+}
+
+.quiz-container {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
     justify-content: center;
-    top: 20px;
-    right: 0px;
-    background-color: #7c72b3;
+    background-color: #23212c;
     padding: 20px;
     width: 180px;
     height: 100%;
-    z-index: 7;
+    z-index: 5;
 }
 
-.question-container {
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-.question {
-    font-size: 24px;
-    color: #a4d8a4;
-    text-align: center;
-}
-
-.options {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap: 10px;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    justify-content: flex-end;
-}
-
-.option {
+.question-text {
+    position: relative;
     display: flex;
-    justify-content: center;
     align-items: center;
-    width: 50px;
-    height: 50px;
-    background-color: #a4d8a4;
-    border: none;
-    cursor: pointer;
-    color: #7c72b3;
-    text-decoration: none;
-}
-
-
-.option:hover {
-    background-color: #035603;
-}
-
-.correct {
-    background-color: #a4d8a4;
+    justify-content: center;
+    background-color: #23212c;
 }
 
 .top {
+    width: 90%;
+    height: 5vh;
+    z-index: 10;
+}
+
+.sprite {
+    height: 70px;
+    width: 70px;
+    background-image: url("images/mushroom.png");
+    background-repeat: no-repeat;
+    background-size: 600% auto;
+    right: 200px;
+    z-index: 1;
+}
+
+.popup-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    height: 5vh;
-    background-color: #7c72b3;
-    z-index: 6;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 200;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s;
 }
 
-.question-text {
-    color: white;
-    text-align: center;
-    font-size: 18px;
-    margin: 0;
-    padding: 10px;
-}
-
-  .sprite {
-  height: 70px;
-  width: 70px;
-  background-image: url('images/mushroom.png');
-  background-repeat: no-repeat;
-  background-size: 600% auto; 
-  right: 200px;
-  z-index: 2;
-}
-
-#mushroom {
-  background-position: 100% 0px; 
-}
-
-.popup-container {
-display: flex;
-justify-content: center;
-align-items: center;
-position: fixed;
-top: 0;
-left: 0;
-width: 100%;
-height: 100%;
-background-color: rgba(0, 0, 0, 0.5);
-z-index: 8;
-opacity: 0;
-visibility: hidden;
-transition: opacity 0.3s, visibility 0.3s;
-}
-
-.popup {
-background-color: #7c72b3;
-padding: 20px;
-border-radius: 10px;
-max-width: 400px;
-text-align: center;
-color: white;
-}
-
-.popup-message {
-font-size: 18px;
-margin-bottom: 20px;
-}
-
-.popup-button {
-background-color: #a4d8a4;
-border: none;
-padding: 10px 20px;
-color: #7c72b3;
-cursor: pointer;
-}
 
 .cheese {
     position: absolute;
@@ -144,26 +75,66 @@ cursor: pointer;
     left: 17%;
     height: 100px;
     width: 100px;
-    background-image: url('images/cheese.png');
+    background-image: url("images/cheese.png");
     background-repeat: no-repeat;
     background-size: contain;
     z-index: 6;
 }
 
-.pipes-image {
-    background-image: url('images/background1.png');
-    background-repeat: no-repeat;
-    background-size: cover;
+.pipes-container {
+    position: relative;
     width: 100%;
     height: 100%;
     z-index: 7;
 }
 
-.pipes-container {
-  position: fixed;
-  top: -15.5%;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 7;
+.quiz-container .options {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    justify-content: center;
+}
+
+.quiz-container .option {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    background-color: #552460;
+    border: none;
+    cursor: pointer;
+    color: #09ff00;
+    text-decoration: none;
+}
+
+.popup-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 200;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s;
+}
+
+.popup {
+    background-color: #7c72b3;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 400px;
+    text-align: center;
+    color: white;
+    position: relative;
+    z-index: 201; /* Adjust the z-index value */
 }

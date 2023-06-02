@@ -1,8 +1,14 @@
+// initializes the canvas
 const canvas = document.getElementById("escapeCanvas")
+
+// sets the number of pixels used for the canvas
 canvas.width = "1980"
 canvas.height = "1080"
+
+// creates the player cursor overlay
 makeCursor()
 
+// creates the cursor for the player using the overlay html element
 function makeCursor(){
     if(document.getElementById("overlay")){
         document.getElementById("overlay").remove();
@@ -16,11 +22,12 @@ function makeCursor(){
     document.getElementById("escapeContainer").appendChild(overlay);
 }
 
+// creates different overlays based on the type passed through
 function makeOverlay(type){
-    document.getElementById("overlay").remove();
+    document.getElementById("overlay").remove(); // removes whatever is currently overlaying the screen
     var escape = document.getElementById("escapeContainer")
-    console.log("type", type)
     switch(type){
+        // creates tgb popup elements
         case "rgb":
             var popUp = document.createElement("div")
             popUp.id = "overlay"
@@ -65,7 +72,8 @@ function makeOverlay(type){
             console.log("rgbing")
             startRGB(); 
             break;
-
+        
+        // create base64 popup elements
         case "b64":
             var popUp = document.createElement("div")
             popUp.id = "overlay"
@@ -143,34 +151,21 @@ function makeOverlay(type){
             var row4 = document.createElement("div")
             row4.classList.add("row")
 
-            var data1 = document.createElement("div")
-            var data2 = document.createElement("div")
-            var data3 = document.createElement("div")
-            var data4 = document.createElement("div")
-            var data5 = document.createElement("div")
-            var data6 = document.createElement("div")
-            var data7 = document.createElement("div")
-            var data8 = document.createElement("div")
-            var data9 = document.createElement("div")
-
-            let dataList = [data1, data2, data3, data4, data5, data6, data7, data8, data9]
-            
-            var i = 1;
-            dataList.forEach((c) => {
-                c.classList.add("data")
-                c.onclick = function(){keypad(`${i}`)}
-                c.innerHTML = i
+            for (var i = 1; i <= 9; i++){
+                var data = document.createElement("div")
+                data.className = "data";
+                data.innerHTML = i
+                data.id = `data${i}`
                 if (i <= 3){
-                    row1.appendChild(c)
+                    row1.appendChild(data)
                 }
                 else if (i <= 6){
-                    row2.appendChild(c)
+                    row2.appendChild(data)
                 }
                 else {
-                    row3.appendChild(c)
+                    row3.appendChild(data)
                 }
-                i += 1
-            })
+            }
 
             var back = document.createElement("div")
             back.classList.add("data")
@@ -307,63 +302,67 @@ function makeOverlay(type){
             popUp.appendChild(main)
 
             escape.appendChild(popUp)    
+
+            for (var i = 1; i <= 9; i++) {
+                (function (num) {
+                  document.getElementById(`data${num}`).onclick = function () {
+                    keypad(num);
+                  };
+                })(i);
+              }
+              
             
             b64difficultySelect(5)
             break;
     }
-    
-    // var popUp = document.createElement("div")
-    // popUp.id = "overlay"
-    // popUp.style.maxWidth = "50%"
-    // popUp.style.maxHeight = "50%"
-    // popUp.style.backgroundColor = "red"
-    // popUp.style.top = `50%`
-    // popUp.style.left = `50%`;
-    // escape.appendChild(popUp);
 }
 
+// threejs and addons import
 import * as THREE from 'three'
 import {GLTFLoader} from 'three/addons/loaders/GLTFLoader.js';
 import { PointerLockControls } from '../js/PointerControls.js';
 
-
-var roomLength = 20
-var roomHeight = 5.5
-
+// initializes threejs scene and camera
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(75, canvas.width / canvas.height, 0.1, 1000);
 
-camera.position.z = 2
-camera.position.y = 1.8
+// sets the initial position of the camera
+camera.position.z = 0
+camera.position.y = 2.8
+camera.rotation.y += Math.PI/2
 
+// initializes three renderer
 const renderer = new THREE.WebGLRenderer({
     canvas,
     alpha: true,
     antialias:true
 });
 
+// sets the pixel ratio of the renderer to match the pixel ratio of the user's screen
 renderer.setPixelRatio(window.devicePixelRatio);
 
+// initializes GLTFloader object
 const gltfLoader = new GLTFLoader();
+
+// url to the escape room model
 const url = 'models/csp.glb';
+
+// loads the model using the gltf loader 
 gltfLoader.load(url, (gltf) => {
     const root = gltf.scene;
     scene.add(root);
 })
 
+// creates the scene lighting
 const light = new THREE.AmbientLight(0xFFFFFF, 1);
 scene.add(light);   
 
+// initializes raycaster object
 const raycaster = new THREE.Raycaster()
 
+// initializes pointer lock controls object
 const controls = new PointerLockControls( camera, document.body );
 controls.connect();
-
-camera.position.z -= 2
-camera.rotation.y += Math.PI/2
-camera.position.y += 1
-
-let pos = {x: -10000, y:-10000}
 
 let oldObject
 let oldObjectColor
@@ -373,32 +372,41 @@ let oldObjectColor2
 function render(){
 
     raycaster.setFromCamera({x: 0, y:0}, camera);
+
     const intersectedObjects = raycaster.intersectObjects(scene.children);
+
     if(oldObject){
         oldObject.object.material.color = oldObjectColor
         oldObject = undefined
     }
+
     if (intersectedObjects.length && intersectedObjectCheck(intersectedObjects[0].object.id)) {
         oldObject = {...intersectedObjects[0]}
         oldObjectColor ={...intersectedObjects[0].object.material.color}
         intersectedObjects[0].object.material.color = new THREE.Color(0xDDDDDD);
     }
 
+    // enablse scrolling whenever the controls are not locked
     if (!controls.isLocked){
         scrollEnable()
     }
 
-
+    // movement funciton call
     move();
-
+    
+    // render loop
     renderer.render(scene, camera)
     requestAnimationFrame(render)
 }
 requestAnimationFrame(render)
 
+// main threejs render
 renderer.render(scene, camera)
 
+// object id whitelist for highlighting when raycasted
 let raycastIds = [58, 32, 45, 50, 46]
+
+// function to check if the object is included in the whitelist
 function intersectedObjectCheck(id){
     if (raycastIds.includes(id)){
         return true
@@ -406,7 +414,6 @@ function intersectedObjectCheck(id){
     else{
         return false
     }
-    // console.log(id)
 }
 
 window.addEventListener("click", (event) => {
@@ -416,11 +423,14 @@ window.addEventListener("click", (event) => {
         x: 0,
         y: 0
     }, camera);
+
     const intersectedObjects = raycaster.intersectObjects(scene.children);
+
     if(oldObject){
         oldObject.object.material.color = oldObjectColor
         oldObject = undefined
     }
+
     if (intersectedObjects.length) {
         let object = intersectedObjects[0].object
         oldObject = {...intersectedObjects[0]}
@@ -442,10 +452,13 @@ window.addEventListener("click", (event) => {
     }
 })
 
+// global movement variable definition
 var forward = false;
 var back = false;
 var left = false;
 var right = false;
+
+// event listener to check for starting movement by pressing WASD
 document.addEventListener("keydown", (event) => {
     switch (event.code) {
         case 'KeyW':
@@ -463,6 +476,7 @@ document.addEventListener("keydown", (event) => {
     }
 });
 
+// event listener to check for stopping movement by lifting up WASD
 document.addEventListener("keyup", (event) => {
     switch (event.code) {
         case 'KeyW':
@@ -480,6 +494,7 @@ document.addEventListener("keyup", (event) => {
     }
 })
 
+// event listener to detect a click on the canvas which removes any pop up and activates the pointerlock controls
 canvas.addEventListener("click", (event) => {
     if (!controls.isLocked){
         scrollDisable()
@@ -490,8 +505,9 @@ canvas.addEventListener("click", (event) => {
     }
 });
 
+// function run during every render cycle, reads global variabls to check whether to run move functions or not.
 function move(){
-    if(controls.isLocked){
+    if(controls.isLocked){ // First checks if the player is in the pointer control
         if (forward){
             controls.moveForward(0.1);
         }

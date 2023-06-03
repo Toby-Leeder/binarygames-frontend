@@ -31,11 +31,10 @@ function makeOverlay(type){
         case "rgb":
             var popUp = document.createElement("div")
             popUp.id = "overlay"
-            popUp.style.maxWidth = "50%"
-            popUp.style.maxHeight = "50%"
+            popUp.style.maxWidth = "90%"
             popUp.style.height = "auto"
-            popUp.style.top = `25%`
-            popUp.style.left = `25%`;
+            popUp.style.top = `10%`
+            popUp.style.left = `5%`;
             
             var main = document.createElement("div")
             main.classList.add("mainDiv")
@@ -572,13 +571,18 @@ const defaultTable = `
                 <br> \
             </td> \
         </tr> \
-        <tr> \
-            <td class="buttons" colspan="2"> \
+        <tr style="display: flex;"> \
+            <td>
                 <button id="hintR" class="redBox">HINT</button> \
-                <br><br> \
+            </td>
+            <td>
                 <button id="hintG" class="greenBox" >HINT</button> \
-                <br><br> \
+            </td>
+            <td>
                 <button id="hintB" class="blueBox" >HINT</button> \
+            </td>
+
+            <td class="buttons" colspan="2"> \
                 <br><br> \
             </td> \
         </tr> \

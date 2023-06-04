@@ -9,59 +9,51 @@
 }
 
 .top-container {
-    display: flex;
-    flex-direction: row !important; 
-    justify-content: space-between;
-    width: 90% !important;
+    width: 100%;
+    text-align: left;
     font-size: 30px;
     font-family: 'Orbitron', sans-serif;
-    margin-top: 5%;
-    align-items: center;
+    margin-top: 30px;
     color: white;
-}
-
-.questions-completed {
+  }
+  
+  .questions-completed{
     display: inline-block;
     position: relative;
     font-size: 20px;
     font-family: 'Orbitron', sans-serif;
-    margin-top: 5%;
+    margin-top: 25px;
     color: white;
-    margin-left: 0%;
-    margin-right: 0%;
     vertical-align: left;
-}
-
-.questions-given {
+  }
+  
+  .questions-given {
     display: inline-block;
     position: relative;
     font-size: 20px;
     font-family: 'Orbitron', sans-serif;
-    margin-top: 5%;
-    margin-left: 0%;
-    margin-right: 0%;
+    margin-top: -20px;
     color: white;
-}
-
-.time-container {
-    display: inline-block;
-    margin-top: 1rem;
-    /*margin-left: 80%;*/
-    /*width: 100%;*/
-    top: 7%;
-    bottom: 5%;
-}
-
-.time-elapsed {
+    vertical-align: left;
+  }
+  
+  .time-container { 
+    display: float; 
+    float: right;
+    margin-top: 30px;
+    width: 200px;
+  }
+  
+  .time-elapsed {
     display: inline-block;
     position: relative;
     padding: 0px;
     font-size: 20px;
     font-family: 'Orbitron', sans-serif;
-    margin-top: -10%;
+    margin-top: -10px;
     color: white;
     vertical-align: right;
-}
+  }
 
 .progressbar {
     width: 100%;
@@ -271,7 +263,7 @@ img {
 .car1 {
     width: auto;
     height: auto;
-    top: 5%;
+    top: 3%;
     position: absolute;
     animation: moveRight 7s linear infinite;
     animation-play-state: paused;
@@ -282,7 +274,8 @@ img {
 .carContainer {
     position: absolute;
     left: 0em;
-    top: 0.625em;
+    top: -7%;
+    width: 12em;
     animation: movecarRight 5s linear forwards;
     animation-play-state: paused;
 }
@@ -292,7 +285,7 @@ img {
         transform: translateX(0);
     }
     100% {
-        transform: translateX(1000px);
+        transform: translateX(40em);
     }
 }
 
@@ -302,15 +295,16 @@ img {
     width: 100%;
   }
   
-  .lines-body { 
-    background-image: url(BRG_roadlines.png);
+.lines-body { 
+    background-image: url(images/BRG_roadlines.png);
     animation: road_animate 3s infinite;
+    z-index: 2;
     animation-timing-function: linear; 
     position: absolute;
-    margin-top: -480px;
-    height: 200px;
-    width: 1420px;
-  }
+    margin-top: -1%;
+    height: 46%;
+    width: 100%;
+}
 
 @keyframes road_animate {
     100% {

@@ -116,9 +116,6 @@ class PointerLockControls extends EventDispatcher {
 
 		this.checkWall(1)
 
-		console.log("vector", _vector)
-
-
 		camera.position.addScaledVector( _vector, distance );
 
 	}

@@ -28,6 +28,587 @@ function makeOverlay(type){
     var escape = document.getElementById("escapeContainer")
     switch(type){
         // creates tgb popup elements
+        case "racer":
+            var popUp1 = document.createElement("div")
+            popUp1.id = "overlay"
+            popUp1.style.maxWidth = "90%"
+            popUp1.style.height = "auto"
+            popUp1.style.top = `10%`
+            popUp1.style.left = `5%`;
+
+            var link1 = document.createElement('link');
+            link1.rel = 'preconnect';
+            link1.href = 'https://fonts.googleapis.com/';
+
+            var link2 = document.createElement('link');
+            link2.rel = 'preconnect';
+            link2.href = 'https://fonts.gstatic.com/';
+            link2.setAttribute('crossorigin', '');
+
+            var link3 = document.createElement('link');
+            link3.href = 'https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap';
+            link3.rel = 'stylesheet';
+
+            var link4 = document.createElement('link');
+            link4.rel = 'stylesheet';
+            link4.href = 'assets/css/racerStyles1.css';
+
+            var div1 = document.createElement('div');
+            div1.className = 'wrapper';
+
+            var div2 = document.createElement('div');
+            div2.className = 'menu';
+
+            var div3 = document.createElement('div');
+            div3.className = 'menu-title';
+            div3.textContent = 'B1NARY RACER ⪢⪢⪢';
+
+            var div4 = document.createElement('div');
+            div4.className = 'menu-button';
+            div4.textContent = 'Back to Escape Room';
+
+            var div5 = document.createElement('div');
+            div5.className = 'splash';
+
+            var h1 = document.createElement('h1');
+            h1.className = 'splash-header';
+            h1.textContent = 'click here to start';
+
+            var div6 = document.createElement('div');
+            div6.className = 'traffic-light';
+            div6.id = 'traffic-light';
+
+            var div7 = document.createElement('div');
+            div7.className = 'light red';
+
+            var div8 = document.createElement('div');
+            div8.className = 'light yellow';
+
+            var div9 = document.createElement('div');
+            div9.className = 'light green';
+
+            var div10 = document.createElement('div');
+            div10.className = 'end-screen';
+            div10.id = 'end-screen';
+            div10.style.display = 'none';
+
+            var p = document.createElement('p');
+
+            var span1 = document.createElement('span');
+            span1.id = 'end-time';
+
+            var div11 = document.createElement('div');
+            div11.className = 'top-container';
+
+            var div12 = document.createElement('div');
+            div12.className = 'questions-completed';
+            div12.textContent = 'QUESTIONS COMPLETED: ';
+
+            var div13 = document.createElement('div');
+            div13.id = 'questions';
+            div13.className = 'questions-completed';
+            div13.textContent = '0';
+
+            var div14 = document.createElement('div');
+            div14.className = 'questions-completed';
+            div14.textContent = '/ 10';
+
+            var div15 = document.createElement('div');
+            div15.className = 'time-container';
+
+            var div16 = document.createElement('div');
+            div16.className = 'time-elapsed';
+            div16.textContent = 'TIME : ';
+
+            var div17 = document.createElement('div');
+            div17.className = 'time-elapsed';
+            div17.id = 'seconds';
+            div17.textContent = '00 :';
+
+            var div18 = document.createElement('div');
+            div18.className = 'time-elapsed';
+            div18.id = 'mins';
+            div18.textContent = '00';
+
+            var div19 = document.createElement('div');
+            div19.className = 'progressbar';
+
+            var div20 = document.createElement('div');
+            div20.className = 'inner';
+
+            var div21 = document.createElement('div');
+            div21.className = 'image-container';
+
+            var road = document.createElement('img');
+            road.src = "../images/BRG_road.png";
+            road.alt = 'road';
+
+            var div22 = document.createElement('div');
+            div22.className = 'lines-body';
+
+            var canvas = document.createElement('canvas');
+            canvas.id = 'spriteContainer';
+            canvas.className = 'carContainer';
+
+            var carImg = document.createElement('img');
+            carImg.className = 'car1';
+            carImg.id = 'car';
+            carImg.src = 'images/carSprites.png';
+
+            var div23 = document.createElement('div');
+            div23.className = 'bottom-UI';
+
+            var div24 = document.createElement('div');
+            div24.className = 'questions-given';
+            div24.id = 'questions-container';
+            div24.textContent = 'QUESTIONS HERE';
+
+            var div25 = document.createElement('div');
+            div25.className = 'button-container';
+
+            var button1 = document.createElement('button');
+            button1.className = 'answer-button1';
+            button1.id = 'answer-button1';
+            button1.textContent = '-';
+
+            var button2 = document.createElement('button');
+            button2.className = 'answer-button2';
+            button2.id = 'answer-button2';
+            button2.textContent = '-';
+
+            var button3 = document.createElement('button');
+            button3.className = 'answer-button3';
+            button3.id = 'answer-button3';
+            button3.textContent = '-';
+
+            var button4 = document.createElement('button');
+            button4.className = 'answer-button4';
+            button4.id = 'answer-button4';
+            button4.textContent = '-';
+
+            var div26 = document.createElement('div');
+            div26.id = 'progressbar';
+
+            // Append the elements to the appropriate parent elements
+            div2.appendChild(div3);
+            div2.appendChild(div4);
+
+            div5.appendChild(h1);
+
+            div6.appendChild(div7);
+            div6.appendChild(div8);
+            div6.appendChild(div9);
+
+            div10.appendChild(p);
+            p.appendChild(span1);
+
+            div11.appendChild(div12);
+            div11.appendChild(div13);
+            div11.appendChild(div14);
+            div11.appendChild(div15);
+            div15.appendChild(div16);
+            div15.appendChild(div17);
+            div15.appendChild(div18);
+
+            div19.appendChild(div20);
+
+            div21.appendChild(road);
+            div21.appendChild(div22);
+            div21.appendChild(canvas);
+            canvas.appendChild(carImg);
+
+            div23.appendChild(div24);
+            div23.appendChild(div25);
+            div25.appendChild(button1);
+            div25.appendChild(button2);
+            div25.appendChild(button3);
+            div25.appendChild(button4);
+
+            div1.appendChild(div2);
+            div1.appendChild(div5);
+            div1.appendChild(div6);
+            div1.appendChild(div10);
+            div1.appendChild(div11);
+            div11.appendChild(div19);
+            div11.appendChild(div21);
+            div1.appendChild(div23);
+            div1.appendChild(div26);
+
+            popUp1.appendChild(div1); // Append div1 to popUp1
+
+            // Append the elements to the document's body
+            document.head.appendChild(link1);
+            document.head.appendChild(link2);
+            document.head.appendChild(link3);
+            document.head.appendChild(link4);
+
+            escape.appendChild(popUp1)
+
+            // Load the external JavaScript file
+            const progressBar = document.querySelector(".progressbar .inner");
+            const car1 = document.querySelector(".car1");
+            const carCont = document.querySelector(".carContainer");
+            const startButton = document.querySelector("#start-button");
+            const game = document.getElementById("game")
+            const trafficLight = document.getElementById("traffic-light")
+            
+            let seconds = 0;
+            let mins = 0;
+            let questions = 0;
+            const appendMins = document.getElementById("mins");
+            let Interval;
+            const appendSeconds = document.getElementById("seconds");
+            const appendQ = document.getElementById("questions");
+            const newQuestion = document.getElementById('questions-container')
+            var splashScreen = document.querySelector('.splash');
+            
+            
+            //hide game; load traffic light
+            window.addEventListener("load", () => {
+              game.style.visibility = "hidden";
+              document.getElementById("traffic-light").style.display = "visible";
+            });
+            
+            
+            function activateLights() {
+                var lights = document.getElementsByClassName('light');
+                
+                for (var i = 0; i < lights.length; i++) {
+                  lights[i].classList.remove('active');
+                }
+                
+                var activeLight = lights[0];
+                activeLight.classList.add('active');
+                
+                setInterval(function() {
+                  activeLight.classList.remove('active');
+                  activeLight = activeLight.nextElementSibling || lights[0];
+                  activeLight.classList.add('active');
+                }, 1000);
+            }
+              
+            
+            splashScreen.addEventListener('click',()=> {
+                splashScreen.style.opacity = 0;
+                setTimeout(()=>{
+                  splashScreen.classList.add('hidden')
+                },610)
+                activateLights();
+                setTimeout(function() {
+                  document.getElementById("traffic-light").style.display = "none";
+                  game.style.visibility = "visible";
+                  clearInterval(Interval);
+                  Interval = setInterval(startTimer, 10);
+                }, 3000); 
+            })
+            
+            
+            //progress bar animation; everytime correct answer is selected
+            let keyframeIndex = 0;
+            function barMove() {
+              if (keyframeIndex < 10) { // limit to 10 keyframes
+                const animationDuration = 5;
+                progressBar.style.animation = `progressbar-countdown ${animationDuration}s forwards`;
+                progressBar.style.animationPlayState = "running";
+                progressBar.style.animationIterationCount = 1;
+                progressBar.style.animationTimingFunction = "linear";
+                progressBar.style.width = `${(keyframeIndex + 1) * 10}%`;
+                carCont.style.animationPlayState = "running"; 
+                setTimeout(function() {
+                  progressBar.style.animationPlayState = "paused";
+                  carCont.style.animationPlayState = "paused"; 
+                }, 500); 
+                keyframeIndex++;
+              }
+              addQuestion();
+            }
+            
+            
+            function startTimer () {
+              mins++; 
+              if(mins <= 9){
+                appendMins.innerHTML = "0" + mins;
+              }
+              if (mins > 9){
+                appendMins.innerHTML = mins;
+              } 
+              if (mins > 99) {
+                console.log("seconds");
+                seconds++;
+                appendSeconds.innerHTML = "0" + seconds;
+                mins = 0;
+                appendMins.innerHTML = "0" + 0;
+              }
+              if (seconds > 9){
+                appendSeconds.innerHTML = seconds;
+              }
+            }
+            
+            //appends QUESTIONS COMPLETED div
+            function addQuestion () { 
+              questions++;
+              appendQ.innerHTML = questions;
+              if (questions > 10) {
+                  questions = 10;
+                  appendQ.innerHTML = questions;
+              }
+              if (questions === 10) {
+                  showEndScreen();
+              }
+            }
+            
+            //slows road-lines down everytime wrong answer is given -- ill figure out how to translate the car itself to the left after n@tm
+            function startMoveLeft() {
+              const roadLines = document.querySelector('.lines-body');
+              const animationDuration = 9;
+              roadLines.style.animationDuration = `${animationDuration}s`;
+              setTimeout(() => {
+                  roadLines.style.animationDuration = '3s'; 
+              }, 2000);
+            }
+            
+            
+            //randomly generated questions/answers code
+            const option1 = document.getElementById("answer-button1"),
+            option2 = document.getElementById("answer-button2"),
+            option3 = document.getElementById("answer-button3"),
+            option4 = document.getElementById("answer-button4");
+            function generate_equation() {
+              var num1 = Math.floor(Math.random() * 9),
+              num2 = Math.floor(Math.random() * 9),
+              binary1 = num1.toString(2).padStart(4, '0'),
+              binary2 = num2.toString(2).padStart(4, '0');
+              
+              var choice1 = Math.floor(Math.random() * 9),
+              choice2 = Math.floor(Math.random() * 9),
+              choice3 = Math.floor(Math.random() * 9),
+              allAnswers = [],
+              switchAnswers = [];
+            
+              function uniqueAnswers() {
+                while (choice1 == choice2 || choice1 == choice3 || choice1 == eval(num1 + num2)){
+                  console.log("not unique C1")
+                  choice1 = Math.floor(Math.random() * 9)
+                }
+                while (choice2 == choice3 || choice2 == eval(num1 + num2)) {
+                  console.log("not unique C2")
+                  choice2 = Math.floor(Math.random() * 9)
+                }
+                while (choice3 == eval(num1 + num2)){
+                  console.log("not unique C3")
+                  choice3 = Math.floor(Math.random() * 9)
+                }
+              }
+              while (choice1 == choice2 || choice1 == choice3 || choice1 == eval(num1 + num2) || choice2 == choice3 || choice2 == eval(num1 + num2) || choice3 == eval(num1 + num2)){
+                uniqueAnswers()
+              }
+            
+              var binchoice1 = choice1.toString(2).padStart(4, '0'),
+              binchoice2 = choice2.toString(2).padStart(4, '0'),
+              binchoice3 = choice3.toString(2).padStart(4, '0');
+              
+              var answer = eval(num1 + num2);
+              var binanswer = answer.toString(2).padStart(4, '0') 
+            
+              newQuestion.innerHTML = "What is " + binary1 + " + " + binary2;
+            
+              allAnswers = [binanswer, binchoice1, binchoice2, binchoice3];
+              
+              for (i = allAnswers.length; i--;) {
+                switchAnswers.push(allAnswers.splice(Math.floor(Math.random() * (i + 1)), 1)[0]);
+              };
+              
+              option1.innerHTML = switchAnswers[0];
+              option2.innerHTML = switchAnswers[1];
+              option3.innerHTML = switchAnswers[2]; 
+              option4.innerHTML = switchAnswers[3];
+            };
+            generate_equation()
+            
+            option1.addEventListener("click", function(){
+              const selectedAnswer = parseInt(option1.innerHTML, 2);
+              if(selectedAnswer == answer){
+                ans = 1
+                setTimeout(function() {
+                  ans = 0; 
+                }, 1000);
+                barMove();
+                generate_equation();
+              }
+              else{
+                startMoveLeft()
+                document.getElementById("answer-button1").disabled = true;
+                document.getElementById("answer-button2").disabled = true;
+                document.getElementById("answer-button3").disabled = true;
+                document.getElementById("answer-button4").disabled = true;
+                newQuestion.innerHTML = "Incorrect";
+                ans = 2
+                setTimeout(function() {
+                  ans = 0
+                  document.getElementById("answer-button1").disabled = false;
+                  document.getElementById("answer-button2").disabled = false;
+                  document.getElementById("answer-button3").disabled = false;
+                  document.getElementById("answer-button4").disabled = false;
+                  generate_equation()
+                }, 2000);
+              }
+            });
+            
+            option2.addEventListener("click", function(){
+              const selectedAnswer = parseInt(option2.innerHTML, 2);
+              if(selectedAnswer == answer){
+                ans = 1
+                setTimeout(function() {
+                  ans = 0; 
+                }, 1000);
+                barMove();
+                generate_equation();
+              }
+              else{
+                startMoveLeft()
+                document.getElementById("answer-button1").disabled = true;
+                document.getElementById("answer-button2").disabled = true;
+                document.getElementById("answer-button3").disabled = true;
+                document.getElementById("answer-button4").disabled = true;
+                newQuestion.innerHTML = "Incorrect";
+                ans = 2
+                setTimeout(function() {
+                  ans = 0
+                  document.getElementById("answer-button1").disabled = false;
+                  document.getElementById("answer-button2").disabled = false;
+                  document.getElementById("answer-button3").disabled = false;
+                  document.getElementById("answer-button4").disabled = false;
+                  generate_equation()
+                }, 2000);
+              }
+            });
+            
+            option3.addEventListener("click", function(){
+              const selectedAnswer = parseInt(option3.innerHTML, 2);
+              if(selectedAnswer == answer){
+                ans = 1
+                setTimeout(function() {
+                  ans = 0; 
+                }, 1000);
+                barMove();
+                generate_equation();
+              }
+              else{
+                startMoveLeft()
+                document.getElementById("answer-button1").disabled = true;
+                document.getElementById("answer-button2").disabled = true;
+                document.getElementById("answer-button3").disabled = true;
+                document.getElementById("answer-button4").disabled = true;
+                newQuestion.innerHTML = "Incorrect";
+                ans = 2
+                setTimeout(function() {
+                  ans = 0
+                  document.getElementById("answer-button1").disabled = false;
+                  document.getElementById("answer-button2").disabled = false;
+                  document.getElementById("answer-button3").disabled = false;
+                  document.getElementById("answer-button4").disabled = false;
+                  generate_equation()
+                }, 2000);
+              }
+            });
+            
+            option4.addEventListener("click", function(){
+              const selectedAnswer = parseInt(option4.innerHTML, 2);
+              if(selectedAnswer == answer){
+                ans = 1
+                setTimeout(function() {
+                  ans = 0; 
+                }, 1000);
+                barMove();
+                generate_equation();
+            }
+            else{
+              startMoveLeft()
+              document.getElementById("answer-button1").disabled = true;
+              document.getElementById("answer-button2").disabled = true;
+              document.getElementById("answer-button3").disabled = true;
+              document.getElementById("answer-button4").disabled = true;
+              newQuestion.innerHTML = "Incorrect";
+              ans = 2
+              setTimeout(function() {
+                ans = 0
+                document.getElementById("answer-button1").disabled = false;
+                document.getElementById("answer-button2").disabled = false;
+                document.getElementById("answer-button3").disabled = false;
+                document.getElementById("answer-button4").disabled = false;
+                generate_equation()
+              }, 2000);
+            }
+            });
+            
+            
+            function showEndScreen() {
+              clearInterval(Interval);
+              const endTime = document.getElementById("end-time");
+              endTime.textContent = appendSeconds.innerHTML + ":" + appendMins.innerHTML;
+              game.style.visibility = "hidden";
+              const endScreen = document.getElementById("end-screen");
+              endScreen.style.display = "block";
+            }
+            
+            
+            
+            // start of sprite animation code 
+            window.addEventListener('load', function(){
+            ans = 0
+            const canvas = document.getElementById('spriteContainer');
+            const ctx = canvas.getContext('2d');
+            canvas.width = 220 * 1.2;
+            canvas.height = 160 * 1.2; 
+            
+            class Car {
+                constructor(){ 
+                    this.image = document.getElementById("car")
+                    this.spriteWidth = 220;
+                    this.spriteHeight = 160;
+                    this.width = this.spriteWidth;
+                    this.height = this.spriteHeight;
+                    this.x = 0;
+                    this.y = 0;
+                    this.scale = 1.2;
+                    this.minFrame = 0;
+                    this.maxFrame = 48;
+                    this.frameX = 0;
+                    this.frameY = 0;
+                }
+                draw(context){
+                    context.drawImage(this.image, this.frameX * this.spriteWidth, this.frameY * this.spriteHeight, this.spriteWidth, this.spriteHeight, this.x, this.y, this.width * this.scale, this.height * this.scale);
+                }
+                update(){
+                    if (this.frameX < 15) this.frameX++ 
+                    else this.frameX = 0;
+            
+                    if (ans === 0) {
+                      this.frameY = 0;
+                    } else if (ans === 1) {
+                      this.frameY = 1;
+                    } else if (ans === 2) {
+                      this.frameY = 2;
+                    }
+                }
+            }
+            const car = new Car();
+            
+            function animate(){
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                car.draw(ctx);
+                car.update();
+                requestAnimationFrame(animate);
+                
+            }
+            animate();
+            });
+            
+
+            console.log("here")
+            break;
+
+
         case "rgb":
             var popUp = document.createElement("div")
             popUp.id = "overlay"
@@ -447,7 +1028,16 @@ window.addEventListener("click", (event) => {
             controls.unlock()
             makeOverlay("b64")
         }
+        
+        else if(object.id == 45 && controls.isLocked){
+            controls.unlock()
+            makeOverlay("racer")
+        }
 
+        else if(object.id == 46 && controls.isLocked){
+            controls.unlock()
+            makeOverlay("racer")
+        }
     }
 })
 

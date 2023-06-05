@@ -1,4 +1,9 @@
-        const questions = [
+
+let currentQuestion = 0; // sets current question to 0
+let animationStarted = false; // sets value to false for animation started
+let mushroomAnimation;
+
+          const questions = [ // Questions for quiz
             { question: "Which operator is used for addition?", answer: 1 },
             { question: "Which operator is used for subtraction?", answer: 2 },
             { question: "Which operator is used for multiplication?", answer: 3 },
@@ -30,109 +35,103 @@
         ];
 
 class MushroomAnimation {
-  constructor(position) {
-    this.frames = 6;
-    this.currentFrame = 0;
-    this.frameSpacing = 70;
-    this.animationSpeed = 200;
+  constructor(position) { // constructor for animation
+    this.frames = 6; // Number of frames
+    this.currentFrame = 0; // Starting frame
+    this.frameSpacing = 70; // How far apart each frame is
+    this.animationSpeed = 200; // Rate at which the frames are changing
     this.mushroomElement = document.getElementById("mushroom");
     this.mushroomElement.style.position = "absolute";
 
     const currentPosition = parseFloat(this.mushroomElement.style.left) || position;
-    const offset = 0;
+    const offset = 180;
     const startingPosition = currentPosition - (offset / window.innerWidth) * 100;
     this.mushroomElement.style.left = `${startingPosition}%`;
-    const startingHeight = 1350;
+    const startingHeight = 75; // Sets height for the animation
     this.mushroomElement.style.top = `${startingHeight}%`;
     this.animationTimeout = null;
   }
 
   animateFrames() {
-    this.mushroomElement.style.backgroundPosition = `-${this.currentFrame * this.frameSpacing}px 0px`;
+    this.mushroomElement.style.backgroundPosition = `-${this.currentFrame * this.frameSpacing}px 0px`; // Updates the background position of the mushroom element to show the current frame
 
-    this.currentFrame++;
-    if (this.currentFrame >= this.frames) {
-      this.currentFrame = 0;
-      this.stopAnimation();
+    this.currentFrame++; // function to go to next frame
+    if (this.currentFrame >= this.frames) { // checks to see frames shown
+      this.currentFrame = 0; // moves to first frame
+      this.stopAnimation(); // stops animation
     }
 
-    const currentPosition = parseFloat(this.mushroomElement.style.left) || 100; 
-    const newPosition = currentPosition - 1;
+    const currentPosition = parseFloat(this.mushroomElement.style.left) || 100;  // gets position of mushroom
+    const newPosition = currentPosition - 1; // finds new position
 
     this.mushroomElement.style.left = `${newPosition}%`;
 
     this.animationTimeout = setTimeout(() => {
       this.animateFrames();
-    }, this.animationSpeed);
+    }, this.animationSpeed); 
   }
 
 
-  startAnimation() {
-    if (parseFloat(this.mushroomElement.style.left) <= -100) {
+  startAnimation() { 
+    if (parseFloat(this.mushroomElement.style.left) <= -100) { // checks to make sure mushroom is on screen
       return;
     }
     if (animationStarted) {
       return;
     }
 
-    this.animateFrames();
+    this.animateFrames(); // starts animation
   }
 
   pauseAnimation() {
     clearTimeout(this.animationTimeout);
-    this.animationTimeout = null;
+    this.animationTimeout = null; // resets animation time
   }
 
   resumeAnimation() {
     if (!this.animationTimeout) {
-      this.animateFrames();
+      this.animateFrames(); // calls animate frames to resume animation
     }
   }
 
   stopAnimation() {
     clearTimeout(this.animationTimeout);
-    this.animationTimeout = null;
+    this.animationTimeout = null; // resets animation time
   }
 }
-
-let currentQuestion = 0;
-let score = 0;
-let animationStarted = false;
-let mushroomAnimation;
 
 function updateQuestion() {
   const questionElement = document.querySelector('.question');
   const buttons = document.querySelectorAll('.option');
 
-  questionElement.textContent = questions[currentQuestion].question;
+  questionElement.textContent = questions[currentQuestion].question; // Displays Question
 
-  const answer = questions[currentQuestion].answer;
-  buttons[answer - 1].classList.add('correct');
+  const answer = questions[currentQuestion].answer; // connects question to answer
+  buttons[answer - 1].classList.add('correct'); // sets that button to correct class
 }
 
 function handleAnswer(selectedAnswer) {
   const answer = questions[currentQuestion].answer;
 
-  if (selectedAnswer === answer) {
+  if (selectedAnswer === answer) { // checks if answer is correct
     const buttons = document.querySelectorAll('.option');
     buttons[answer - 1].classList.add('hidden');
-    score++;
 
     if (currentQuestion === questions.length - 1) {
       mushroomAnimation.startAnimation();
       setTimeout(() => {
         mushroomAnimation.stopAnimation();
-      }, 2000);
+      }, 2000); // time animation is running
     } else {
       currentQuestion++;
       updateQuestion();
-      mushroomAnimation.resumeAnimation();
+      mushroomAnimation.resumeAnimation(); // starts animation
       setTimeout(() => {
-        mushroomAnimation.pauseAnimation();
-      }, 300);
+        mushroomAnimation.pauseAnimation();  // stops animation
+      }, 300); // time animation is running
     }
   } else {
-    alert("Wrong answer! You lose.");
+    alert("Wrong answer! You lose."); // displays when wrong
   }
 }
 
@@ -161,22 +160,13 @@ function hidePopup() {
   popupContainer.style.opacity = '0';
   popupContainer.style.visibility = 'hidden';
   setTimeout(() => {
-    mushroomAnimation.startAnimation();
-    setTimeout(() => {
-      mushroomAnimation.stopAnimation();
-    }, 3500);
+    mushroomAnimation.startAnimation(); // Starts mushroom animation
+    setTimeout(() => { // time mushroom animation is running for
+      mushroomAnimation.stopAnimation(); // stops mushroom animation
+    }, 300);
   }, 1000);
 }
 
 document.querySelector('.popup-button').addEventListener('click', hidePopup);
 
 setTimeout(showPopup, 500);
-
-
-const quizContainer = document.querySelector('.quiz-container');
-const goHomeButton = document.createElement('a');
-goHomeButton.href = 'https://binarygames.tech/escaperoom.html';
-goHomeButton.innerText = 'Go home';
-goHomeButton.classList.add('option');
-goHomeButton.style.textAlign = 'center';
-quizContainer.appendChild(goHomeButton);

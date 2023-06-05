@@ -14,7 +14,7 @@ Please do not try to change anything in the repo unless you are manually added a
 
 ## License
 
-This repo is licensed with an [MIT License](https://github.com/toby-leeder/binarygames-frontend)
+This repo is licensed with an [MIT License]([https://github.com/toby-leeder/binarygames-frontend](https://github.com/Toby-Leeder/binarygames-frontend/blob/d1c28609ae34b7b1ad9780cb763794bfd625848c/LICENSE.md))
 
 ## Credits
 
@@ -22,7 +22,5 @@ This project is the work of Team JCK. Contributors: Aiden Huynh, Toby Leeder, Az
 
 
 Original frontend template created by:
-
-Stellar by HTML5 UP
-
+Stellar by HTML5 UP | 
 html5up.net | @ajlkn

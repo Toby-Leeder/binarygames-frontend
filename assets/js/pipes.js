@@ -44,10 +44,10 @@ class MushroomAnimation {
     this.mushroomElement.style.position = "absolute";
 
     const currentPosition = parseFloat(this.mushroomElement.style.left) || position;
-    const offset = 0;
+    const offset = 180;
     const startingPosition = currentPosition - (offset / window.innerWidth) * 100;
     this.mushroomElement.style.left = `${startingPosition}%`;
-    const startingHeight = 1350; // Sets height for the animation
+    const startingHeight = 75; // Sets height for the animation
     this.mushroomElement.style.top = `${startingHeight}%`;
     this.animationTimeout = null;
   }
@@ -163,7 +163,7 @@ function hidePopup() {
     mushroomAnimation.startAnimation(); // Starts mushroom animation
     setTimeout(() => { // time mushroom animation is running for
       mushroomAnimation.stopAnimation(); // stops mushroom animation
-    }, 3500);
+    }, 300);
   }, 1000);
 }
 

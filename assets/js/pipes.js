@@ -170,12 +170,3 @@ function hidePopup() {
 document.querySelector('.popup-button').addEventListener('click', hidePopup);
 
 setTimeout(showPopup, 500);
-
-
-const quizContainer = document.querySelector('.quiz-container');
-const goHomeButton = document.createElement('a');
-goHomeButton.href = 'https://binarygames.tech/escaperoom.html';
-goHomeButton.innerText = 'Go home';
-goHomeButton.classList.add('option');
-goHomeButton.style.textAlign = 'center';
-quizContainer.appendChild(goHomeButton);

@@ -28,6 +28,234 @@ function makeOverlay(type){
     var escape = document.getElementById("escapeContainer")
     switch(type){
         // creates tgb popup elements
+        case "racer":
+            var popUp1 = document.createElement("div")
+            popUp1.id = "overlay"
+            popUp1.style.maxWidth = "90%"
+            popUp1.style.height = "auto"
+            popUp1.style.top = `10%`
+            popUp1.style.left = `5%`;
+
+            var link1 = document.createElement('link');
+            link1.rel = 'preconnect';
+            link1.href = 'https://fonts.googleapis.com/';
+
+            var link2 = document.createElement('link');
+            link2.rel = 'preconnect';
+            link2.href = 'https://fonts.gstatic.com/';
+            link2.setAttribute('crossorigin', '');
+
+            var link3 = document.createElement('link');
+            link3.href = 'https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap';
+            link3.rel = 'stylesheet';
+
+            var link4 = document.createElement('link');
+            link4.rel = 'stylesheet';
+            link4.href = 'assets/css/racerStyles1.css';
+
+            var div1 = document.createElement('div');
+            div1.className = 'wrapper';
+            div1.id = 'wrapper';
+
+            var div2 = document.createElement('div');
+            div2.className = 'menu';
+
+            var div3 = document.createElement('div');
+            div3.className = 'menu-title';
+            div3.textContent = 'B1NARY RACER ⪢⪢⪢';
+
+            var div4 = document.createElement('div');
+            div4.className = 'menu-button';
+            div4.textContent = 'Back to Escape Room';
+
+            var div5 = document.createElement('div');
+            div5.className = 'splash';
+
+            var h1 = document.createElement('h1');
+            h1.className = 'splash-header';
+            h1.textContent = 'click here to start';
+
+            var div6 = document.createElement('div');
+            div6.className = 'traffic-light';
+            div6.id = 'traffic-light';
+
+            var div7 = document.createElement('div');
+            div7.className = 'light red';
+
+            var div8 = document.createElement('div');
+            div8.className = 'light yellow';
+
+            var div9 = document.createElement('div');
+            div9.className = 'light green';
+
+            var div10 = document.createElement('div');
+            div10.className = 'end-screen';
+            div10.id = 'end-screen';
+            div10.style.display = 'none';
+
+            var p = document.createElement('p');
+
+            var span1 = document.createElement('span');
+            span1.id = 'end-time';
+
+            var div11 = document.createElement('div');
+            div11.className = 'top-container';
+            div11.id = 'top-container';
+
+            var div12 = document.createElement('div');
+            div12.className = 'questions-completed';
+            div12.textContent = 'QUESTIONS COMPLETED: ';
+
+            var div13 = document.createElement('div');
+            div13.id = 'questions';
+            div13.className = 'questions-completed';
+            div13.textContent = '0';
+
+            var div14 = document.createElement('div');
+            div14.className = 'questions-completed';
+            div14.textContent = '/ 10';
+
+            var div15 = document.createElement('div');
+            div15.className = 'time-container';
+
+            var div16 = document.createElement('div');
+            div16.className = 'time-elapsed';
+            div16.textContent = 'TIME : ';
+
+            var div17 = document.createElement('div');
+            div17.className = 'time-elapsed';
+            div17.id = 'seconds';
+            div17.textContent = '00 :';
+
+            var div18 = document.createElement('div');
+            div18.className = 'time-elapsed';
+            div18.id = 'mins';
+            div18.textContent = '00';
+
+            var div19 = document.createElement('div');
+            div19.className = 'progressbar';
+            div19.id = 'progressbar1';
+
+            var div20 = document.createElement('div');
+            div20.className = 'inner';
+
+            var div21 = document.createElement('div');
+            div21.className = 'image-container';
+            div21.id = 'image-container';
+
+            var road = document.createElement('img');
+            road.src = "../images/BRG_road.png";
+            road.alt = 'road';
+
+            var div22 = document.createElement('div');
+            div22.className = 'lines-body';
+
+            var canvas = document.createElement('canvas');
+            canvas.id = 'spriteContainer';
+            canvas.className = 'carContainer';
+
+            var carImg = document.createElement('img');
+            carImg.className = 'car1';
+            carImg.id = 'car';
+            carImg.src = 'images/carSprites.png';
+
+            var div23 = document.createElement('div');
+            div23.className = 'bottom-UI';
+            div23.id = 'bottom-UI';
+
+            var div24 = document.createElement('div');
+            div24.className = 'questions-given';
+            div24.id = 'questions-container';
+            div24.textContent = 'QUESTIONS HERE';
+
+            var div25 = document.createElement('div');
+            div25.className = 'button-container';
+
+            var button1 = document.createElement('button');
+            button1.className = 'answer-button1';
+            button1.id = 'answer-button1';
+            button1.textContent = '-';
+
+            var button2 = document.createElement('button');
+            button2.className = 'answer-button2';
+            button2.id = 'answer-button2';
+            button2.textContent = '-';
+
+            var button3 = document.createElement('button');
+            button3.className = 'answer-button3';
+            button3.id = 'answer-button3';
+            button3.textContent = '-';
+
+            var button4 = document.createElement('button');
+            button4.className = 'answer-button4';
+            button4.id = 'answer-button4';
+            button4.textContent = '-';
+
+            var div26 = document.createElement('div');
+            div26.id = 'progressbar';
+
+            // Append the elements to the appropriate parent elements
+            div2.appendChild(div3);
+            div2.appendChild(div4);
+
+            div5.appendChild(h1);
+
+            div6.appendChild(div7);
+            div6.appendChild(div8);
+            div6.appendChild(div9);
+
+            div10.appendChild(p);
+            p.appendChild(span1);
+
+            div11.appendChild(div12);
+            div11.appendChild(div13);
+            div11.appendChild(div14);
+            div11.appendChild(div15);
+            div15.appendChild(div16);
+            div15.appendChild(div17);
+            div15.appendChild(div18);
+
+            div19.appendChild(div20);
+
+            div21.appendChild(road);
+            div21.appendChild(div22);
+            div21.appendChild(canvas);
+            canvas.appendChild(carImg);
+
+            div23.appendChild(div24);
+            div23.appendChild(div25);
+            div25.appendChild(button1);
+            div25.appendChild(button2);
+            div25.appendChild(button3);
+            div25.appendChild(button4);
+
+            div1.appendChild(div2);
+            div1.appendChild(div5);
+            div1.appendChild(div6);
+            div1.appendChild(div10);
+            div1.appendChild(div11);
+            div11.appendChild(div19);
+            div11.appendChild(div21);
+            div1.appendChild(div23);
+            div1.appendChild(div26);
+
+            popUp1.appendChild(div1); // Append div1 to popUp1
+
+            // Append the elements to the document's body
+            document.head.appendChild(link1);
+            document.head.appendChild(link2);
+            document.head.appendChild(link3);
+            document.head.appendChild(link4);
+
+            escape.appendChild(popUp1)
+
+            // Load the external JavaScript file
+            const script = document.createElement('script');
+            script.src = '../assets/js/racer-script1.js';
+            document.body.appendChild(script);
+            break;
+
+
         case "rgb":
             var popUp = document.createElement("div")
             popUp.id = "overlay"
@@ -448,7 +676,16 @@ window.addEventListener("click", (event) => {
             controls.unlock()
             makeOverlay("b64")
         }
+        
+        else if(object.id == 45 && controls.isLocked){
+            controls.unlock()
+            makeOverlay("racer")
+        }
 
+        else if(object.id == 46 && controls.isLocked){
+            controls.unlock()
+            makeOverlay("racer")
+        }
     }
 })
 

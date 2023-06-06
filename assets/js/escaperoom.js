@@ -64,10 +64,6 @@ function makeOverlay(type){
             div3.className = 'menu-title';
             div3.textContent = 'B1NARY RACER ⪢⪢⪢';
 
-            var div4 = document.createElement('div');
-            div4.className = 'menu-button';
-            div4.textContent = 'Back to Escape Room';
-
             var div5 = document.createElement('div');
             div5.className = 'splash';
 
@@ -196,7 +192,6 @@ function makeOverlay(type){
 
             // Append the elements to the appropriate parent elements
             div2.appendChild(div3);
-            div2.appendChild(div4);
 
             div5.appendChild(h1);
 

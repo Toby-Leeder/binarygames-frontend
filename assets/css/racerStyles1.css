@@ -1,9 +1,10 @@
 .wrapper {
     background: linear-gradient(to bottom, rgb(65, 63, 65), rgb(36, 34, 36));
     position: relative !important;
-    width: 110%;
-    left: -5%;
+    width: 900px;
+    left: 10px;
     top: -10px;
+    height: 550px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -15,6 +16,7 @@
     font-size: 30px;
     font-family: 'Orbitron', sans-serif;
     margin-top: 30px;
+    visibility: hidden;
     color: white;
   }
   
@@ -126,11 +128,16 @@
     top: 1.25em;
     position: relative;
     width: 100%;
+    visibility: hidden
 }
 
 img {
     display: block;
     width: 100%;
+}
+
+.bottom-UI {
+    visibility: hidden;
 }
 
 .button-container {
@@ -339,8 +346,8 @@ img {
 
 /* Traffic light */
 .traffic-light {
-    width: 8em;
-    height: 18.75em;
+    width: 6em;
+    height: 250px;
     margin-top: 1.875em;
     background-color: black;
     border-radius: 0.625em;
@@ -352,8 +359,9 @@ img {
 }
 
 .light {
-    width: 5em;
-    height: 5em;
+    width: 3em;
+    height: 3em;
+    margin: 0.5em;
     border-radius: 50%;
     opacity: 0.2;
     transition: opacity 0.5s;

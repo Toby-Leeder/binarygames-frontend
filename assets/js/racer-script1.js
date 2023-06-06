@@ -1,12 +1,14 @@
 //global variables
-const progressBar = document.querySelector(".progressbar .inner");
+const progressBarDiv = document.querySelector(".progressbar .inner");
 const car1 = document.querySelector(".car1");
 const carCont = document.querySelector(".carContainer");
 const startButton = document.querySelector("#start-button");
 const button1 = document.querySelector("#answer-button1");
 const trafficLight = document.getElementById("traffic-light");
 const topContainer = document.getElementById("top-container");
+const imageContainer = document.getElementById("image-container")
 const wrapper = document.getElementById("wrapper");
+const bottomUI = document.getElementById("bottom-UI")
 
 let seconds = 0;
 let mins = 0;
@@ -19,10 +21,10 @@ const newQuestion = document.getElementById('questions-container')
 var splashScreen = document.querySelector('.splash');
 
 
-//hide game; load traffic light
-wrapper.addEventListener("load", () => {
-  document.getElementById("traffic-light").style.display = "visible";
-});
+console.log("yh")
+
+document.getElementById("traffic-light").style.display = "visible";
+
 
 
 function activateLights() {
@@ -51,7 +53,9 @@ splashScreen.addEventListener('click',()=> {
     activateLights();
     setTimeout(function() {
       document.getElementById("traffic-light").style.display = "none";
-      game.style.visibility = "visible";
+      topContainer.style.visibility = "visible";
+      imageContainer.style.visibility = "visible";
+      bottomUI.style.visibility = "visible";
       clearInterval(Interval);
       Interval = setInterval(startTimer, 10);
     }, 3000); 
@@ -63,14 +67,14 @@ let keyframeIndex = 0;
 function barMove() {
   if (keyframeIndex < 10) { // limit to 10 keyframes
     const animationDuration = 5;
-    progressBar.style.animation = `progressbar-countdown ${animationDuration}s forwards`;
-    progressBar.style.animationPlayState = "running";
-    progressBar.style.animationIterationCount = 1;
-    progressBar.style.animationTimingFunction = "linear";
-    progressBar.style.width = `${(keyframeIndex + 1) * 10}%`;
+    progressBarDiv.style.animation = `progressbar-countdown ${animationDuration}s forwards`;
+    progressBarDiv.style.animationPlayState = "running";
+    progressBarDiv.style.animationIterationCount = 1;
+    progressBarDiv.style.animationTimingFunction = "linear";
+    progressBarDiv.style.width = `${(keyframeIndex + 1) * 10}%`;
     carCont.style.animationPlayState = "running"; 
     setTimeout(function() {
-      progressBar.style.animationPlayState = "paused";
+      progressBarDiv.style.animationPlayState = "paused";
       carCont.style.animationPlayState = "paused"; 
     }, 500); 
     keyframeIndex++;
@@ -306,10 +310,6 @@ function showEndScreen() {
   endScreen.style.display = "block";
 }
 
-
-
-// start of sprite animation code 
-window.addEventListener('load', function(){
 ans = 0
 const canvas = document.getElementById('spriteContainer');
 const ctx = canvas.getContext('2d');
@@ -357,4 +357,3 @@ function animate(){
     
 }
 animate();
-});

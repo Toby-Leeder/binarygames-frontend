@@ -525,9 +525,10 @@ function makeOverlay(type){
 
             escape.appendChild(popUp)    
 
+            // Thanks chat gpt
             for (var i = 1; i <= 9; i++) {
                 (function (num) {
-                  document.getElementById(`data${num}`).onclick = function () {
+                  document.getElementById(`data${num}`).onclick = function () { // necessary because of javascript compiler scope or order or something, without this immediately invoked function expression the onclick would be set after i finishes counting up, so the buttons all added 10
                     keypad(num);
                   };
                 })(i);

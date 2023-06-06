@@ -144,7 +144,7 @@ class PointerLockControls extends EventDispatcher {
 
 	}
 
-	checkWall(direction){
+	checkWall(direction){ // checks for the walls by checking the x or z component of the direction vector and then sets that component to 0 if it's too far
 		const camera = this.camera;
 		if (camera.position.x < -5){
 			if (_vector.x * direction < 0){

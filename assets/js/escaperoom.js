@@ -55,6 +55,7 @@ function makeOverlay(type){
 
             var div1 = document.createElement('div');
             div1.className = 'wrapper';
+            div1.id = 'wrapper';
 
             var div2 = document.createElement('div');
             div2.className = 'menu';
@@ -250,10 +251,8 @@ function makeOverlay(type){
 
             // Load the external JavaScript file
             const script = document.createElement('script');
-            script.src = '../assets/js/racer-script.js';
+            script.src = '../assets/js/racer-script1.js';
             document.body.appendChild(script);
-
-            console.log("here")
             break;
 
 

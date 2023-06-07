@@ -18,19 +18,20 @@
     margin-top: 30px;
     visibility: hidden;
     color: white;
-  }
+}
   
-  .questions-completed{
+.questions-completed{
     display: inline-block;
     position: relative;
     font-size: 20px;
     font-family: 'Orbitron', sans-serif;
-    margin-top: 25px;
+    margin-top: -50px;
+    margin-left: 5px;
     color: white;
     vertical-align: left;
-  }
+}
   
-  .questions-given {
+.questions-given {
     display: inline-block;
     position: relative;
     font-size: 20px;
@@ -38,25 +39,26 @@
     margin-top: -20px;
     color: white;
     vertical-align: left;
-  }
+}
   
-  .time-container { 
+.time-container { 
     display: float; 
     float: right;
-    margin-top: 30px;
+    margin-top: 2px;
     width: 200px;
-  }
+}
   
-  .time-elapsed {
+.time-elapsed {
     display: inline-block;
     position: relative;
     padding: 0px;
     font-size: 20px;
     font-family: 'Orbitron', sans-serif;
     margin-top: -10px;
+    margin-left: 5px;
     color: white;
     vertical-align: right;
-  }
+}
 
 .progressbar {
     width: 100%;
@@ -141,7 +143,7 @@ img {
 }
 
 .button-container {
-    margin-top: 2rem;
+    margin-top: 9rem;
     display: block;
     position: relative;
     width: 100% !important;
@@ -154,11 +156,12 @@ img {
     border: none;
     text-align: center;
     font-family: 'Orbitron', sans-serif;
-    font-size: 1.7rem;
+    font-size: 18px;
     padding: auto;
     border-radius: .5rem;
     margin-bottom: 10rem;
-    width: 0.5em;
+    margin-right: 5px;
+    width: 200px;
     cursor: pointer;
 }
 
@@ -177,11 +180,13 @@ img {
     border: none;
     text-align: center;
     font-family: 'Orbitron', sans-serif;
-    font-size: 1.7rem;
+    font-size: 18px;
     padding: auto;
+    margin-right: 5px;
+    margin-left: 5px;
     border-radius: .5rem;
     margin-bottom: 10rem;
-    width: 0.5em;
+    width: 200px;
     cursor: pointer;
 }
 
@@ -200,11 +205,13 @@ img {
     border: none;
     text-align: center;
     font-family: 'Orbitron', sans-serif;
-    font-size: 1.7rem;
+    font-size: 18px;
     padding: auto;
+    margin-right: 5px;
+    margin-left: 5px;
     border-radius: .5rem;
     margin-bottom: 10rem;
-    width: 0.5em;
+    width: 200px;
     cursor: pointer;
 }
 
@@ -223,11 +230,12 @@ img {
     border: none;
     text-align: center;
     font-family: 'Orbitron', sans-serif;
-    font-size: 1.7rem;
+    font-size: 18px;
+    margin-left: 5px;
     padding: auto;
     border-radius: .5rem;
     margin-bottom: 10rem;
-    width: 0.5em;
+    width: 200px;
     cursor: pointer;
 }
 
@@ -250,7 +258,6 @@ img {
     padding: 0 1.875em;
     position: sticky;
     top: 0;
-    margin-bottom: 5%;
     width: 100%;
     z-index: 1;
 }
@@ -282,9 +289,9 @@ img {
 
 .carContainer {
     position: absolute;
-    left: 0em;
+    left: -1em;
     top: -7%;
-    width: 12em;
+    width: 6em;
     animation: movecarRight 5s linear forwards;
     animation-play-state: paused;
 }
@@ -294,30 +301,33 @@ img {
         transform: translateX(0);
     }
     100% {
-        transform: translateX(40em);
+        transform: translateX(20em);
     }
+}
+
+.image-container {
+    margin-top: -100px;
 }
 
 .road_lines { 
     position: absolute;
     top: 0;
     width: 100%;
-  }
+}
   
 .lines-body { 
     background-image: url(images/BRG_roadlines.png);
     animation: road_animate 3s infinite;
-    z-index: 2;
     animation-timing-function: linear; 
     position: absolute;
-    margin-top: -1%;
-    height: 46%;
+    margin-top: -37%;
+    height: 5em;
     width: 100%;
 }
 
 @keyframes road_animate {
     100% {
-        background-position: -1624px 0px;
+        background-position: -1640px 0px;
     }
 }
 

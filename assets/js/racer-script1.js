@@ -20,9 +20,6 @@ const appendQ = document.getElementById("questions");
 const newQuestion = document.getElementById('questions-container')
 var splashScreen = document.querySelector('.splash');
 
-
-console.log("yh")
-
 document.getElementById("traffic-light").style.display = "visible";
 
 

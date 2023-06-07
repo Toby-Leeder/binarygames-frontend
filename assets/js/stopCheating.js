@@ -1,23 +1,23 @@
-function checkForSignedIn() {
-    if (localStorage.getItem("name") != undefined) {
-        return true;
-    }
-    else {
-        return false;
-    }
-}
+// function checkForSignedIn() {
+//     if (localStorage.getItem("name") != undefined) {
+//         return true;
+//     }
+//     else {
+//         return false;
+//     }
+// }
 
-console.log(checkForSignedIn());
+// console.log(checkForSignedIn());
 
-function redirectToLogin() {
-    if (checkForSignedIn() == false) {
-        window.location.replace("http://binarygames.tech");
-    }
-    else {
-        return "Logged in";
-    }
-}
+// function redirectToLogin() {
+//     if (checkForSignedIn() == false) {
+//         window.location.replace("http://binarygames.tech");
+//     }
+//     else {
+//         return "Logged in";
+//     }
+// }
 
-window.addEventListener("load", () => {
-    redirectToLogin();
-})
+// window.addEventListener("load", () => {
+//     redirectToLogin();
+// })

@@ -857,7 +857,7 @@ function startRGB() {
 function difficultySelect(count, table) {
     maxColors = count;
     table.innerHTML = defaultTable;
-    guessText = document.getElementById("guessText");
+    var guessText = document.getElementById("guessText");
 
     if (maxColors == "infinite") {
         maxColors = "∞";
@@ -1052,9 +1052,9 @@ async function hint(color) {
 
     if (button.innerHTML.slice(0, 4) == "HINT") {
         if (hints == 3) {
-            message = document.getElementById("message");
+            var message = document.getElementById("message");
 
-            i = 0;
+            var i = 0;
 
             while (i < 3) {
                 message.innerHTML = "";

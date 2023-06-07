@@ -109,6 +109,7 @@ function addQuestion () {
       appendQ.innerHTML = questions;
   }
   if (questions === 10) {
+      console.log("hey")
       showEndScreen();
   }
 }
@@ -302,7 +303,9 @@ function showEndScreen() {
   clearInterval(Interval);
   const endTime = document.getElementById("end-time");
   endTime.textContent = appendSeconds.innerHTML + ":" + appendMins.innerHTML;
-  game.style.visibility = "hidden";
+  topContainer.style.visibility = "hidden";
+  imageContainer.style.visibility = "hidden";
+  bottomUI.style.visibility = "hidden";
   const endScreen = document.getElementById("end-screen");
   endScreen.style.display = "block";
 }

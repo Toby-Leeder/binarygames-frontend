@@ -62,7 +62,7 @@
 
 .progressbar {
     width: 100%;
-    margin-top: 3.125em;
+    margin-top: 0%;
     border-radius: 0.375;
 }
 
@@ -74,7 +74,7 @@
     animation-fill-mode: forwards;
     animation-play-state: paused;
     animation-timing-function: linear;
-    border-radius: 6px;
+    border-radius: 10px;
     width: 0%;
     background-color: #f00;
 }
@@ -290,7 +290,7 @@ img {
 .carContainer {
     position: absolute;
     left: -1em;
-    top: -7%;
+    top: 2em;
     width: 6em;
     animation: movecarRight 5s linear forwards;
     animation-play-state: paused;
@@ -398,6 +398,9 @@ img {
     margin-top: 5%;
     width: 90%;
     height: 6.25em;
+    font-size: 50px;
+    color: white;
+    font-family: 'Orbitron', sans-serif;
 }
 
 .end-screen p {

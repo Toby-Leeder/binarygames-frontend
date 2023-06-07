@@ -87,6 +87,7 @@ function makeOverlay(type){
             var div10 = document.createElement('div');
             div10.className = 'end-screen';
             div10.id = 'end-screen';
+            div10.textContent = 'TIME TAKEN: ';
             div10.style.display = 'none';
 
             var p = document.createElement('p');

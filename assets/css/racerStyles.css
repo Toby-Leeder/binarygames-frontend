@@ -1,68 +1,61 @@
+html {
+    background: linear-gradient(to bottom, rgb(65, 63, 65), rgb(36, 34, 36));
+}
+
 .wrapper {
-    position: relative !important;
-    width: 90%;
-    left: 5%;
-    right: 5%;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
-
 .top-container {
     width: 100%;
     text-align: left;
     font-size: 30px;
-    font-family: 'Orbitron', sans-serif;
+    font-family: "Orbitron", sans-serif;
     margin-top: 30px;
     color: white;
-  }
-  
-  .questions-completed{
+}
+.questions-completed {
     display: inline-block;
     position: relative;
     font-size: 20px;
-    font-family: 'Orbitron', sans-serif;
+    font-family: "Orbitron", sans-serif;
     margin-top: 25px;
     color: white;
     vertical-align: left;
-  }
-  
-  .questions-given {
+}
+.questions-given {
     display: inline-block;
     position: relative;
     font-size: 20px;
-    font-family: 'Orbitron', sans-serif;
+    font-family: "Orbitron", sans-serif;
     margin-top: -20px;
     color: white;
     vertical-align: left;
-  }
-  
-  .time-container { 
-    display: float; 
+}
+.time-container {
+    display: float;
     float: right;
     margin-top: 30px;
     width: 200px;
-  }
-  
-  .time-elapsed {
+}
+.time-elapsed {
     display: inline-block;
     position: relative;
     padding: 0px;
     font-size: 20px;
-    font-family: 'Orbitron', sans-serif;
+    font-family: "Orbitron", sans-serif;
     margin-top: -10px;
     color: white;
     vertical-align: right;
-  }
-
-.progressbar {
-    width: 100%;
-    margin-top: 3.125em;
-    border-radius: 0.375;
 }
-
+.progressbar {
+    width: 80%;
+    margin-top: 50px;
+    border-radius: 6px;
+}
 .progressbar .inner {
-    height: 0.938em;
+    height: 15px;
     animation: progressbar-countdown 5s forwards;
     animation-duration: 5s;
     animation-iteration-count: 1;
@@ -73,7 +66,6 @@
     width: 0%;
     background-color: #f00;
 }
-
 @keyframes progressbar-countdown {
     0% {
         width: 0%;
@@ -120,198 +112,178 @@
         background-color: #56cef9;
     }
 }
-
 .image-container {
-    top: 1.25em;
+    top: 20px;
     position: relative;
     width: 100%;
 }
-
 img {
     display: block;
-    width: 100%;
+    top: 20px;
+    width: 1420px;
 }
-
 .button-container {
-    margin-top: 2rem;
-    display: block;
-    position: relative;
-    width: 100% !important;
-    
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    margin-top: -10px;
+    width: 400px;
+    margin-left: 850px;
+    margin-bottom: 100px;
 }
-
 .answer-button1 {
-    background-color: rgb(11, 83, 148) !important;
-    color: white !important;
+    background-color: rgb(11, 83, 148);
+    color: white;
     border: none;
     text-align: center;
-    font-family: 'Orbitron', sans-serif;
-    font-size: 1.7rem;
-    padding: auto;
-    border-radius: .5rem;
-    margin-bottom: 10rem;
-    width: 0.5em;
+    font-family: "Orbitron", sans-serif;
+    font-size: 30px;
+    padding: 10px 20px;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    width: 150px;
     cursor: pointer;
 }
-
 .answer-button1:hover {
-    background-color: rgb(7, 59, 105) !important;
+    background-color: rgb(7, 59, 105);
 }
-
 .answer-button1:active {
-    background-color: rgb(7, 59, 105) !important;
-    transform: translateY(.25rem);
+    background-color: rgb(7, 59, 105);
+    transform: translateY(4px);
 }
-
 .answer-button2 {
-    background-color: rgb(241, 194, 50) !important;
-    color: black !important;
+    background-color: rgb(241, 194, 50);
+    color: white;
     border: none;
     text-align: center;
-    font-family: 'Orbitron', sans-serif;
-    font-size: 1.7rem;
-    padding: auto;
-    border-radius: .5rem;
-    margin-bottom: 10rem;
-    width: 0.5em;
+    font-family: "Orbitron", sans-serif;
+    font-size: 30px;
+    padding: 10px 20px;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    width: 150px;
     cursor: pointer;
 }
-
 .answer-button2:hover {
-    background-color: rgb(232, 184, 10) !important;
+    background-color: rgb(232, 184, 10);
 }
-
 .answer-button2:active {
-    background-color: rgb(232, 184, 10) !important;
-    transform: translateY(.25rem);
+    background-color: rgb(232, 184, 10);
+    transform: translateY(4px);
 }
-
 .answer-button3 {
-    background-color: rgb(204, 0, 0) !important;
-    color: white !important;
+    background-color: rgb(204, 0, 0);
+    color: white;
     border: none;
     text-align: center;
-    font-family: 'Orbitron', sans-serif;
-    font-size: 1.7rem;
-    padding: auto;
-    border-radius: .5rem;
-    margin-bottom: 10rem;
-    width: 0.5em;
+    font-family: "Orbitron", sans-serif;
+    font-size: 30px;
+    padding: 10px 20px;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    width: 150px;
     cursor: pointer;
 }
-
 .answer-button3:hover {
-    background-color: rgb(160, 9, 9) !important;
+    background-color: rgb(160, 9, 9);
 }
-
 .answer-button3:active {
-    background-color: rgb(160, 9, 9) !important;
-    transform: translateY(.25rem);
+    background-color: rgb(160, 9, 9);
+    transform: translateY(4px);
 }
-
 .answer-button4 {
-    background-color: rgb(106, 168, 79) !important;
-    color: white !important;
+    background-color: rgb(106, 168, 79);
+    color: white;
     border: none;
     text-align: center;
-    font-family: 'Orbitron', sans-serif;
-    font-size: 1.7rem;
-    padding: auto;
-    border-radius: .5rem;
-    margin-bottom: 10rem;
-    width: 0.5em;
+    font-family: "Orbitron", sans-serif;
+    font-size: 30px;
+    padding: 10px 20px;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    width: 150px;
     cursor: pointer;
 }
-
 .answer-button4:hover {
-    background-color: rgb(68, 148, 33) !important;
+    background-color: rgb(68, 148, 33);
 }
-
 .answer-button4:active {
-    background-color: rgb(68, 148, 33) !important;
-    transform: translateY(.25rem);
+    background-color: rgb(68, 148, 33);
+    transform: translateY(4px);
 }
-
 .menu {
-    display: flex !important;
+    display: flex;
     align-items: center;
-    justify-content: space-between !important;
+    justify-content: space-between;
     background-color: #000;
     color: white;
-    height: 6rem;
-    padding: 0 1.875em;
+    height: 75px;
+    padding: 0 30px;
     position: sticky;
     top: 0;
-    width: 90%;
+    width: 100%;
     z-index: 1;
 }
-
 .menu-title {
     font-size: 50px;
-    font-family: 'Orbitron', sans-serif;
+    font-family: "Orbitron", sans-serif;
     flex-grow: 1;
     text-align: left;
 }
-
 .menu-button {
     font-size: 20px;
-    font-family: 'Orbitron', sans-serif;
+    font-family: "Orbitron", sans-serif;
     flex-grow: 1;
     text-align: center;
 }
-
 .car1 {
-    width: auto;
-    height: auto;
-    top: 3%;
-    position: absolute;
-    animation: moveRight 7s linear infinite;
-    animation-play-state: paused;
-    z-index: 2;
-    display: none;
+  width: 200px;
+  height: auto;
+  top: 50px;
+  position: absolute;
+  animation: moveRight 7s linear infinite;
+  animation-play-state: paused;
+  z-index: 2; 
+  display: none;
 }
-
 .carContainer {
     position: absolute;
-    left: 0em;
-    top: -7%;
-    width: 12em;
+    top: 10px;
     animation: movecarRight 5s linear forwards;
     animation-play-state: paused;
-}
-
-@keyframes movecarRight {
-    0% {
-        transform: translateX(0);
-    }
-    100% {
-        transform: translateX(40em);
-    }
-}
-
-.road_lines { 
-    position: absolute;
-    top: 0;
-    width: 100%;
   }
   
-.lines-body { 
-    background-image: url(images/BRG_roadlines.png);
-    animation: road_animate 3s infinite;
-    z-index: 2;
-    animation-timing-function: linear; 
+@keyframes movecarRight {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(1000px);
+    }
+}
+  
+.road_lines {
     position: absolute;
-    margin-top: -1%;
-    height: 46%;
-    width: 100%;
+    top: 0;
+    width: 1200px;
 }
 
+.lines-body {
+    background-image: url(images/BRG_roadlines.png);
+    animation: road_animate 3s infinite;
+    animation-timing-function: linear;
+    position: absolute;
+    margin-top: -420px;
+    height: 200px;
+    width: 1420px;
+}
 @keyframes road_animate {
     100% {
         background-position: -1624px 0px;
     }
 }
-
 @keyframes moveRight {
     from {
         left: 0%;
@@ -320,72 +292,58 @@ img {
         left: 100%;
     }
 }
-
 .splash {
     cursor: pointer;
 }
-
 .hidden {
     display: none;
 }
-
 .splash-header {
     color: rgb(237, 10, 10);
-    font-family: 'Orbitron', sans-serif;
+    font-family: "Orbitron", sans-serif;
     font-size: 30px;
 }
-
 /* Traffic light */
 .traffic-light {
-    width: 8em;
-    height: 18.75em;
-    margin-top: 1.875em;
+    width: 100px;
+    height: 300px;
+    margin-top: 30px;
     background-color: black;
-    border-radius: 0.625em;
+    border-radius: 10px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    padding: 0.625em;
+    padding: 10px;
 }
-
 .light {
-    width: 5em;
-    height: 5em;
+    width: 80px;
+    height: 80px;
     border-radius: 50%;
     opacity: 0.2;
     transition: opacity 0.5s;
 }
-
 .light.red {
     background-color: red;
 }
-
 .light.yellow {
     background-color: yellow;
 }
-
 .light.green {
     background-color: green;
 }
-
 .light.active {
     opacity: 1;
 }
-
 .end-screen {
     text-align: center;
-    margin-top: 5%;
-    width: 90%;
-    height: 6.25em;
-}
-
-.end-screen p {
+    margin-top: 50px;
+    width: 100px;
+    height: 100px;
+  }
+  
+  .end-screen p {
     font-size: 50px;
     color: white;
     font-family: 'Orbitron', sans-serif;
-}
-
-#game {
-    margin-top: -7rem;
-}
+  }

@@ -50,7 +50,7 @@ visIcon2.addEventListener("click", function() {
 
 
 
-const url = "https://backend.binarygames.tech/api/gamers/"
+const url = "http://18.116.47.227/api/gamers/"
 const options = {
     method: 'POST',
     cache: 'default',

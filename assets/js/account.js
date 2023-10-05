@@ -122,7 +122,7 @@ const displayTime = document.getElementById('displayTime');
 
 const currentUser = localStorage.getItem('name');
 
-const url = 'http://18.116.47.227/api/gamers/';
+const url = 'http://http://backend.binarygames.tech//api/gamers/';
 
 async function displayInfo() {
     const thingy = await fetch(url)

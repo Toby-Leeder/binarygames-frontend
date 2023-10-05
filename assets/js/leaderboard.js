@@ -118,7 +118,7 @@ function merge(left, right, key) {
   
 
 async function leaderboard() {
-    const unsorted = await fetch('http://18.116.47.227/api/gamers/')
+    const unsorted = await fetch('http://http://backend.binarygames.tech//api/gamers/')
         .then(res => {return res.json()})
         .then(data => {unsortedDB = data})
         .catch(error => console.log('ERROR'))

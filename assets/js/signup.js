@@ -115,7 +115,7 @@ document.getElementById("createBtn").onclick = function(){
             localStorage.setItem("name", data.name);
             document.getElementById("message").style.color = "#09ff00";
             document.getElementById("message").innerHTML = "Signed up!"
-            window.location.replace("http://binarygames.tech/escaperoom.html");
+            window.location.replace("https://toby-leeder.github.io/binarygames-frontend/escaperoom.html/escaperoom.html");
         })
         )
         .then(response => console.log(response))

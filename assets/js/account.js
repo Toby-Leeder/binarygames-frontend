@@ -327,7 +327,7 @@ async function delAcc() {
                 messageP.innerHTML = "Success! " + name.value + "'s account has been deleted.";
                 console.log(data);
                 localStorage.removeItem("name");
-                window.location.replace("http://binarygames.tech/");
+                window.location.replace("https://toby-leeder.github.io/binarygames-frontend/escaperoom.html/");
             })
         })
     }

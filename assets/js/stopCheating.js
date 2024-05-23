@@ -11,7 +11,7 @@ console.log(checkForSignedIn());
 
 function redirectToLogin() {
     if (checkForSignedIn() == false) {
-        window.location.replace("http://binarygames.tech");
+        window.location.replace("https://toby-leeder.github.io/binarygames-frontend/escaperoom.html");
     }
     else {
         return "Logged in";

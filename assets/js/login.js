@@ -74,7 +74,7 @@ document.getElementById("loginBtn").addEventListener("click", (event) => {
                 return document.getElementById("message").innerHTML = "Error: " +  data.message;
             }
             localStorage.setItem("name", data.name);
-            window.location.replace("http://binarygames.tech/escaperoom.html");
+            window.location.replace("https://toby-leeder.github.io/binarygames-frontend/escaperoom.html/escaperoom.html");
         })
         .catch(response => {
             document.getElementById("message").innerHTML = "Something went wrong :( <br> Please use the correct name and password";

@@ -17,7 +17,7 @@ function makeCursor(){
     overlay.id = "overlay"
     overlay.style.top = `50%`
     overlay.style.left =  `49%`;
-    overlay.src = "toby-leeder.github.io/binarygames-frontend/images/cursor.png";
+    overlay.src = "/images/cursor.png";
     overlay.style.maxWidth = `5%`
     document.getElementById("escapeContainer").appendChild(overlay);
 }
